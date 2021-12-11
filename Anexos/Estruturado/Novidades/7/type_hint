@@ -1,0 +1,24 @@
+class Person
+{
+    public function age(int $age)
+    {
+        return $age;
+    }
+
+    public function name(string $name)
+    {
+        return $name;
+    }
+
+    public function isAlive(bool $alive)
+    {
+        return $alive;
+    }
+}
+
+$person = new Person();
+echo $person->name('Altaf Hussain');
+echo $person->age(30);
+echo $person->isAlive(TRUE);
+
+

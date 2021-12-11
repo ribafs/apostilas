@@ -1,0 +1,81 @@
+Check valid e-mail
+
+function esEmailValido($email)
+{
+    if (ereg("^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@([_a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]{2,200}\.[a-zA-Z]{2,6}$", $email ) )
+	{
+       return true;
+    }
+	else
+	{
+       return false;
+    }
+}
+
+Tipos de Variáveis
+
+<?php
+
+function ss_array_as_string (&$array, $column = 0) {
+    $str = "Array(<BR>\n";
+    while(list($var, $val) = each($array)){
+        for ($i = 0; $i < $column+1; $i++){
+            $str .= "    ";
+        }
+        $str .= $var.' ==> ';
+        $str .= ss_as_string($val, $column+1)."<BR>\n";
+    }
+    for ($i = 0; $i < $column; $i++){
+        $str .= "    ";
+    }
+    return $str.')';
+}
+
+function ss_object_as_string (&$object, $column = 0) {
+    if (empty($object->classname)) {
+        return "$object";
+    }
+    else {
+        $str = $object->classname."(<BR>\n";
+        while (list(,$var) = each($object->persistent_slots)) {
+            for ($i = 0; $i < $column; $i++){
+                $str .= "    ";
+            }
+            global $$var;
+            $str .= $var.' ==> ';
+            $str .= ss_as_string($$var, column+1)."<BR>\n";
+        }
+        for ($i = 0; $i < $column; $i++){
+            $str .= "    ";
+        }
+        return $str.')';
+    }
+}
+
+function ss_as_string (&$thing, $column = 0) {
+    if (is_object($thing)) {
+        return ss_object_as_string($thing, $column);
+    }
+    elseif (is_array($thing)) {
+        return ss_array_as_string($thing, $column);
+    }
+    elseif (is_double($thing)) {
+        return "Double(".$thing.")";
+    }
+    elseif (is_long($thing)) {
+        return "Long(".$thing.")";
+    }
+    elseif (is_string($thing)) {
+        return "String(".$thing.")";
+    }
+    else {
+        return "Unknown(".$thing.")";
+    }
+}
+
+$my_variable=3;
+//echo ss_as_string($my_variable);
+echo ss_as_string($GLOBALS);
+?>
+
+

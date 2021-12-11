@@ -1,0 +1,57 @@
+<script>
+function TestaSenha(valor) {
+	var d = document.getElementById('seguranca');
+	// Expressões Regulares
+	ERaz = /[a-z]/;
+	ERAZ = /[A-Z]/;
+	ER09 = /[0-9]/;
+	ERxx = /[@!#$%&*+=?|-]/;
+	// Teste da String
+	if(valor.length == ''){
+		d.innerHTML = '<b>Segurança da senha: !</b>';
+	} else {
+		if(valor.length < 5){
+			d.innerHTML = '<b>Segurança da senha: <font color=\'red\'> BAIXA</font></b>';
+		} else {
+			if(valor.length > 7 && valor.search(ERaz) != -1 && valor.search(ERAZ) != -1 &&
+				valor.search(ER09) != -1 || valor.search(ERaz) != -1 && valor.search(ERAZ) != -1 &&
+				valor.search(ERxx) || valor.search(ERaz) != -1 && valor.search(ERxx) != -1 &&
+				valor.search(ER09) || valor.search(ERxx) != -1 && valor.search(ERAZ) != -1 &&
+				valor.search(ER09)){
+				d.innerHTML = '<b>Segurança da senha: <font color=\'green\'> ALTA</font></b>';
+			} else {
+				if(valor.search(ERaz) != -1 && valor.search(ERAZ) != -1 || valor.search(ERaz) != -1 &&
+					valor.search(ER09) != -1 || valor.search(ERaz) != -1 && valor.search(ERxx) != -1
+					||valor.search(ERAZ) != -1 && valor.search(ER09) != -1 ||valor.search(ERAZ) != -1 &&
+					valor.search(ERxx) != -1 ||valor.search(ER09) != -1 && valor.search(ERxx) != -1){
+					d.innerHTML = '<b>Segurança da senha: <font color=\'orange\'> MEDIA</font></b>';
+				} else {
+					d.innerHTML = '<b>Segurança da senha: <font color=\'red\'> BAIXA</font></b>';
+				}
+			}
+		}
+	}
+}
+</script>
+<body>
+<h2>Teste de Segurança de Senha (JavaScript)</h2>
+<form name="frm">
+Senha <input type=password name=senha onKeyPress="TestaSenha(senha.value)">
+<div id="seguranca"></div>
+</form>
+<pre>
+Teste de Segurança da senha em JavaScript
+Autor: André Lourenço Pedroso
+Alguns de vocês devem ter visto no Hotmail(tm), por exemplo, um recuro onde
+é feito um teste da senha, mostrando o seu nivél de segurança.
+Para aqueles que acharam esse recurso interessante, mostro nesse pequeno
+artigo um exemplo em JavaScript.
+Os testes seguem a seguinte lógica:
+- Baixa segurança - Senha que contem um tipo de caracter.
+- Média segurança - Senha que tenha mais de quatro digitos e contenha no mínimo dois tipos de
+caracteres.
+- Alta segurança - Senha que tenha mais de sete digitos e contenha no mínimo três tipos de
+caracteres diferentes.
+Dica recebida da Dicas-L (http://www.dicas-l.com.br).
+</pre>
+</body>

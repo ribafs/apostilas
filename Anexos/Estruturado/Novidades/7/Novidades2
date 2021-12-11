@@ -1,0 +1,335 @@
+https://kinsta.com/pt/blog/php-8/
+
+Union types
+
+Para que o processamento seja exigente e lance mensagens de tipos errados precisamos usar na primeira linha
+
+declare(strict_types=1);
+
+public function foo(Foo|Bar $input): int|float;
+
+class Number {
+    private int|float $number;
+ 
+    public function setNumber(int|float $number): void {
+        $this->number = $number;
+    }
+ 
+    public function getNumber(): int|float {
+        return $this->number;
+    }
+}
+
+function myFunction(int|float $number): int
+{
+  return round($number);
+}
+
+function atualizarEstoque(int | float $quantidade) 
+{
+  if ($quantidade > 0) {
+     $this->estoque += $quantidade;
+  }
+}
+
+private int|float $numero;
+
+public function foo(Foo|null $foo): void;
+
+No entanto, com o PHP 8.0, eles permitem que você escreva usando argumentos, propriedades e valores de retorno mistos para representar vários desses valores:
+
+    array
+    bool
+    callable
+    int
+    float
+    null
+    object
+    resource
+    string
+
+mixed is equivalent to the union type array|bool|callable|int|float |object|resource|string|null . Available as of PHP 8.0.0. 
+
+Falando de tipos no PHP 8
+
+Ao in vés de usar
+union type array|bool|callable|int|float|object|resource|string|null
+
+Agora podemos usar algo equivalente e que simplifica:
+mixed
+
+
+mixed - permitir qualquer tipo
+
+mixed indica que um parâmetro pode aceitar vários (mas não necessariamente todos) os tipos.
+
+gettype(), por exemplo, aceita todos os tipos do PHP, enquanto que a função str_replace() aceita somente strings e arrays.
+
+Podemos usar o mixed em qualquer lugar que usamos tipos: propriedades, parâmetros, retorno
+
+
+class Example {
+    public mixed $exampleProperty;
+    public function foo(mixed $foo): mixed {}
+}
+
+function foo(mixed|null $foo) {}
+function foo(?mixed $foo) {}
+function foo($foo): mixed|null {}
+function foo($foo): ?mixed {}
+
+public function handle(mixed $request): mixed
+{
+    // processing request
+
+    return $next($request);
+}
+
+function mangleUsers(string|array $users): array
+{
+    If (is_string($users)) {
+        $users = [$users];
+    }
+    // ...
+}
+
+class CloudAttribute {
+ 
+    protected string $value;
+ 
+    public function __construct(string $value) {
+        $this ->value = $value;
+    }
+ 
+    public function getValue() : string {
+        return $this -> value;
+    }
+ 
+}
+
+Match expression
+
+Match é uma nova expressão semelhante ao switch e conta com novos recursos. Por ser uma expressão, isso significa que ela conta com a capacidade de retornar valores ou armazená-los em uma variável.
+
+Match suporta apenas expressões de uma linha e não precisa de uma declaração break. Além disso, o Match faz comparações estritas.
+
+$result = match (1.0) {
+    1.0 => "Float!",
+    "foo", "bar" => "foobar!"
+};
+
+Falando de tipos no PHP 8
+
+union type - podemos usar um ou até todos os tipos existentes
+mixed - aceita qualquer tipo existente
+
+Exemplos
+
+function mista($nr ): int
+{
+    return $nr*2;
+}
+
+print mista(3.25); // Se amarrarmos em int, retorna apenas 6
+
+function mista($nr ): int|float
+{
+    return $nr*2;
+}
+
+print mista(3.25);// O union type, aceita tanto o float quanto o int
+
+function mista($nr ): mixed
+{
+    return $nr*2;
+}
+
+print mista(3.25); // O mixed funciona como o union type mas simplifica
+
+function mista($nr ): mixed
+{
+    return $nr*2;
+}
+
+print mista('3.5'); // O mixed funciona como qualquer tipo, em nosso caso inclusive com string
+
+function mista(int|float $nr): int|float
+{
+    return $nr*2;
+}
+
+print mista('3.5');  // Aqui ele aceita também e retorna 7, mesmo que euu tenha dito para retornar int ou float ele aceita string. Parece que tem efeito apenas de documentação e não amarra por tipos de forma exigente
+
+
+
+Mudanças no método Construtor
+
+Se tratando de sintaxe, uma grande mudança que será proveitosa tanto para desenvolvedores iniciantes quanto para quem já utiliza o PHP a mais tempo é as mudanças no método construtor.
+
+Na programação Orientada a Objetos, o método construtor é um dos mais importantes para uma classe. Portanto, o PHP 8 se propõe a simplifica-lo.
+
+Vamos utilizar como exemplo a criação de uma classe “Pessoa”. Dentro dessa classe, armazenaremos informações de nome, idade e altura. Atualmente, no php 7.4, você precisa fazer o código como no exemplo abaixo:
+
+class pessoa{
+    public string $nome;
+    public int $idade;
+    public float $altura;
+
+    public function __construct(
+        string $nome,
+        int $idade,
+        float $altura
+    ){
+        $this->nome= $nome;
+        $this->idade= $idade;
+        $this->altura= $altura;
+    }
+}
+
+Se você observar bem, perceberá que você precisou repetir o nome dos atributos três vezes. Portanto, isso acaba tornando o código “redundante”. Pensando nisso, no PHP 8, com método contrutor você conseguirá reescrever a mesma classe conforme o exemplo abaixo:
+
+class Person {
+
+    public function __construct(
+        public string $name,
+        public int $age,
+        public float $height
+    ) {
+
+ 
+
+    }
+
+}
+
+Observe que, agora, você poderá escrever a mesma classe porém com bem menos linhas de código. Além disso, torna o código mais simples de se ler e entender. Portanto, as mudanças do método construtor do PHP 8 serão muito interessante para os desenvolvedores.
+
+Porém, é importante que você saiba que essa funcionalidade possuirá algumas exceções. Você apenas conseguirá utilizar esse recurso em métodos construtores para classes não abstratas. Portanto, para entender melhor esse assunto, recomendamos que você leia a RFC sobre a modificação do método construtor.
+
+
+
+Novas Funções no PHP 8
+
+Para finalizarmos nossa lista, não podemos deixar de comentar sobre três novas funções que serão acrescentadas ao PHP. São elas:
+
+    str_contains
+    str_starts_with() e str_ends_with()
+    get_debug_type
+
+A função str_contains
+
+A nova função str_contains permite realizar uma busca dentro de uma string.
+
+Sua síntaxe será como no exemplo abaixo:
+
+str_contains ( string $haystack , string $needle ) : bool
+
+Esta sintaxe significa que será executado uma verificação para indicar se $needle está presente dentro da string $haystack. Caso sim, ela retornará o valor booleano true. Caso não esteja, então, retornará false.
+
+Portanto, agora podemos utilizar a função str_contains para escrever o código como no exemplo abaixo:
+
+$string = 'Frase de exemplo';
+$verificar= 'exemplo';
+
+if (str_contains($string, $verificar)) {
+	echo "A String foi encontrada";
+} else {
+	echo "A String não foi encontrada";
+}
+
+Como você pode perceber, isso tornará a busca dentro de uma string mais legível e menos propenso a erros.
+
+Você pode estar lendo a RFC sobre essa função para poder verificar todas suas características.
+As funções str_starts_with() e str_ends_with()
+
+As funções str_starts_with() e str_ends_with() funcionam parecidos com a função anterior, a str_contains. Porém, a diferença é que elas verificam se um string começa ou termina com determinada string.
+
+Sua similaridade com str_contains também se dá pela sintaxe. Veja nos códigos de exemplo abaixo a sintaxe da str_starts_with() e str_ends_with():
+
+str_starts_with (string $haystack , string $needle) : bool
+str_ends_with (string $haystack , string $needle) : bool
+
+Portanto, quando você utilizar essa funções, será possível economizar no uso da CPU. Isso acontece pois não será necessário percorrer por toda uma string, a função irá verificar apenas o inicio ou o final.
+A função get_debug_type
+
+A nova função que chegará junto ao PHP 8 é a get_debug_type. Com ela, você poderá retornar o tipo de dado de uma variável.
+
+Portanto, você pode perceber que ela é bem parecida com a função já existente gettype(). Porém, a get_debug_type() representa uma melhoria para o PHP, pois ela consegue retornar a verificação de tipo.
+
+Você pode ver na própria RFC as principais diferenças de retornos entre as funções get_debug_type() e gettype()
+
+https://www.homehost.com.br/blog/tutoriais/php/php-8/
+
+Ajustes na concatenação de strings e números
+
+Iremos falar de um dos primeiros conceitos que aprendemos quando estudamos PHP e também um dos conceitos que pode nos causar muita dor de cabeça: a concatenação. Sabemos que o PHP é uma linguagem fracamente tipada e tenta converter números em strings quando usamos o operador . (ponto) em nosso código. Contudo, isso pode nos causar alguns problemas. Vamos ver um exemplo.
+
+Vamos criar duas variáveis numéricas, realizar a soma delas e então exibir o resultado no navegador. Podemos fazer isso por meio do seguinte código:
+
+$number1 = 10;
+$number2 = 15;
+
+echo "Resultado: " . $number1 + $number2;
+
+Quando testamos esse código vemos o seguinte resultado:
+Resultado de nosso código PHP no navegador
+
+O resultado está incorreto e um Warning foi retornado. Isso ocorre pois o PHP tentou concatenar a string “Resultado” com o número 10, o que não deu certo. O responsável por fazer com que a conta fosse desconsiderada e a concatenação ocorresse é o que chamamos de precedência de operadores. Ele define a prioridade dos operadores no código. Talvez você lembre desse conceito nas aulas de expressões matemáticas na escola.
+
+Atualmente o operador de concatenação (.) tem uma precedência superior em relação ao operador de soma (+). Para resolver o problema acima, precisaríamos isolar a conta na expressão usando parênteses, da seguinte forma:
+
+echo "Resultado: " . ($number1 + $number2);
+
+Entretanto, pode ser que esqueçamos disso e continuemos tendo o mesmo erro. Pensando em resolver essa pedra no sapato, foi proposto que na versão 8 do PHP o operador de concatenação tenha uma precedência inferior aos operadores aritméticos, e felizmente essa proposta foi aceita. Assim, se executarmos o código inicial usando o PHP 8, veremos o seguinte resultado:
+Resultado de nosso código no navegador
+
+Perfeito! A operação foi realizada e a string “Resultado” foi exibida.
+https://hcode.com.br/blog/o-que-ha-de-novo-no-php-8-parte-1
+
+
+Argumentos Nomeados
+
+Agora, com o PHP 8 podemos passar argumentos para uma função em ordem diferente do que foi definido na função, usando nomes.
+
+Quando trabalhamos com funções ou métodos, sempre ouvimos falar de argumentos ou parâmetros. E sabemos que a ordem que informamos esses valores pode fazer toda a diferença no bom funcionamento do código.
+
+A linguagem PHP sempre possuiu argumentos referenciados por meio de sua posição. Mas com a versão 8, isso mudou. Agora possuímos argumentos nomeados. Isso significa que podemos deixar claro qual argumento os valores se referem. Vamos ver um exemplo disso.
+
+Vamos criar uma função que irá retornar um array dos dados informados:
+
+function create_user($username = "admin", $password = "admin", $is_admin = true) {
+	$data = [
+		'username' => $username,
+		'password' => $password,
+		'admin' => $is_admin
+	];
+	return $data;
+}
+
+Note que essa função possui um valor padrão para todos os argumentos. Imagine que desejamos realizar a chamada dessa função, mas informando apenas o argumento $password. Para fazer isso, basta informar para a função o nome do argumento sem o sinal de $, definir um sinal de : (dois-pontos) e então informar seu valor:
+
+print_r(create_user(password: '123456'));
+
+Esse código definirá o seguinte resultado:
+Resultado de nossa função no navegador
+
+Perceba que a informação de senha foi identificada corretamente, mas os outros dois parâmetros receberam seus valores padrão. Por meio dos argumentos nomeados também podemos informar os argumentos na ordem que desejarmos; não precisamos mais ficar presos à ordem que foi definida na função. Por exemplo, se desejarmos informar o terceiro argumento e depois o primeiro, não tem problema:
+
+print_r(create_user(is_admin: 0, username: 'support'));
+
+O resultado desse código será o seguinte:
+Resultado de nossa função no navegador
+
+Os dados também são reconhecidos. Impressionante, não é mesmo?
+
+Esse mesmo padrão pode ser usado em funções nativas do PHP. Podemos ver um exemplo disso com a função array_fill(), que é usada para criar um array personalizado com os valores que determinamos. Ele espera três parâmetros: 1) start_index, que representa o índice inicial do nosso array; 2) count, que representa a quantidade de itens que o array possuirá; e 3) value, que é o valor dos itens. Se desejarmos usar os argumentos nomeados com esta função, podemos usar o seguinte código:
+
+print_r(array_fill(value: 'Hcode', start_index: 0, count: 10));
+
+O resultado será o seguinte:
+Array gerado pela função array_fill()
+
+Nosso array foi criado com sucesso
+https://hcode.com.br/blog/o-que-ha-de-novo-no-php-8-parte-3
+
+

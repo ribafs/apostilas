@@ -1,0 +1,190 @@
+PHP nasceu como uma linguagem dinâmica e fracamente tipada e passou a ter melhorias em relação à tipos com a sua evolução. 
+
+No início ele aceitava somente typehints de classes e interfaces em argumentos de métodos. Depois, com o lançamento do PHP 7, passou-se a ter suporte a typehints de tips escalares como string, int, float e bool, tipos para retorno de métodos e opção de tipagem estrita com `declare(strict_types=1)`.
+
+No PHP 7.1 passou-se a suportar tipos nullable, ou seja, se a variável aceita nulo ou não e aos tipos void e iterable. E no PHP 7.2 o suporte ao tipo object. 
+
+Contudo, o PHP ainda não tinha suporte para tipos em propriedades. Ela quase foi incluída na versão 7.3, mas a equipe de desenvolvimento do core do PHP decidiu incluir com calma e deixaram para o PHP 7.4.
+
+Anteriormente a isso utilizava-se uma annotation em docblock (@var EntityManagerInterface) para sinalizar que determinada propriedade era de um tipo específico. Isso auxiliava IDEs no seu autocomplete e ferramentas de análise estática.
+
+Novidades do PHP 7
+
+Algumas novidades
+
+Referências
+https://tableless.com.br/10-novidades-do-php-7/
+https://www.treinaweb.com.br/blog/php-7-e-novidades-do-php-7-1/
+https://www.php.net/manual/en/migration70.new-features.php
+https://github.com/tpunt/PHP7-Reference
+https://devzone.zend.com/4693/php-7-glance/
+https://blog.digitalocean.com/getting-ready-for-php-7/
+https://www.treinaweb.com.br/blog/novidades-do-php-7-2/
+https://imasters.com.br/back-end/php-7-2-quais-sao-as-novidades-da-nova-versao-do-php
+https://imasters.com.br/back-end/php-7-3-e-php-8-o-que-esperar-das-proximas-versoes
+
+
+Novidades do PHP 7.1
+    • Nullable Types (possibilidade de um parâmetro receber um tipo específico ou null) 
+    • Habilidade de pegar múltiplas exceções num mesmo bloco catch 
+    • Criação de um pseudo-tipo chamado Iterable 
+    • Habilidade de definir visibilidade para constantes de classes (public, private, protected) 
+    • Diversas melhorias à extensão Curl, dentre elas, suporte a HTTP/2 Server Push. 
+    • Tipo void para parâmetros e retornos de funções/métodos. 
+    • Incrementos na utilização list() 
+    • O suporte a mcrypt() foi removido da linguagem (tornou-se defasado devido à implementações mais atualizadas e seguras que hoje temos à disposição). 
+
+Capturando múltiplas exceções
+Antes a única opção era:
+try {
+    // todo
+} catch (MyException1 $e) {
+    // todo
+} catch (MyException2 $e) {
+    // todo
+} catch (Exception $e) {
+    // todo
+}
+
+No PHP 7.1 é possível agrupar mais de uma exceção num mesmo bloco catch:
+try {
+    // todo
+} catch (MyException1 | MyException2 $e) {
+    // todo
+} catch (Exception $e) {
+    // todo
+}
+
+Void return
+Na 7.1 é possível retornar void como sendo um tipo de retorno válido.
+Exemplo:
+class Squirtle extends Pokemon
+{
+    public function run() : void
+    {
+        // todo
+    }
+}
+
+Funções removidas
+
+As funções de acesso a bancos de dados mysql_* (mysql_connect(), mysql_query() entre outras) foram removidas na versão 7. A recomendação agora é usar o PDO.
+
+Funções ereg_* foram removidas. Agora devemos usar uma função preg_*, como preg_match ou preg_replace.
+
+Erros Fatais e Exceções
+No PHP 7, erros fatais passaram a ser Exceções. Isso quer dizer que eles podem ser tratados em bloco try/catch, sem interromper a execução do script.
+
+Construtores do PHP 4 continuará sendo possível mas recomendando o __construct();
+
+Definir tipo de retorno para funções:
+
+function nomeFuncao() : tipo
+{
+    // corpo da função
+}
+
+Por exemplo:
+function soma($x, $y) : float
+{
+    return $x + $y + 1.5;
+}
+
+Criação de classes anônimas
+
+function createObject()
+{
+    return new class{
+        public function test()
+        {
+            echo "test" . PHP_EOL;
+        }
+    };
+}
+
+$obj = createObject();
+$obj->test();
+
+
+Abaixo algumas das funcionalidades que se tornarão obsoletas no 7.2:
+    • __autoload 
+    • $php_errormsg 
+    • create_function() 
+    • func_overload 
+    • (unset) cast 
+    • parse_str() without second argument 
+    • gmp_random() 
+    • each() 
+    • assert() with string argument 
+    • $errcontext argument of error handler 
+
+Principais novidades que entrarão no PHP 7.2. Algumas das principais:
+    • get_class() desabilita o parâmetro nulo 
+    • Impedir number_format() de retornar zero negativo 
+    • Argon2 Password Hash 
+    • Object typehint 
+    • libsodium 
+
+Argon2 Password Hash
+Argon2 é o algoritmo de hashing de senha vencedor do concurso “Password Hashing Competition” de 2015, sendo assim muito bem recomendado a sua utilização. Ao contrário do Bcrypt, que apenas possui um único fator de custo, o Argon2 é parametrizado por três fatores distintos:
+    1. Tempo de execução 
+    2. Memória necessária 
+    3. Grau de paralelismo 
+
+A função password_hash() é alterada para aceitar PASSWORD_ARGON2I como o algoritmo e aceitar o custo da memória, o custo do tempo e o grau de paralelismo como opções. O exemplo a seguir ilustram a nova funcionalidade:
+// Argon2i com fatores de custo padrão
+password_hash('password', PASSWORD_ARGON2I);
+ 
+// Argon2i com fatores de custo personalizados
+password_hash('password', PASSWORD_ARGON2I, ['memory_cost' => 1<<17, 'time_cost' => 4, 'threads' => 2]);
+
+A primeira linguagem de programação a adotar criptografia moderna
+Outra novidade que veio na versão 7.2 é referente à criptografia moderna, libsodium, que é parte da extensão principal do PHP 7.2.  Sodium é uma biblioteca que facilita a utilização de criptografia, descriptografia, assinaturas, hash de senha e muito mais. Seu objetivo é fornecer todas as operações básicas necessárias para criar ferramentas criptográficas de alto nível.
+
+O PHP continua sendo a linguagem mais popular do lado do servidor para criar sistemas. Com uma participação de mercado estimada em 80%, a linguagem de programação de vinte e poucos anos está em toda parte.
+
+
+O que se tornará obsoleto no PHP 7.3?
+Abaixo, algumas das funcionalidades que se tornarão obsoletas:
+    • Extensão WDDX; 
+    • Alias de função mbstring usando um prefixo mb_ (por exemplo, mb_ereg); 
+    • mb_detect_encoding() sem strict mode; 
+    • Funções strip_tags() e fgetss(); 
+    • Função image2wbmp. 
+
+Principais novidades que entrarão no PHP 7.3
+    • Flexibilidade de sintaxe Heredoc e Nowdoc; 
+    • Permitir vírgula à direita em chamadas de função e método; 
+    • Opção para fazer json_encode e json_decode lançar exceções em erros; 
+    • Atribuições de referências em list(); 
+    • Função is_countable(). 
+
+Novidades sobre o PHP 7.3
+https://imasters.com.br/php/php-7-3-conheca-as-novidades-desta-versao
+
+
+
+Novidades do PHP 7.4
+
+Poderemos declarar tipos estáticos para variáveis
+
+class User
+{
+    public int $id;
+    public string $nome;
+    private bool $isAdmin = false;
+}
+
+Operador null coalescing
+
+/ $data['name'] = 'John';
+
+// verifica se a variável foi definida e não é nula utilizando o operador null coalesce
+$name = $data['name'] ?? 'anonymous';
+echo $name; // anonymous
+
+
+Uma novidade muito forte e muito comentada foi a melhora no desempenho (teve seu motor remodelado), que alguns testes chegou a um ganho de 9 vezes.
+Veja aqui - https://rberaldo.com.br/php-7-9-vezes-mais-rapido-que-php-5-6/
+
+

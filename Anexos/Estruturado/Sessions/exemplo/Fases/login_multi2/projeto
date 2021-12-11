@@ -1,0 +1,6 @@
+Nesta fase o objetivo é implementar o hash do php
+
+Também criei no admin/index.php um menu de acordo com a role.
+Onde deve ser criado um menu com todos os itens que o usuário tenha acesso.
+Ele irá acessar somente o que tem direito.
+

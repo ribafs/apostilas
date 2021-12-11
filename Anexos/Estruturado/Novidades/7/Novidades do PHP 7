@@ -1,0 +1,133 @@
+Novidades do PHP 7
+
+Estas novidades afetam tanto o interpretador quanto várias extensões e bibliotecas
+
+Algumas:
+
+- Scalar type hint:
+string: String
+integer: Números inteiros
+float: Números em ponto flutuante
+bool: Valores boleanos: true ou false
+
+Podemos forçar o interpretador a exigir declaração de tipos ou não inserindo no início do arquivo:
+
+declare(strict_types=0); //evitar type-checking
+declare(strict_types=1); // strict type-checking
+
+Exemplo de funções com parêmetros declarando tipos
+
+function hint (int $A, float $B, string $C, bool $D)
+{
+    var_dump($A, $B, $C, $D);
+}
+
+Para declarar tipos de retorno de funções:
+
+function divide(int $A, int $B) : int
+{
+    return $A / $B;
+}
+
+Outra novidade do PHP 7 foi a adição de classes anônimas
+
+$object = new class {
+    public function hello($message) {
+        return "Hello $message";
+    }
+};
+
+echo$object->hello('PHP');
+
+$helper->sayHello(new class {
+    public function hello($message) {
+        return "Hello $message";
+    }
+});
+
+Operador Coalesce
+
+$role = $_GET['role'] ??'guest';
+
+$A = null; // or not set
+$B = 10;
+
+echo $A ?? 20; // 20
+echo $A ?? $B ?? 30; // 10
+
+Operador spaceship
+
+operator<=> equivalent
+$a < $b($a <=> $b) === -1
+$a <= $b($a <=> $b) === -1 || ($a <=> $b) === 0
+$a == $b($a <=> $b) === 0
+$a != $b($a <=> $b) !== 0
+$a >= $b($a <=> $b) === 1 || ($a <=> $b) === 0
+$a > $b($a <=> $b) === 1
+
+Função de divisão de inteiros
+
+int intdiv(int $dividend, int $divisor)
+
+Let's take a look at the following few examples:
+intdiv(5, 3); // int(1)
+intdiv(-5, 3); // int(-1)
+intdiv(5, -2); // int(-2)
+intdiv(-5, -2); // int(2)
+intdiv(PHP_INT_MAX, PHP_INT_MAX); // int(1)
+intdiv(PHP_INT_MIN, PHP_INT_MIN); // int(1)
+
+// following two throw error
+intdiv(PHP_INT_MIN, -1); // ArithmeticError
+intdiv(1, 0); // DivisionByZeroError
+
+Constante tipo array
+
+// the define() example
+define('FRAMEWORK', [
+'version' => 1.2,
+'licence' =>'enterprise'
+]);
+
+echo FRAMEWORK['version']; // 1.2
+echo FRAMEWORK['licence']; // enterprise
+
+// the class const example
+class App {
+const FRAMEWORK = [
+'version' => 1.2,
+'licence' =>'enterprise'
+];
+}
+echo App::FRAMEWORK['version']; // 1.2
+echo App::FRAMEWORK['licence']; // enterprise
+
+Algumas que fram abandonadas/deprecateds
+
+The following functions are no longer available for use:
+ereg_replace
+ereg
+eregi_replace
+eregi
+split
+spliti
+sql_regcase
+
+As tags tipo ASP e tipo JavaScript não são mais aceitas
+
+The PHP script and ASP tags are no longer available:
+
+<!-- PHP script tag example -->
+<script language="php">
+// Code here
+</script>
+
+<!-- PHP ASP tag example -->
+<%
+// Code here
+%>
+<%=$varToEcho; %>
+
+E muitas outras novidades foram introduzidas. Vide capítulo 1 do livro
+Modular Programming with PHP 7 da PacketPub
+

@@ -1,0 +1,189 @@
+Zip a folder (include itself).
+Usage:
+  HZip::zipDir('/path/to/sourceDir', '/path/to/out.zip');
+
+<?php
+class HZip
+{
+  /**
+   * Add files and sub-directories in a folder to zip file.
+   * @param string $folder
+   * @param ZipArchive $zipFile
+   * @param int $exclusiveLength Number of text to be exclusived from the file path.
+   */
+  private static function folderToZip($folder, &$zipFile, $exclusiveLength) {
+    $handle = opendir($folder);
+    while (false !== $f = readdir($handle)) {
+      if ($f != '.' && $f != '..') {
+        $filePath = "$folder/$f";
+        // Remove prefix from file path before add to zip.
+        $localPath = substr($filePath, $exclusiveLength);
+        if (is_file($filePath)) {
+          $zipFile->addFile($filePath, $localPath);
+        } elseif (is_dir($filePath)) {
+          // Add sub-directory.
+          $zipFile->addEmptyDir($localPath);
+          self::folderToZip($filePath, $zipFile, $exclusiveLength);
+        }
+      }
+    }
+    closedir($handle);
+  }
+
+  /**
+   * Zip a folder (include itself).
+   * Usage:
+   *   HZip::zipDir('/path/to/sourceDir', '/path/to/out.zip');
+   *
+   * @param string $sourcePath Path of directory to be zip.
+   * @param string $outZipPath Path of output zip file.
+   */
+  public static function zipDir($sourcePath, $outZipPath)
+  {
+    $pathInfo = pathInfo($sourcePath);
+    $parentPath = $pathInfo['dirname'];
+    $dirName = $pathInfo['basename'];
+
+    $z = new ZipArchive();
+    $z->open($outZipPath, ZIPARCHIVE::CREATE);
+    $z->addEmptyDir($dirName);
+    self::folderToZip($sourcePath, $z, strlen("$parentPath/"));
+    $z->close();
+  }
+}
+?>
+
+A way of zipping files and downloading them thereafter:
+<?php
+
+$files = array('image.jpeg','text.txt','music.wav');
+$zipname = 'enter_any_name_for_the_zipped_file.zip';
+$zip = new ZipArchive;
+$zip->open($zipname, ZipArchive::CREATE);
+foreach ($files as $file) {
+  $zip->addFile($file);
+}
+$zip->close();
+
+///Then download the zipped file.
+header('Content-Type: application/zip');
+header('Content-disposition: attachment; filename='.$zipname);
+header('Content-Length: ' . filesize($zipname));
+readfile($zipname);
+
+?>
+
+
+Here is a simple function which zips folders with all sub folders or only a simple file... the $data var can be a string or an array...
+
+<?php
+public function un_zip($data,$arcpf,$mode='zip',$obj=''){
+        $absoluterpfad = 'YOUR_BASE_PATH';
+        $arcpf = $absoluterpfad.DS.$arcpf;
+        if(is_object($obj)==false){
+             $archiv = new ZipArchive();
+             $archiv->open($arcpf,ZipArchive::CREATE);
+        }else{$archiv =& $obj;}
+        if($mode=='zip'){
+           if(is_array($data)==true){
+                 foreach($data as $dtmp){
+                     $archiv =& un_zip($dtmp,$arcpf,'zip',&$archiv);
+                 }
+           }else{
+            if(is_dir($data)==true){
+                    $archiv->addEmptyDir(str_replace($absoluterpfad.DS,'',$data));
+                  $files = scandir($data);
+               $bad = array('.','..');
+               $files = array_diff($files,$bad);
+               foreach($files as $ftmp){
+                   if(is_dir($data.DS.$ftmp)==true){
+                        $archiv->addEmptyDir(str_replace($absoluterpfad.DS,'',$data.'/'.$ftmp));
+                        $archiv =& un_zip($data.DS.$ftmp,$arcpf,'zip',&$archiv);
+                   }elseif(is_file($data.DS.$ftmp)==true){
+                    $archiv->addFile($data.DS.$ftmp,str_replace($absoluterpfad.DS,'',$data.'/'.$ftmp));
+                   }
+                 }
+            }elseif(is_file($data)==true){$archiv->addFile($data,str_replace($absoluterpfad.DS,'',$data));}
+           }
+        }
+        if(is_object($obj)==false){$archiv->close();}
+        else{return $archiv;}
+        if($mode=='unzip'){$archiv->extractTo($data);}
+    }
+?>
+
+
+Creating a zip file with PHP's ZipArchive
+
+I recently had a requirement to create a zip file from a number of files created within my application.
+
+As it has been years since I last had this problem, I had a look around and discovered that PHP 5.2 has the ZipArchive class that makes this easy. ZipArchive is fully featured, but as I just wanted to create a simple zip file, all that I needed to do was:
+
+$zip = new ZipArchive();
+$zip->open('path/to/zipfile.zip', ZipArchive::CREATE);
+
+$zip->addFile('some-file.pdf', 'subdir/filename.pdf');
+$zip->addFile('another-file.xlxs', 'filename.xlxs');
+
+$zip->close();
+	
+$zip = new ZipArchive();
+$zip->open('path/to/zipfile.zip', ZipArchive::CREATE);
+ 
+$zip->addFile('some-file.pdf', 'subdir/filename.pdf');
+$zip->addFile('another-file.xlxs', 'filename.xlxs');
+ 
+$zip->close();
+
+Note that I can set the filename and any subdirectories within the zip file completely independently of the name and location of the file that I am adding which is useful.
+
+The file 'zipfile.zip' is now ready for downloading which currently I do using:
+
+// send $filename to browser
+$finfo = finfo_open(FILEINFO_MIME_TYPE);
+$mimeType = finfo_file($finfo, $filename);
+$size = filesize($filename);
+$name = basename($filename);
+
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
+    // cache settings for IE6 on HTTPS
+    header('Cache-Control: max-age=120');
+    header('Pragma: public');
+} else {
+    header('Cache-Control: private, max-age=120, must-revalidate');
+    header("Pragma: no-cache");
+}
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // long ago
+header("Content-Type: $mimeType");
+header('Content-Disposition: attachment; filename="' . $name . '";');
+header("Accept-Ranges: bytes");
+header('Content-Length: ' . filesize($filename));
+
+print readfile($filename);
+exit;
+	
+// send $filename to browser
+$finfo = finfo_open(FILEINFO_MIME_TYPE);
+$mimeType = finfo_file($finfo, $filename);
+$size = filesize($filename);
+$name = basename($filename);
+ 
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
+    // cache settings for IE6 on HTTPS
+    header('Cache-Control: max-age=120');
+    header('Pragma: public');
+} else {
+    header('Cache-Control: private, max-age=120, must-revalidate');
+    header("Pragma: no-cache");
+}
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // long ago
+header("Content-Type: $mimeType");
+header('Content-Disposition: attachment; filename="' . $name . '";');
+header("Accept-Ranges: bytes");
+header('Content-Length: ' . filesize($filename));
+ 
+print readfile($filename);
+exit;
+
+Now, the next time I need to do this, I'll remember what I did!
+

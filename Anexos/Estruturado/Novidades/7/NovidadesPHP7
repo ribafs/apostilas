@@ -1,0 +1,190 @@
+Strict Types e novos tipos de declaração no PHP 7
+
+Por Leandro em 06/01/2016
+
+O PHP 7 introduziu mais quatro tipos de dados para a declaração de parâmetros de funções e métodos. Vamos lá!!
+
+Antes de irmos aos exemplos, precisamos entender um outro conceito, o strict_types.
+
+Por padrão todos os arquivos PHP estão em modo “fraco” de checagem de tipo, para entender melhor veja o exemplo abaixo:
+
+<?php
+
+function sum(int $num1) : int 
+{
+    return $num1 + 1;
+}
+
+var_dump(sum('1')); // int(2)
+
+Percebam que nossa função foi assinada para receber um parâmetro $num1 do tipo int, e retornar também um int, sendo a soma do parâmetro passado mais 1, porém a chamada da função é feita passando a string ‘1’ e mesmo assim o PHP conseguiu interpretar, converter (string -> int) e retornar um int, que neste caso foi o número 2. E isso só foi possível devido estarmos com o modo fraco de tipo de checagem. Interessante não ?
+
+Agora vamos ativar o modo strict_types e fazer o mesmo exemplo anterior:
+
+<?php
+
+declare(strict_types=1);
+
+function sum(int $num1) : int 
+{
+    return $num1 + 1;
+}
+
+var_dump(sum('1'));
+
+A única mudança feita foi a inclusão do comando declare(strict_types=1), ou seja, a partir deste momento, a checagem de tipo será feita, e é como se estivéssemos dizendo para o PHP para utilizar o modo “forte” de checagem de tipo. O exemplo acima irá produzir um fatal error, como abaixo:
+
+PHP Fatal error:  Uncaught TypeError: Argument 1 passed to sum() must be of the type integer, string given
+
+Agora que já sabemos como utilizar o modo “forte” de checagem de tipo do PHP, vamos ver quais são os 4 tipos de dados adicionados e que agora são permitidos como declaração de tipo de parâmetro de funções ou métodos.
+
+Os tipos introduzidos na versão 7 do PHP, foram: int, float, string e bool. Vamos ver alguns exemplos abaixo:
+
+<?php
+
+declare(strict_types=1);
+
+class Actor
+{
+    private $salary = 2500;
+    private $name = 'Chuck Norris';
+
+    public function getNameWithPrefix(string $sufixForName) : string 
+    {
+    	return $sufixForName . ' ' . $this->name;
+    }
+
+    public function getSalaryWithCommission(float $v) : float
+    {
+        return $this->salary * $v;
+    }
+}
+
+$actor = new Actor();
+
+var_dump($actor->getSalaryWithCommission(1.3)); // float(3250)
+var_dump($actor->getNameWithPrefix('Mr.')); // string(16) "Mr. Chuck Norris"
+
+Vejam que acima, temos uma classe Actor e dois métodos getNameWithPrefix(string $sufixForName) : string e getSalaryWithCommission(float $v) : float, percebam que cada uma delas declara um parâmetro string e float respectivamente, e logo após instanciarmos a classe, fazemos as chamadas a estes métodos passando os parâmetros corretamente. Porém, vamos fazer uma chamada ao método getSalaryWithCommission(float $v) : float passando como parâmetro um int:
+
+var_dump($actor->getSalaryWithCommission(4)); // float(10000)
+
+Opa! Isso deveria ter dado erro já que a função deveria ter recebido um float e o foi passado um int. Bem neste caso não, ja que int são aceitos para argumentos float, porém o contrário não será aceito.
+
+Percebam que este recurso será muito útil principalmente para as documentações de códigos, já que agora temos uma forma de obrigar o tipo de dado que é passado para uma função ou método.
+
+Espero que tenham gostado, um abraço e até a próxima!
+https://blog.schoolofnet.com/strict-types-e-novos-tipos-de-declaracao-no-php-7/
+
+
+The Spaceship operator
+
+The three-way comparison operator, also known as the Spaceship operator, was introduced in PHP 7. Its syntax goes as follows:
+(expr) <=> (expr)
+
+The operator returns 0 if both operands are equal, 1 if the left is greater, and -1 if the right is greater.
+
+echo 1.5 <=> 1.5; // 0
+echo 1.5 <=> 2.5; // -1
+echo 2.5 <=> 1.5; // 1
+
+
+The integer division function
+
+The intdiv is a new integer division function introduced in PHP 7. The function accepts dividend and divisor as parameters and returns the integer quotient of their division, as shown here by the function description:
+
+int intdiv(int $dividend, int $divisor);
+
+$dividend=7;
+$divisor=2;
+echo intdiv($dividend, $divisor);
+
+echo intdiv(PHP_INT_MAX, PHP_INT_MAX);
+
+echo intdiv(PHP_INT_MIN, PHP_INT_MIN);
+
+
+Constant arrays
+Prior to PHP 7, constants defined with define() could only contain scalar expressions, but not arrays. As of PHP 5.6, it is possible to define an array constant by using const keywords, and as of PHP 7, array constants can also be defined using define() :
+
+define('FRAMEWORK', [
+	'version' => 1.2,
+	'licence' =>'enterprise'
+]);
+
+
+Uniform variable syntax
+To make PHP's parser more complete for various variable dereferences, PHP 7
+introduced a uniform variable syntax. With uniform variable syntax all variables
+are evaluated from left to right.
+Unlike various functions, keywords, or settings being removed, changes in semantics
+like this one can be quite impacting for the existing code base. The following code
+demonstrates the syntax, its old meaning and new:
+// Syntax
+$$foo['bar']['baz']
+// PHP 5.x:
+// Using a multidimensional array value as variable name
+${$foo['bar']['baz']}
+// PHP 7:
+// Accessing a multidimensional array within a variable-variable
+($$foo)['bar']['baz']
+
+
+Aside from previously rewritten examples of old-to-new syntax, there are now a few
+newly supported syntax combinations.
+PHP 7 now supports nested double colons, :: , and following is an example of it:
+// Access a static property on a string class name
+// or object inside an array
+$foo['bar']::$baz;
+// Access a static property on a string class name or object
+// returned by a static method call on a string class name
+// or object
+$foo::bar()::$baz;
+
+
+Session options
+
+Prior to PHP 7, the session_start() function did not directly accept any configuration options. Any configuration options we wanted to set on the session, needed to come from php.ini :
+// PHP 5
+ini_set('session.name', 'THEAPP');
+ini_set('session.cookie_lifetime', 3600);
+ini_set('session.cookie_httponly', 1);
+session_start();
+
+// PHP 7
+session_start([
+'name' =>'THEAPP',
+'cookie_lifetime' => 3600,
+'cookie_httponly' => 1
+]);
+
+
+Deprecateds no 7
+
+The POSIX-compatible regular expressions have been deprecated in PHP 5.3, and
+now completely removed in PHP 7.
+The following functions are no longer available for use:
+
+ereg_replace
+ereg
+eregi_replace
+eregi
+split
+spliti
+sql_regcase
+
+TAGs de abertura e fechamento do script
+
+The PHP script and ASP tags are no longer available:
+<!-- PHP script tag example -->
+<script language="php">
+// Code here
+</script>
+
+<!-- PHP ASP tag example -->
+<%
+// Code here
+%>
+<%=$varToEcho; %>
+
+

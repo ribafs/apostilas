@@ -1,0 +1,66 @@
+ Trabalhando com URL em PHP
+
+Passando Parâmetros pela URL
+
+Primeiro (âncora)
+
+<a href="arquivo.php?parametro1=valor1&parametro2=valor2&parametro3=valor3">Link</a>
+
+arquivo.php
+$par1=$_GET['parametro1'];
+$par2=$_GET['parametro2'];
+$par3=$_GET['parametro3'];
+
+Segundo (action de form)
+
+<form name=frm method=post action="arquivo2.php?parametro1=valor1&parametro2=valor2">
+...
+
+arquivo2.php
+
+$par1=$_POST['parametro1'];
+$par2=$_POST['parametro1'];
+
+Terceiro (URL)
+
+http://localhost/teste.php?parametro1=valor1
+
+teste.php
+
+$par1=$_GET['parametro1'];
+
+
+Quarto (location no javascript)
+
+<?php
+// Já vindo de outro script, chamado via POST
+$a = $_POST['a'];
+
+?>
+<script>
+if(confirm("Confirma?")){
+	location="vai.php?a='<?=$a?>' ";
+}else{	
+	location='volta.php';
+}
+</script>
+
+Reconstruct URL string in PHP
+
+ // find out the domain:
+ $domain = $_SERVER['HTTP_HOST'];
+ // find out the path to the current file:
+ $path = $_SERVER['SCRIPT_NAME'];
+ // find out the QueryString:
+ $queryString = $_SERVER['QUERY_STRING'];
+ // put it all together:
+ $url = "http://" . $domain . $path . "?" . $queryString;
+ echo "The current URL is: " . $url . "
+";
+ 
+ // An alternative way is to use REQUEST_URI instead of both
+ // SCRIPT_NAME and QUERY_STRING, if you don't need them seperate:
+ $url2 = "http://" . $domain . $_SERVER['REQUEST_URI'];
+ echo "The alternative way: " . $url2;
+
+Do site - http://snippets.dzone.com/posts/show/4054

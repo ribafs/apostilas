@@ -1,0 +1,663 @@
+Uma ótima maneira de manter o seu site protegido de hackers é sempre inicializar suas variáveis para proteger o seu site de ataques XSS.
+
+Não fechar o php ao final do arquivo, caso esteja usando somente PHP no mesmo.
+Fechar somente se estiver misturando HTML com PHP
+É importante em termos de segurança
+
+
+<?php
+
+/*  CHECK IF A $STRING IS INT. */
+function isNumeric($string){
+	if (!filter_var($string, FILTER_VALIDATE_INT)) 
+        return false;
+    else
+        return true;
+}
+
+/*  CHECK IF A $STRING IS FLOAT. */
+function isFloat($string){
+	if (!filter_var($string, FILTER_VALIDATE_FLOAT)) 
+        return false;
+    else
+        return true;
+}
+
+/*  CHECK IF A $STRING IS BOOLEAN. */
+function isBoolean($string){
+	if (!filter_var($string, FILTER_VALIDATE_BOOLEAN)) 
+        return false;
+    else
+        return true;
+}
+
+/* CHECK IF A VALID IP */
+function isValidIP($string) {
+    if (!filter_var($string, FILTER_VALIDATE_IP)) 
+        return false;
+    else
+        return true;
+}
+
+/*  CHECK IF A VALID URL */
+function isValidUrl($string) {
+    if (!filter_var($string, FILTER_VALIDATE_URL)) 
+        return false;
+    else
+        return true;
+}
+
+/*  CHECK IF A VALID EMAIL */
+function isValidEmail($string) {
+    if (!filter_var($string, FILTER_VALIDATE_EMAIL)) 
+        return false;
+    else
+        return true;
+}
+
+/*  CHECK IF A $STRING IS EQUAL TO OTHER */
+function isEqual($string1, $string2){
+    if ($string2 != $string1)
+        return false;
+    else
+        return true;
+}
+
+/*  CHECK IF A $STRING IS VALIDATE NAMES WITHOUT NUMBERS BUT WITH ~, ^. */
+function isValidName($string){
+    if (!preg_match('/^[A-ZÀ-Ÿ][A-zÀ-ÿ\'.]+\s([A-zÀ-ÿ\'.]\s?)*[A-ZÀ-Ÿ.][A-zÀ-ÿ\'.]+$/', $string))
+        return false;
+    else
+        return true;
+}
+
+/*  IS A DINAMIC FUNCTION, GET THE SIZE OF STRING AND IF IS BIGGER THAN 7, APPLY THE MOST 
+RULES FOR SECURE PASSWORD. MINIMUM 8 CHARACTER, AT LAST 1 ESPECIAL, 1 UPPER C. AND 1 LOWER. */
+function isSecurePass($string){
+	if (strlen($string) > 7)
+		if (!preg_match('/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{'.strlen($string).'}$/', $string)) 
+			return false;
+		else 
+			return true;
+	else
+		return false;
+}
+
+function isPrice($string){
+	if (!preg_match('/^([1-9]\d{0,2})?(\.\d{3})*,\d{2}$/', $string))
+        return false;
+    else
+        return true;
+}
+
+/*  CHECK IF A $STRING IS CPF OF CPNJ WITH OR WITHOUT PONTUATION */
+function isValidCPForCNPJ($string){
+    if (!preg_match('/^([0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}|[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2})$/', $string))
+        return false;
+    else
+        return true;
+}
+
+/*  CHECK IF A $STRING IS CPF OF CPNJ WITH OR WITHOUT PONTUATION */
+function isValidChave($string){
+  if (!preg_match('/^([0-9]{4}\-[0-9]{4}\-[0-9]{4}\-[0-9]{4})$/', $string))
+    return false;
+  else
+    return true;
+}
+
+/*  CHECK IF A $STRING IS A DATE 03/06/1989 */
+function isDate($string){
+    if (!preg_match('/^([0-9]{2}\/[0-9]{2}\/[0-9]{4})$/', $string))
+      return false;
+    else
+      return true;
+}
+
+
+function isCPForCNPJ($string){
+    $string = preg_replace('/[^0-9]/', '', $valor);
+    if (strlen($string) == 11)
+    {
+        $result->cpf = $valor;
+    }
+    elseif (strlen($string) == 14)
+    {
+        $result->cnpj = $valor;
+    }
+}
+
+/* CHECK IF IS A SLUG LIKE-THIS-BECAUSE-IS-A-NEED */
+function isValidSlug($string){
+	if (!preg_match('/^[a-z0-9]+(?:-[a-z0-9]+)*$/', $string)) 
+		return false;
+	else
+		return true;
+}
+
+/*  CHECK IF A $STRING IS A KEY VALID WITH 40 CHARACTERS */
+function isValidKey($string) {
+    $string = strip_tags($string);
+    if(strlen($string) != 40 AND !preg_match("/^.[a-z0-9]+$/", $string))
+      return false;
+    else
+      return true;
+}
+
+/*  CHECK IF A FLOAT NUMBER BETTEN 1 AND 5 WITH 0.5 INTERVALS */
+function isValidAvaliateStar($string){
+    if (!preg_match('/^[1,2,3,4,5]{1}\.[0|5]{1}$/', $string))
+        return false;
+    else
+        return true;
+}
+
+/* 
+    VALID THE DATE
+    2017-01-01T00:00:00+0000
+    2017-01-01 00:00:00+00:00
+    2017-01-01T00:00:00+00:00
+    2017-01-01 00:00:00+0000
+    2017-01-01
+
+*/
+
+function isValidDate($string){
+    if (!preg_match('/^(19[0-9]{2}|2[0-9]{3})\-(0[1-9]|1[0-2])\-(0[1-9]|1[0-9]|2[0-9]|3[0-1])((T|\s)(0[0-9]{1}|1[0-9]{1}|2[0-3]{1})\:(0[0-9]{1}|1[0-9]{1}|2[0-9]{1}|3[0-9]{1}|4[0-9]{1}|5[0-9]{1})\:(0[0-9]{1}|1[0-9]{1}|2[0-9]{1}|3[0-9]{1}|4[0-9]{1}|5[0-9]{1})((\+|\.)[\d+]{4,8})?)?$/', $string))
+        return false;
+    else
+        return true;
+}
+
+function isValidCredCard($string) {
+    // Strip any non-digits (useful for credit card numbers with spaces and hyphens)
+    $string=preg_replace('/\D/', '', $string);
+  
+    // Set the string length and parity
+    $number_length=strlen($string);
+    $parity=$number_length % 2;
+  
+    // Loop through each digit and do the maths
+    $total=0;
+    for ($i=0; $i<$number_length; $i++) {
+      $digit=$string[$i];
+      // Multiply alternate digits by two
+      if ($i % 2 == $parity) {
+        $digit*=2;
+        // If the sum is two digits, add them together (in effect)
+        if ($digit > 9) {
+          $digit-=9;
+        }
+      }
+      // Total up the digits
+      $total+=$digit;
+    }
+
+    // If the total mod 10 equals 0, the number is valid
+    return ($total % 10 == 0) ? TRUE : FALSE;
+}
+
+/*
+
+Take many time to request
+
+function isPossibleEmail($email) {
+    $mail = (explode("@", $email));
+    $site = 'http://www.'.$mail[1];
+    $cURL = curl_init($site);
+    curl_setopt($cURL, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($cURL, CURLOPT_FOLLOWLOCATION, true);
+    $resultado = curl_exec($cURL);
+    $resposta = curl_getinfo($cURL, CURLINFO_HTTP_CODE);
+    curl_close($cURL);
+    return $resposta;
+}
+//https://gist.github.com/caironm/1217697b57216cef43e00cb8a2f4ed13?fbclid=IwAR3VLoA06rn8pst4xXi_d21mQY_oyFpKg8quxOiJCDkfA0ZyXfU3Wu0Httc 
+*/
+
+
+Manipulando forms com PHP
+http://phpbrasil.com/artigo/UONRvMiYUJl4/1/manipulando-dados-de-formularios-com-php-parte-1
+http://phpbrasil.com/artigo/bOZXY_2zRlcO/manipulando-dados-de-formularios-com-php-parte-2-upload-de-arquivos
+
+Gerando Imagens Dinamicamente
+http://www.phpbrasil.com/artigo/bfBQNhBOsxhl/gerando-imagens-dinamicamente
+
+PDO
+http://php.net/manual/en/book.pdo.php
+https://github.com/ribafs/pdolib
+
+
+<?php
+$str = '.123ab-c34ABz~^';
+
+function soNumero($str) {
+    // Dica de um colega do grupo PHP Brasil - 
+    return preg_replace("/[^0-9]/", "", $str);
+}
+
+function soMinusculas($str) {
+    return preg_replace("/[^a-z]/", "", $str);
+}
+
+function soMaiusculas($str) {
+    return preg_replace("/[^A-Z]/", "", $str);
+}
+
+function soAlfaNumericos($str) {
+    return preg_replace("/[^A-Za-z0-9]/", "", $str);
+}
+
+function soSimbolos($str){
+    return preg_replace("/[^-!$%^&*()_+|~=`{}\[\]:\";'<>?,.\/]/", "", $str);
+}
+
+function soSimbolos2($str){
+    return preg_replace("/[\W\S]/", "", $str);
+}
+
+print soSimbolos($str);
+
+
+Buscar um caracter específico em uma string e substitui-lo por outro
+$texto = 'oi-eu-sou-um-texto';
+$resultado = str_replace('-', ' ', $texto);
+echo $resultado; // oi eu sou um texto
+
+Obter a URL da página em que se está em PHP
+$url = $_SERVER['HTTP_HOST'];
+echo 'A URL atual é '.$url;
+
+Como detectar o navegador do usuário em PHP
+$useragent = $_SERVER['HTTP_USER_AGENT'];
+echo "<strong>Seu navegador é</strong>: " . $useragent;
+
+
+Obter o IP do usuário. 
+Importante: Essa função não funciona localmente.
+echo $_SERVER['REMOTE_ADDR'];
+
+Contar quantos caracteres ou palavras há em uma string
+// Para contar caracteres
+$str = 'abcdef';
+echo strlen($str); // 6
+
+// Para contar palavras
+$str2 = 'aqui são quatro palavras';
+echo str_word_count($str2); // 4
+
+Limpar URLs rapidamente com
+.htaccess
+
+RewriteEngine On
+RewriteRule ^ ( [ a - zA - Z0 - 9 ] + ) $ index . Php? Page = $ 1
+
+Use switch ao invés de vários ifs
+
+switch ($color ) {
+    case 'white' :
+        echo "The color is White" ;
+        break ;
+    case 'blue' :
+        echo "The color is Blue" ;
+        break ;
+    case 'green' :
+        echo "The color is Green" ;
+        break ;
+    case 'black' :
+        echo "Color is black" ;
+        break ;
+}
+
+Receber arquivos de outros servidores usar curl:
+
+$c = curl_init ( ) ;
+curl_setopt ( $c , CURLOPT_URL , $URL ) ;
+curl_setopt ( $c , CURLOPT_TIMEOUT , 15 ) ;
+curl_setopt ( $c , CURLOPT_RETURNTRANSFER , true ) ;
+$content = curl_exec ( $c ) ;
+$status = curl_getinfo ( $c , CURLINFO_HTTP_CODE ) ;
+curl_close ( $c ) ;
+
+Criptografia de senhas:
+
+$enc_pass = password_hash ( $submitted_pass , PASSWORD_DEFAULT ) ;
+
+if ( password_verify ( $submitted_pass , $stored_pass ) )
+{ 
+// User successfully authenticated
+}
+
+Evite o uso de GET em métodos de forms
+
+Use o operador ternário
+
+$host = strlen($host) > 0 ? $host : htmlentities($host);
+
+Evitar o uso de includes ou requires. Ao invés usar:
+
+function load_class($class_name)
+{
+    //path to the class file
+    $path = ROOT . '/lib/' . $class_name . '.php');
+    require_once( $path ); 
+}
+
+load_class('Database');
+load_class('Mail');
+
+ou
+function load_class($class_name)
+{
+    //path to the class file
+    $path = ROOT . '/lib/' . $class_name . '.php');
+    
+    if(file_exists($path))
+    {
+        require_once( $path ); 
+    }
+}
+
+Use a correta dodificação
+$value = htmlentities($this-&gt;value , ENT_QUOTES , 'UTF-8');
+
+Cheque se um diretório tem permissão de escrita antes de escrever nele:
+
+$contents = 'All the content';
+$file_path = '/var/www/project/content.txt';
+
+file_put_contents($file_path , $contents);
+
+$contents = 'All the content';
+$dir = '/var/www/project';
+$file_path = $dir . '/content.txt';
+
+if(is_writable($dir))
+{
+    file_put_contents($file_path , $contents);
+}
+else
+{
+    die('Directory $dir is not writable, or does not exist. Please check');
+}
+
+Mudar permissão de arquivos
+
+// Read and write for owner, read for everybody else
+chmod('/somedir/somefile', 0644);
+
+// Everything for owner, read and execute for others
+chmod('/somedir/somefile', 0755);
+
+Não cheque a submissão de forms através de botão submit
+
+if( $_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['submit']) )
+{
+    //Save the things
+}
+
+    • Use echo instead of print 
+    • Use str_replace instead of preg_replace , unless you need it absolutely 
+    • Do not use short tags 
+    • Use single quotes instead of double quotes for simple strings 
+    • Always remember to do an exit after a header redirect 
+    • Never put a function call in a for loop control line. 
+    • isset is faster than strlen 
+    • Format your code correctly and consistently 
+    • Do not drop the brackets of loops or if-else blocks.
+Do not code like this :
+      if($a == true) $a_count++;
+      Its absolutely a WASTE.
+      Write
+      if($a == true)
+      {
+          $a_count++;
+      }
+      Dont try to make your code shorter by eating up syntax. Rather make your logic shorter. 
+    • Use a proper text editor which has code highlighting. Code highlighting helps to create lesser errors. 
+
+Process arrays quickly with array_map
+Lets say you want to trim all elements of an array. Newbies do it like this :
+foreach($arr as $c =&gt; $v)
+{
+        $arr[$c] = trim($v);
+}
+But it can more cleaner with array_map :
+$arr = array_map('trim' , $arr);
+
+Forçar checagem de tipos:
+$amount = intval( $_GET['amount'] );
+$rate = (int) $_GET['rate'];
+
+Abra uma única vez uma conexão com o banco de dados em todo o processamento do script.
+
+Evite usar variáveis ou métodos globais. Use com moderação e somente quando necessário.
+
+
+Exportando Dados do MySQL para Excel com PHP
+    • 25/04/2019 - PHP - Erlânio Freire Barros - 51 Acessos 
+ 
+Criar relatórios em sistemas, nem sempre é algo tão trivial como parece, em alguns momentos podemos nos deparar com a necessidade de exportar os dados em um formato diferenciado. Por experiência própria, é de Lei que algum cliente irá pedir isto para você, pode esperar!
+
+Exportar dados de um programa para outro e muito comum ainda mais quando estamos trabalhando com dados que necessitam de análise, um dos programas mais usados para análise de dados é o Excel, por este motivo neste post vou mostrar como exportar os dados do MySQL para o Excel com o PHP.
+<?php
+ // Inclui a conexão
+ include_once('conexao.php');
+
+ // Nome do Arquivo do Excel que será gerado
+ $arquivo = 'dados_emails.xls';
+
+ // Criamos uma tabela HTML com o formato da planilha para excel
+ $tabela = '<table border="1">';
+ $tabela .= '<tr>';
+ $tabela .= '<td colspan="2">Tabela de E-mails</tr>';
+ $tabela .= '</tr>';
+ $tabela .= '<tr>';
+ $tabela .= '<td><b>Nome</b></td>';
+ $tabela .= '<td><b>Email</b></td>';
+ $tabela .= '</tr>';
+
+ // Puxando dados do Banco de dados
+ $resultado = mysql_query('SELECT * FROM emails');
+
+ while($dados = mysql_fetch_array($resultado))
+ {
+  $tabela .= '<tr>';
+  $tabela .= '<td>'.$dados['nome'].'</td>';
+  $tabela .= '<td>'.$dados['email'].'</td>';
+  $tabela .= '</tr>';
+ }
+
+ $tabela .= '</table>';
+
+ // Força o Download do Arquivo Gerado
+ header ('Cache-Control: no-cache, must-revalidate');
+ header ('Pragma: no-cache');
+ header('Content-Type: application/x-msexcel');
+ header ("Content-Disposition: attachment; filename=\"{$arquivo}\"");
+ echo $tabela;
+?>
+https://erlaniofreire.com.br/web/post/exportando-dados-do-mysql-para-excel-com-php/68 
+
+
+Como mostrar o IP real do visitante?
+Você pode utilizar essa informação para mostrar dados personalizados baseados no IP do visitante. Vale ressaltar que tal script não funcionará em casos nos quais o usuário usa navegadores anônimos, como o TOR.
+<?php
+
+    //declara função
+    function pegaip()
+    {
+        //verifica se não é vazio
+        if (!empty($_SERVER['HTTP_CLIENT_IP']))
+        {
+            $ip=$_SERVER['HTTP_CLIENT_IP'];
+        }
+        //verifica se vem de um proxy
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
+        {
+            $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+        else
+        {
+            $ip=$_SERVER['REMOTE_ADDR'];
+        }
+        //retorna ip
+        return $ip;
+    }
+
+
+
+   echo pegaip();
+
+// crop-image
+
+<?php
+//https://css-tricks.com/snippets/php/crop-image/
+$filename= "boa.jpg";
+list($w, $h, $type, $attr) = getimagesize($filename);
+$src_im = imagecreatefromjpeg($filename);
+
+$src_x = '0';   // begin x
+$src_y = '0';   // begin y
+$src_w = '100'; // width
+$src_h = '100'; // height
+$dst_x = '0';   // destination x
+$dst_y = '0';   // destination y
+
+$dst_im = imagecreatetruecolor($src_w, $src_h);
+$white = imagecolorallocate($dst_im, 255, 255, 255);
+imagefill($dst_im, 0, 0, $white);
+
+imagecopy($dst_im, $src_im, $dst_x, $dst_y, $src_x, $src_y, $src_w, $src_h);
+
+header("Content-type: image/png");
+imagepng($dst_im);
+imagedestroy($dst_im);
+
+
+Use um buffer de saida
+
+Buffer de saída é uma maneira simples de melhorar consideravelmente o desempenho e a velocidade do seu script PHP. Sem buffer de saída, o script irá mostrar o código HTML da página como é processado – em pedaços. Adicionar um buffer de saída permitirá que o PHP armazene o HTML como uma variável e a envie para o navegador de uma vez. Para ativar o buffer de saída, basta adicionar ob_start() no topo do arquivo.
+<!DOCTYPE html>
+<?php ob_start('ob_gzhandler'); ?>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+    <title>untitled</title>
+</head>
+<body>
+     
+</body>
+</html>
+<?php ob_end_flush(); ?>
+
+
+Trabalhando com o array $_POST ou $_GET no PHP
+
+print strpos ('Ribamar Sousa', 'aso');
+
+/*
+if(isset($_POST['enviar'])){
+    print '<pre>';
+    print_r($_POST);
+    print '</pre>';
+
+}
+foreach($_POST as $var => $val){
+    print "$var - $val <br>";
+}
+
+foreach($_POST as $key => $value) { 
+    print "$key  =  $value<br>";
+}
+*/
+if(isset($_POST['enviar'])){
+   print '<pre>';
+    var_dump($_POST);
+    print '</pre>';
+
+}
+
+-----
+Convertendo string em array
+
+$myString = "This is a short string";
+$myArray = explode(" ", $myString);
+print_r($myArray);
+
+Procurar substring em string:
+
+if (strpos("Hello World", "Hello") !== false)
+     echo 'Encontrada';
+
+Procurar e sobrescrever
+
+$myString = "There is a cat in the tree, and I think it is my cat!";
+
+echo "Original String = $myString<br>";
+
+$myString = str_replace ("cat", "dog", $myString);
+
+echo "New String = $myString<br>"; // Substituie todos os cat por dog
+
+HEREDOC
+
+$str = <<<EOD
+Introduction of heredoc strings in PHP.
+To a complete text.
+EOD;
+
+$name = 'PHP language';
+echo <<<EOT
+I am using "$name"
+$example->foo
+EOT;
+
+NEWDOC - similar ao HERDOC mas com aspas simples
+
+$str = <<<'EOD'
+Example of string
+spanning multiple lines
+using nowdoc syntax.
+EOD;
+
+Imprimirá tudo numa única linha.
+
+Número de palavras de uma string
+
+$str = 'Meu nome é Ribamar';
+print str_word_count($str);
+
+
+Retornar o inverso de uma string
+echo strrev("Welcome to Cloudways"
+
+Procurando substring em string, retorna a posição inicial se encontrar. Caso não encontre retorna null
+
+print strpos ('Ribamar Sousa', 'usa');
+
+
+Converter todas as iniciais em maiúsculas - ucwords($str)
+
+Converter a inicial em maiúsculas - ucfirst($str)
+
+Converter toda uma string em maiúsculas - strtoupper($str)
+
+Converter toda uma string em minúsculas - strtolower($str)
+
+Comparar duas strings - strcmp($str1, $str2)
+
+
+explode() - divide uma string em pedaços, separados por um delimitador
+
+$pizza  = "piece1 piece2 piece3 piece4 piece5 piece6";
+$pieces = explode(" ", $pizza); // Separar por espaços em branco
+
+implode() - junta os padaços separados pela explode()
+
+$array = array('lastname', 'email', 'phone');
+$comma_separated = implode(",", $array);
+
+print $comma_separated; // lastname,email,phone
+
+

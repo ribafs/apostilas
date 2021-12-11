@@ -1,0 +1,92 @@
+The Spaceship operator (<=>)
+The Spaceship or Combined Comparison operator is useful to compare values
+(strings, integers, floats, and so on), arrays, and objects. This operator is just a
+wrapper and performs the same tasks as the three comparison operators == , < ,
+and > . This operator can also be used to write clean and less code for callback
+functions for usort , uasort , and uksort . This operator works as follows:
+• It returns 0 if both the operands on left- and right-hand sides are equal
+• It returns -1 if the right operand is greater than the left operand
+• It returns 1 if the left operand is greater than the right one
+
+Let's take a look at a few examples by comparing integers, strings, objects, and arrays
+and note the result:
+$int1 = 1;
+$int2 = 2;
+$int3 = 1;
+echo $int1 <=> $int3; //Returns 0
+echo '<br>';
+echo $int1 <=> $int2; //Returns -1
+echo '<br>';
+echo $int2 <=> $int3; //Returns 1
+
+Run the preceding code, and you will have an output similar to the following:
+0
+-1
+1
+
+function normal_sort($a, $b) : int
+{
+    if( $a == $b )
+        return 0;
+    if( $a < $b )
+        return -1;
+    return 1;
+}
+
+function space_sort($a, $b) : int
+{
+    return $a <=> $b;
+}
+$normalArray = [1,34,56,67,98,45];
+
+//Sort the array in asc
+usort($normalArray, 'normal_sort');
+foreach($normalArray as $k => $v)
+{
+    echo $k.' => '.$v.'<br>';
+}
+
+$spaceArray = [1,34,56,67,98,45];
+//Sort it by spaceship operator
+usort($spaceArray, 'space_sort');
+foreach($spaceArray as $key => $value)
+{
+    echo $key.' => '.$value.'<br>';
+}
+
+Operador Ternário
+
+Ternary operators are just a single-line replacement for if-else statements. For example, consider the following code:
+$post = ($_POST['title']) ? $_POST['title'] : NULL;
+
+$post = isset($_POST['title']) ? $_POST['title'] : NULL;
+
+In PHP 7, the coalescence operator is introduced, which is simple and returns the
+value of its first operand (left operand) if it exists and is not null. Otherwise, it
+returns its second operand (right operand). Consider the following example: 
+$post = $_POST['title'] ?? NULL;
+
+This example is exactly similar to the preceding code. The coalesce operator checks
+whether $_POST['title'] exists. If it does, the operator returns it; otherwise, it returns NULL .
+Another great feature of this operator is that it can be chained. Here's an example:
+
+$title = $_POST['title'] ?? $_GET['title'] ?? 'No POST or GET';
+
+So, the preceding code is the same as the following:
+
+if(isset($_POST['title']))
+$title = $_POST['title'];
+elseif(isset($_GET['title']))
+$title = $_GET['title'];
+else
+$title = 'No POST or GET';
+
+Constant arrays
+Starting with PHP 5.6, constant arrays can be initialized using the const keyword,
+as follows:
+const STORES = ['en', 'fr', 'ar'];
+Now, starting with PHP 7, constant arrays can be initialized using the define
+function, as follows:
+define('STORES', ['en', 'fr', 'ar']);
+
+
