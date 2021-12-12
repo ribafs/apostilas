@@ -4,7 +4,7 @@ Aqui são distribídas apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHP
 
 ## PHP Estruturado
 
-PHP Estruturado já está disponível juntamente com seus arquivos anexos e outras apostilas de terceiros.
+PHP Estruturado já está disponível juntamente com seus arquivos com práticas e aplicativos.
 
 ## Proximas 
 
