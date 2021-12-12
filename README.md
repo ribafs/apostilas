@@ -12,3 +12,7 @@ PHP Estruturado já está disponível juntamente com seus arquivos com práticas
 - Introdução ao PHP orientado a objetos
 - MVC
 
+## Licença
+
+MIT
+
