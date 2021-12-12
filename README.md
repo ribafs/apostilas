@@ -6,10 +6,9 @@ Aqui são distribídas apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHP
 
 PHP Estruturado já está disponível juntamente com seus arquivos anexos e outras apostilas de terceiros.
 
-## Proxima 
+## Proximas 
 
-MySQL com PDO
-
-# Demais em elaboração
-
+- MySQL com PDO
+- Introdução ao PHP orientado a objetos
+- MVC
 
