@@ -1,0 +1,22 @@
+{
+    "name": "ribafs/mvc4",
+    "description": "MINI MVC - um aplicativo simples, usando MVC de forma didática",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ribamar FS",
+            "email": "ribafs@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload":
+    {
+        "psr-4":
+        {
+            "App\\" : "App/",
+            "Core\\" : "Core/"
+        }
+    }
+}
