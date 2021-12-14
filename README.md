@@ -4,7 +4,7 @@ Aqui são distribídas apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHP
 
 ## PHP Estruturado
 
-PHP Estruturado [PHP.md](PHP.md) já está disponível juntamente com seus arquivos com práticas e aplicativos.
+PHP Estruturado ( [PHP.md](PHP.md) ) já está disponível juntamente com seus arquivos com práticas e aplicativos.
 
 ## Proximas 
 
