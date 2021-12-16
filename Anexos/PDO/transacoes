@@ -1,0 +1,147 @@
+PDO provides support for transactions. Borrowing the code from step 9, we can wrap the INSERT series of commands into a transactional block:
+
+try {
+    $pdo->beginTransaction(); // Iniciar a transação
+    $sql = "INSERT INTO customer ('"
+    . implode("','", $fields) . "') VALUES (?,?,?,?,?,?)";
+    $stmt = $pdo->prepare($sql);
+    foreach ($data as $row) $stmt->execute($row);
+    $pdo->commit(); // Executar tudo que estiver no block, entre o beginTransaction e esta linha
+} catch (PDOException $e) {
+    error_log($e->getMessage());
+    $pdo->rollBack(); // Cancelar todas as operações do bloco acima
+}
+
+Outro exemplo:
+
+try {
+    $pdo->beginTransaction();
+    $sql = "UPDATE conta_corrente SET saldo = saldo - 200 WHERE id = 15";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    $sql2 = "UPDATE conta_corrente SET saldo = saldo + 200 WHERE id = 12";
+    $stmt2 = $pdo->prepare($sql2);
+    $stmt2 = $pdo->execute();
+    
+    $pdo->commit();
+} catch (PDOException $e) {
+    $pdo->rollback();
+    error_log($e->getMessage());
+}
+
+
+try {
+    $pdo->beginTransaction();
+    $sql = "INSERT INTO customer ('"
+    . implode("','", $fields) . "') VALUES (?,?,?,?,?,?)";
+    $stmt = $pdo->prepare($sql);
+    foreach ($data as $row) $stmt->execute($row);
+    $pdo->commit();
+} catch (PDOException $e) {
+    error_log($e->getMessage());
+    $pdo->rollBack();
+}
+
+
+PDO::beginTransaction 
+Turns off auto-commit mode and begins a transaction. The transaction begins with PDO::beginTransaction and will end when PDO::commit or PDO::rollback is called.
+
+Syntax:
+bool PDO::beginTransaction ( void )
+
+Return Value:
+Returns TRUE on success or FALSE on failure.
+
+Example: 
+The following example a MySQL database called hr and table called user_details have used. It starts a transaction and then executes a command to add one row into the table user_details. The command is sent to the database and the transaction is explicitly ended with PDO::commit.
+
+<?php
+try {
+    $dbhost = 'localhost';
+    $dbname='hr';
+    $dbuser = 'root';
+    $dbpass = '';
+    $connec = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
+}catch (PDOException $e) {
+    echo "Error : " . $e->getMessage() . "<br/>";
+    die();
+}       
+
+$connec->beginTransaction();
+$result = $connec->exec("INSERT INTO user_details (userid, password, fname, lname, gender, dtob, country, user_rating, emailid) VALUES
+('abcd123', '123@John', 'John', 'ray', 'M', '1992-06-11', 'USA', '130', 'John123@example-site.com')");
+$connec->commit();
+echo $result;   
+?> 
+
+PDO::commit 
+Commits a transaction, returning the database connection to auto-commit mode until the next call to PDO::beginTransaction() starts a new transaction.
+
+Syntax:
+bool PDO::commit ( void )
+
+Return Value:
+Returns TRUE on success or FALSE on failure.
+
+Example: 
+See previous (PDO::beginTransaction) example.
+
+PDO::errorCode 
+PDO::errorCode retrieves the SQLSTATE (a two characters class value followed by a three characters subclass value) associated with the last operation on the database handle.
+
+Syntax:
+mixed PDO::errorCode();
+Return Value:
+Returns a five-char SQLSTATE as a string, or NULL if there was no operation on the statement handle.
+
+Example: 
+In this example, the name of the column is misspelled (genderr instead of gender), causing an error. errorCode() displays the error.
+
+<?php
+try{$dbuser = 'postgres';
+    $dbpass = 'abc123';
+    $host = 'localhost';
+    $dbname='postgres';
+    $connec = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpass);
+}
+catch (PDOException $e)
+{
+    echo "Error : " . $e->getMessage() . "<br/>";
+    die();
+} 
+
+$query = "SELECT * FROM user_details where genderr='M'";
+$connec->query($query);
+echo $connec->errorCode();
+?>
+
+PDO::rollBack
+Rolls back the current transaction, as initiated by PDO::beginTransaction(). A PDOException will be thrown if no transaction is active.
+
+Syntax:
+bool PDO::rollBack ( void )
+Return Value:
+TRUE if the method call succeeded, FALSE otherwise.
+
+Example:
+Following example begins a transaction and issues a DROP statement before rolling back the changes. In MySQL the DROP TABLE statement automatically commits the transaction, therefore nothing will roll back. 
+
+<?php
+try {
+    $dbhost = 'localhost';
+    $dbname='hr';
+    $dbuser = 'root';
+    $dbpass = '';
+    $connec = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
+}catch (PDOException $e) {
+    echo "Error : " . $e->getMessage() . "<br/>";
+    die();
+}       
+
+$connec->beginTransaction();
+$sth = $connec->exec("DROP TABLE user_detail");
+$connec->rollback();
+?>
+
+

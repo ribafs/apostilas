@@ -12,9 +12,15 @@ A apostila sobre o MySQL está disponível em formato PDF, com 47 páginas.
 
 [Download](MySQLApostila.pdf)
 
+## PDO disponível
+
+A apostila sobre PDO está disponível em formato PDF, com 32 páginas e também material disponível na pasta Anexos.
+
+[Download](PDOApostila.pdf)
+
+
 ## Proximas 
 
-- PDO
 - Introdução ao PHP orientado a objetos
 - MVC
 
