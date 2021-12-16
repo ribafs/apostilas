@@ -10,6 +10,8 @@ PHP Estruturado ( [PHP.md](PHP.md) ) já está disponível com 126 páginas, jun
 
 A apostila sobre o MySQL está disponível em formato PDF, com 47 páginas.
 
+[Download](MySQLApostila.pdf)
+
 ## Proximas 
 
 - PDO
