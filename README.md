@@ -2,13 +2,17 @@
 
 Aqui são distribídas apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHPOO, MVC, etc
 
-## PHP Estruturado
+## PHP disponível
 
-PHP Estruturado ( [PHP.md](PHP.md) ) já está disponível juntamente com seus arquivos com práticas e aplicativos em Anexos.
+PHP Estruturado ( [PHP.md](PHP.md) ) já está disponível com 126 páginas, juntamente com seus arquivos com práticas e aplicativos em Anexos.
+
+## MySQL disponível
+
+A apostila sobre o MySQL está disponível em formato PDF, com 47 páginas.
 
 ## Proximas 
 
-- MySQL com PDO
+- PDO
 - Introdução ao PHP orientado a objetos
 - MVC
 
