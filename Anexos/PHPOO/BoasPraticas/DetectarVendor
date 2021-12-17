@@ -1,0 +1,4 @@
+if (!file_exists('vendor/autoload.php')) {
+    die('Missing vendor/autoload.php file. Did you forget to run "composer install" ?');
+}
+

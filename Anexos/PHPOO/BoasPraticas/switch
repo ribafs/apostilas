@@ -1,0 +1,20 @@
+<?php
+// Como executar mais de um case
+$answer = test(2);    // tanto o código para o 'case 2' quanto para o 'case 3' será executado
+
+function test($a)
+{
+    switch ($a) {
+        case 1:
+            // código...
+            break;             // break é usado para terminar a estrutura de decisão
+        case 2:
+            // código...       // sem o break, a comparação ira continuar em 'case 3'
+        case 3:
+            // código...
+            return $result;    // dentro de uma função, 'return' termina essa função
+        default:
+            // código...
+            return $error;
+    }
+}

@@ -1,0 +1,10 @@
+
+
+O crédito pela Paginação cabe a:
+https://www.codeofaninja.com/2011/06/paginating-your-data-with-ajax-and.html
+
+Nesta versão estarei alterando os nomes de arquivos e variáveis, funções para inglês.
+
+Também estarei otimizando o código mudando para orientação a objetos.
+
+

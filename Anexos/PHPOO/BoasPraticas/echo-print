@@ -1,0 +1,20 @@
+Quando usamos o comando echo ele não retorna nada, já o comando print sempre irá retornar o valor 1. Por este motivo o comando echo vai ser ligeiramente mais rápido.
+
+A melhor opção é echo porque economizará um byte no tamanho do arquivo do seu código-fonte, a cada vez que for preferida no lugar de print (pois echo tem 4 caracteres e print tem 5 caracteres).
+
+A melhor opção será print apenas se você precisar usar a expressão num ternário ou receber um valor de retorno.
+
+É melhor usar o echo.
+
+Principalmente, porque echo aceita múltiplos parâmetros; já o print não.
+
+Que, no caso, geraria uma diferença considerável na hora de imprimir a instrução abaixo
+
+echo  'Olá ', 'Meu nome é Wallace',
+      ' e Eu tenho ', 30  - 6 , ' anos de idade', PHP_EOL;
+      //Olá Meu nome é Wallace e Eu tenho 24 anos de idade
+
+echo  'Olá ' . 'Meu nome é Wallace' .
+      ' e Eu tenho ' . 30  -  6 . ' anos de idade'; // -6 anos de idade
+
+ Por serem muito parecidos "EU" recomendo o uso do echo, pois ele é ligeiramente mais veloz, embora em alguns casos o comando print tem mais utilidade como em uso de expressões.

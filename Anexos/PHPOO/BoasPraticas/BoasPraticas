@@ -1,0 +1,99 @@
+Obrigado ao grupo do PHP-FIG (https://www.php-fig.org/)  pelos autoloads.
+
+código bem organizado, em diretórios claros, com nomes seguindo os bons padrões
+
+Cada classe lida somente com um único assunto. Similar ao que acontece com tabelas de bancos de dados normalizadas. As classes também devem ser criadas apenas uma por arquivo
+
+Objetos, que são instâncias de classes, existem somente durante certo período de tempo, iniciando na sua criação (instanciação) e terminando com sua destruição, que acontece explicitamente com o __destruct() ou quando o script é encerrado.
+
+Para usar propriedades ou métodos em strings com aspas duplas usar delimitados com chaves:
+echo "Este é o nome {$this->nome}";
+
+Classes - CamelCase
+Arquivos de classes tem nomes como as classes, CamelCase. Ex: ClientesController.php e classe ClientesController()
+Arquivos e pastas comuns, que não contém classes: Tudo em minúsculas, separados por sublinhado para palavras compostas. Exs: app, core, public, config.php, bootstrap.php, meu_arquivo.php.
+Propriedades - sempre declaradas no início da classe e camelCase
+Métodos e propriedades – camelCase.
+Nomes de constantes – tudo em maiúsculas. Ex: MINHA_CONST
+Nomes de arquivos de classes devem ter o mesmo nome da classe mais .php
+
+Nomes de propriedades, métodos e classes bem claros e simples de entender e ler.
+
+Usar metodologia DRY
+Evitar arquivo muito grande. Se for o caso criar dois ou mais arquivos e usar o require_once.
+Comentar em cada trecho em que necessite. Evitar comentar em exagero, apenas comentar detalhes que podem gerar dúvida.
+Configurar o editor para que quebre a linha ao invés de precisar rolar a tela para ler toda a linha.
+
+Usar um bom sistema de rotas, que redirecione adequadamente uma solicitação de URL para o respectivo recurso (controller/action).
+
+Usar em todos os arquivos para para forçar a declaração de tipos:
+declare(strict_types=1);
+Nomes simples de métodos/actions dos controllers: index, add, view, edit, delete e nos models também.
+
+	Codificar usando exibição de erros E_ALL e display_error = On
+
+	Quando não tiver acesso aos arquivos do servidor, usar nos arquivos PHP:
+	ini_set()
+	ini_set('error_reporting', E_ALL);
+	ini_set('display_errors', 1);
+
+	Nunca camufle erros com @ e evite usar include e include_once,
+	Prefira require_once
+
+	Preferir delimitar strings com apóstrofos/aspas simples, que são mais seguras e mais rápidas, visto que não recebem atenção do processador.
+	$nome = 'Ribamar';
+
+	Para métodos de formulários evitar o uso de GET. Prefira o POST
+
+	Utilize sempre as tags completas:
+	Em arquivos com somente código PHP, não usar a tag de fechamento
+	<?php
+	...
+	?>
+
+	E também a sintaxe reduzida nas views:
+	<?=$teste?>
+
+	Indentação
+	Usar 4 espaços para a indentação e não tab
+
+	Não começar o código já na linha da tag de abertura, mas uma linha abaixo:
+
+	<?phpif($x==0){
+
+	<?php
+
+	if($x==0){
+
+	Usar sempre na primeira linha de código, para forçar a declaração explícita de tipos
+	declare(strict_types = 1);
+
+	Usar parêntesis ao final do nome da classe, ao instanciar
+	$obj = new NomeClasse();
+
+	Uso de chaves:
+
+	class Nome
+	{
+
+	}
+
+	Métodos
+
+	public function nome()
+	{
+
+	}
+
+	Laços
+
+	foreach()
+	{
+
+	}
+
+	if
+
+	if($x == 0) {
+
+	}

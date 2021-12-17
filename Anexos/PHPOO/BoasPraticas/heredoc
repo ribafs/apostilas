@@ -1,0 +1,59 @@
+A Sintaxe Heredoc se comporta internamente da mesma forma que as aspas duplas exceto que é adequada para o uso de strings de múltiplas linhas sem a necessidade de concatenação.
+
+<?php
+$a = 'Variables';
+
+$str = <<<EOD             // iniciada por <<<
+Example of string
+spanning multiple lines
+using heredoc syntax.
+$a are parsed.
+EOD;                      // fechando 'EOD' precisa estar na sua própria linha, e no ponto mais a esquerda
+
+/**
+ * Output:
+ *
+ * Example of string
+ * spanning multiple lines
+ * using heredoc syntax.
+ * Variables are parsed.
+ */
+
+echo <<<EOT
+My name is "$name". I am printing some $foo->foo.
+Now, I am printing some {$foo->bar[1]}.
+This should print a capital 'A': \x41
+EOT;
+
+echo <<<"FOOBAR"
+Hello World!
+FOOBAR;
+
+NEWDOC
+
+A Sintaxe Nowdoc foi introduzida no PHP 5.3 e internamente se comporta da mesma forma que as aspas simples exceto que é adequada para o uso de strings de múltiplas linhas sem a necessidade de concatenação.
+
+<?php
+$str = <<<'EOD'            // iniciada por <<<
+Example of string
+spanning multiple lines
+using nowdoc syntax.
+$a does not parse.
+EOD;                       // fechando 'EOD' precisa estar na sua própria linha, e no ponto mais a esquerda
+
+/**
+ * Output:
+ *
+ * Example of string
+ * spanning multiple lines
+ * using nowdoc syntax.
+ * $a does not parse.
+ */
+
+echo <<<'EOD'
+Example of string spanning multiple lines
+using nowdoc syntax. Backslashes are always treated literally,
+e.g. \\ and \'.
+EOD;
+
+

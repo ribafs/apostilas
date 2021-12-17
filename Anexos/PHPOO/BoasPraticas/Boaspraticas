@@ -1,0 +1,770 @@
+Boas Práticas
+
+Adotar boas e consagradas práticas juntamente com bons padrões de projeto.
+
+- Estilos de codificação
+
+Uma ótima ferramenta é o Visual Studio Code com suas várias extensões.
+
+Uma delas é o 
+
+phpfmt – PHP formatter
+- Basta selecionar todo o código a formatar
+- Teclar Ctrl+Shift+P
+- Selecionar: Format Document
+
+Com isso ele já deixa o documento bem formatado: com indentação, linhas em branco para separação e melhor leitura, ...
+
+É importante deixar o código bem legível:
+
+class Nome{
+
+    function 
+    {
+    //
+    }
+}
+
+Nomes de arquivos - tudo no singular e separados (compostos) por sublinhado
+
+Nomes de classes - CamelCase. Exs: Clientes, MeusClientes, etc
+Nomes de propriedades/variáveis, funções/métodos - camelCase. Exs: meuMetodo(), minhaVariavel
+Constantes - tudo em maiúsculas. Ex.: MINHACONST
+
+Sempre que possível adote bons padrões de projeto
+
+Prefira usar um bom framework para projetos importantes
+
+Use um controle de versão, como o Git e uma hospedagem como o GitHub
+
+Use o composer para instalação e controle de dependências
+
+GutHub
+
+Use gitignore para ignorar arquivos desnecessários
+Basic information; installation, configuration, extending; can be defined in the README.md. If the software is large and complex,
+usability MUST be documented in a Gitbook.
+
+PHP
+Uma das PSRs é a PSR 2, ou Guia de estilo de codificação (Coding Style Guide), que aborda como deve ser feita a formatação do nosso código para facilitar a leitura por outros desenvolvedores. Algumas das indicações desse guia são:
+    • Devemos usar 4 espaços para identação, não tabs.
+    • Não devemos fixar um numero de caracteres por linha, mas é bom que uma linha tenha menos de 80 caracteres.
+    • A abertura de colchetes de classes e métodos devem vir na proxima linha.
+    • A abertura de colchetes de estruturas de controle devem vir na mesma linha com um espaço em branco.
+
+Convenção para nomes de propriedades/variáveis (camelCased): validaNome, validaEmaile validaSenha
+
+Busque boas referências sobre a programação:
+- php.net
+- http://br.phptherightway.com/
+- https://www.php-fig.org/
+- https://www.w3schools.com/php/php_ref_overview.asp
+- https://www.w3schools.com/php7/
+- Bons livros como o Modern PHP
+- https://www.eduardopires.net.br/2013/04/orientacao-a-objeto-solid/
+- https://github.com/ziadoz/awesome-php
+- https://github.com/jakzal/phpqa
+- Faça parte de bons grupos, foruns e listas de discussão para ajudar e ser ajudado
+- Mantenha-se atualizado quanto ao PHP e a todo o conhecimento sobre as ferramentas que utiliza
+
+Use Linux para desenvolver em PHP e cia, pois é mais adequado
+Sempre crie um projeto para cada aplicativo ou site
+Use composer para gerenciar dependências
+Use notação do PHPDoc na documentação do seu código
+Em qualquer dúvida consulte o manual em php.net
+Ligue a exibição de erros no php.ini, com display_error = On e Error Reporting = E_All e nuncna ocultar erros com @. Erros devem ser tratados e não escondidos
+Use um bom editor de código e também uma boa IDE
+Para trabalhos mais complexos use um bom framework
+Fique atento para o DRY e KISS
+Sempre indente seu código e use espaços em branco separando partes do código e o deixando mais legível
+Seja organizado com seu código
+Utilize os operadores === e !==
+Cuidado para não usar = em if: if($x = 3)
+Zeros a esquerda e à direita: echo str_pad( '9', 10, '0', STR_PAD_LEFT ); // 0000000009
+Use somente as tags
+
+<?php e ?> e
+<?= ... ?>
+
+Use uma convenção para nomes de arquivos, classes, métodos, propriedades, constantes bem coerente. Use nomes consistentes e lógicos para variáveis, funções, métodos e classes. Evite nomes de variáveis com nomes muito pequenos: $a, $ab, etc
+Use bons comentários em locais que necessite
+No trabalho com bancos de dados prefira o PDO
+Sempre que possível use aspas simples ao invés de duplas
+Armazene senhas criptografadas no banco:
+
+<?php
+// Hash the password.  $hashedPassword will be a 60-character string.
+$hashedPassword = password_hash('my super cool password', PASSWORD_DEFAULT);
+ 
+// You can now safely store the contents of $hashedPassword in your database!
+ 
+// Check if a user has provided the correct password by comparing what they typed with our hash
+password_verify('the wrong password', $hashedPassword); // false
+ 
+password_verify('my super cool password', $hashedPassword); // true
+
+Tenha bastante cuidado ao projetar seu banco de dados: tabelas, relacionamentos, tipos de dados dos campos, constraints, etc.
+Use um sistema de cache com o PHP
+Instale o Xdebug em seu php e habilite no seu editor/IDE
+Use um editor com suporte a UTF8
+Evite a criação de código complexo, como criação de funções dentro de loops
+Evite criar variáveis desnecessárias. Ex:
+$description = strip_tags($_POST['description']);
+echo $description;
+Se o arquivo contiver apenas código php (nada de html), então não use a tag de fechamento
+Sempre reutilize código. Conheça o código que em em seu disco e também bibliotecas de terceiros para o assunto e reutilize sempre que puder.
+Expressões regulares:
+ereg_* functions have been removed in PHP 7, so this source of confusion is past us.
+Sanitizar HTML:
+- strip_tags()
+- filter_var()
+- htmlentities()
+- htmlspecialchars()
+
+Checar se null ou false com ===
+if($y === null){
+    print('Perfect!');
+}
+if(strpos('abc', 'a') !== false){
+    print('Found it for real this time!');
+}
+
+
+Basta criar logo
+echo strip_tags($_POST['description']);
+Use sempre a versão mais recente do php que puder
+Reduza ao máximo a quantidade de consultas ao banco
+https://www.turbosite.com.br/blog/30-melhores-praticas-em-php-para-iniciantes
+Quanto melhor o desempenho do site/aplicativo, mais satisfeito ficam os usuários. Segundo pesquisas eles esperam que os sites carreguem em 2 segundos ou menos, sendo que eles abandonariam páginas que levassem mais de 3 segundos para carregar. E ainda: 79% dos clientes que tiveram problemas com o desempenho de um site não voltariam a fazer negócio. E 44% deles contariam aos amigos sobre a má experiência. Velocidade de carregamento é fundamental em qualquer site. E é o critério que mais pesa nas avaliações feitas por usuários. Afinal, ninguém poderá avaliar o design do site ou seu conteúdo antes dele carregar completamente. Muitas vezes, alguns desenvolvedores perdem alguns segundos de carregamento em prol de um efeito visual.
+
+Bancos de dados
+- Selecione apenas exataente os campos que vai precisar usar e nunca *.
+- Modele zelozamente o banco de dados: tabelas, relacionamentos, nomes de campos, tipos de dados, constraints, etc.
+- Use bastante a cláusula limit.
+- Faça cache das consultas. Memcached ou APCu
+- Não execute consultas dentro de loops
+- Ao invés de sub-consultas use joins
+- Use union ao invés de OR
+- Utilize bastante índices
+- Um servidor de buscas como o ElasticSearch pode trazer um de sempenho de até 278 vezes maior.
+https://tableless.com.br/10-dicas-simples-para-acelerar-seu-site-ate-278-vezes/?utm_source=tablelessRelatedLink
+
+- Geralmente quanto mais ações forem executadas no backend maior a performance
+
+HTML
+Estruture suas páginas com HTML semântico
+Form design:
+- Tenha certeza que o usuário entende o que e o porque você está pedindo ou perguntando algo
+- Teste, teste novamente e quando achar que está tudo ok, teste de novo
+- Escolha sabiamente os elementos de controle
+    - tipos de dados/formato
+    - máscaras
+    - placeholder e dicas ao receber foco
+    - autocomplete
+    - mensagens de erro
+
+CSS
+Nomes de classes compostos devem ser hifenizados: minha-classe
+Use o VSCode apra ajudar
+
+
+Recursos modernos da programação com PHP:
+
+Resumo do livro
+Modern PHP
+
+- Uso do SSH e do Git para envio do código para o seridor
+- VirtualBox para criar máquinas virtuais
+- Uso do Vagrant para ter localmente um servidor idêntico ao do produção otimizado
+- Adoção de boas práticas e padrões de projeto: namespace (surgiu no PHP 5.3.0), autoload, Traits (PHP 5.4.0), MVC, Singleton, ActiveRecord, funções anônimas/closures (PHP 5.3.0), etc
+- Uso do composer para gerenciar pacotes e dependências juntamente com GitHub e Packagist
+- Uso do PHPUnit para testar o código
+- Uso de cache embutido (Zend OP Cache - 5.5.5)
+- Uso de migrations
+- Uso de recursos do PHP na linha de comando/terminal
+- Aparecimento de bons frameworks que implementam boas práticas e padrões de projeto, além de usar o PHPOO: classes, herança, interfaces, etc
+- Servidor web embutido: php -S localhost:4000
+
+The modern PHP ecosystem is a veritable melting pot of code that
+helps us developers build amazing applications.
+
+Últimas novidades
+https://www.php.net/manual/en/features.php
+
+If you reference a class, interface, function, or constant without a namespace, PHP
+assumes the class, interface, function, or constant lives in the current namespace.
+
+If
+you need to reference a namespaced class, interface, function, or constant inside another
+namespace, you must use the fully qualified PHP class name (namespace + class name).
+You can type the fully qualified PHP class name, or you can import the code into the
+current namespace with the use keyword.
+
+Autoloading
+Namespaces also provide the bedrock for the PSR4 autoloader standard created by the
+PHP Framework Interop Group (PHP-FIG). This autoloader pattern is used by most
+modern PHP components, and it lets us autoload project dependencies using the Composer
+dependency manager.
+
+An interface decouples our code from its dependencies, and it allows our code to
+depend on any third-party code that implements the expected interface. We don’t care how
+the third-party code implements the interface; we care only that the third-party code does
+implement the interface. Here’s a more down-to-earth example.
+
+This is the exact same concept in object-oriented PHP. If I write code that expects an
+object of a specific class (and therefore a specific implementation), my code’s utility is
+inherently limited because it can only use objects of that one class, forever. However, if I
+write code that expects an interface, my code immediately knows how to use any object
+that implements that interface. My code does not care how the interface is implemented;
+my code cares only that the interface is implemented.
+
+Traits behave like classes but look like interfaces.
+
+A trait is a partial class implementation (i.e., constants, properties, and methods) that can
+be mixed into one or more existing PHP classes. Traits work double duty: they say what a
+class can do (like an interface), and they provide a modular implementation (like a class).
+
+<?php
+$closure = function ($name) {
+return sprintf('Hello %s', $name);
+};
+echo $closure("Josh");
+// Outputs --> "Hello Josh"
+
+<?php
+function enclosePerson($name) {
+    return function ($doCommand) use ($name) {
+        return sprintf('%s, %s', $name, $doCommand);
+    };
+}
+
+// Enclose "Clay" string in closure
+$clay = enclosePerson('Clay');
+
+// Invoke closure with command
+echo $clay('get me sweet tea!');
+// Outputs --> "Clay, get me sweet tea!"
+
+Configure Zend OPcache
+When Zend OPcache is enabled, you should configure the Zend OPcache settings in your
+php.ini configuration file. Here are the OPcache settings I like to use:
+opcache.validate_timestamps = 1 // "0" in production
+opcache.revalidate_freq = 0
+opcache.memory_consumption = 64
+opcache.interned_strings_buffer = 16
+opcache.max_accelerated_files = 4000
+opcache.fast_shutdown = 1
+
+Servidor web embutido no PHP
+
+php -S localhost:4000
+
+Configure the Server
+It’s not uncommon for an application to require its own PHP INI configuration file,
+especially if it has unique requirements for memory usage, file uploads, profiling, or
+bytecode caching. You can tell the PHP built-in server to use a specific INI file with the -c
+option:
+php -S localhost:8000 -c app/config/php.ini
+
+The PHP built-in server has one glaring omission. Unlike Apache or nginx, it doesn’t
+support .htaccess files.
+
+Using a router script is easy. Just pass the PHP script file path as a an argument when you
+start up the PHP built-in server:
+php -S localhost:8000 router.php
+
+PHP’s built-in web server should not be used for production. It is for local development
+only.
+
+The PHP community has
+evolved from a centralized framework model to a distributed ecosystem of efficient,
+interoperable, and specialized components.
+
+It is very important to understand the PHP-FIG provides recommendations. These are not
+rules. These are not requirements. These are carefully crafted suggestions that make our
+lives as PHP developers (and PHP framework authors) easier.
+
+Interfaces enable PHP developers to build, share, and use specialized components instead
+of monolithic frameworks.
+
+Style
+PHP frameworks work together via code style. Your code style determines spacing,
+capitalization, and bracket placement (among other things). If PHP frameworks agree on a
+standard code style, PHP developers don’t need to learn a new style every time they use a
+new PHP framework. Instead, PHP framework code is immediately familiar. A standard
+code style also lowers the barrier for new project contributors, who can spend more time
+squashing bugs and less time learning an unfamiliar style.
+Standard code style also improves our own projects. Every developer has a unique style
+with more than a few idiosyncrasies, and these become a problem when multiple
+developers work on the same codebase. A standard code style helps all team members
+immediately understand the same codebase regardless of its author.
+
+What Is a PSR?
+PSR is an acronym for PHP standards recommendation. If you’ve recently read a PHP-
+related blog, you have probably seen the terms PSR-1, PSR-2, PSR-3, and so on. These
+are PHP-FIG recommendations. Their names begin with PSR- and end with a number.
+Each PHP-FIG recommendation solves a specific problem that is frequently encountered
+by most PHP frameworks. Instead of PHP frameworks continually re-solving the same
+problems, frameworks can instead adopt the PHP-FIG’s recommendations and build upon
+shared solutions.
+The PHP-FIG has published five recommendations as of this book’s publication:
+PSR-1: Basic code style - http://www.php-fig.org/psr/psr-1/
+PSR-2: Strict code style - http://www.php-fig.org/psr/psr-2/
+PSR-3: Logger interface - http://www.php-fig.org/psr/psr-3/
+PSR-4: Autoloading - http://www.php-fig.org/psr/psr-4/
+
+PHP standards are prerequisite to understanding modern PHP.
+
+PSR-1: Basic Code Style
+If you want to write PHP code that is compatible with community standards, start with
+PSR-1. It’s the easiest PHP standard to use. It’s so easy, you’re probably already using it
+without even trying. PSR-1 provides simple guidelines that are easy to implement with
+minimal effort. The point of PSR-1 is to provide a baseline code style for participating
+PHP frameworks. You must satisfy these requirements to be compatible with PSR-1:
+
+PHP tags
+You must surround your PHP code with either the <?php ?> or <?= ?> tags. You must
+not use any other PHP tag syntax.
+
+Encoding
+All PHP files must be encoded with the UTF-8 character set without a byte order mark
+(BOM). This sounds complicated, but your text editor or IDE can do this for you
+automatically.
+
+Objective
+A single PHP file can either define symbols (a class, trait, function, constant, etc.) or
+perform an action that has side effects (e.g., create output or manipulate data). A PHP
+file should not do both. This is a simple task and requires only a little foresight and
+planning on your part.
+
+Autoloading
+Your PHP namespaces and classes must support the PSR-4 autoloader standard. All you
+have to do is choose appropriate names for your PHP symbols and make sure their
+definition files are in the expected location. We’ll chat about PSR-4 soon.
+
+Class names
+Your PHP class names must use the common CamelCase format. This format is also
+called TitleCase . Examples are CoffeeGrinder , CoffeeBean , and PourOver .
+
+Constant names
+Your PHP constants must use all uppercase characters. They may use underscores to
+separate words if necessary. Examples are WOOT , LET_OUR_POWERS_COMBINE , and
+GREAT_SCOTT .
+
+Method names
+Your PHP method names must use the common camelCase format. This means the
+method name’s first character is lowercase, and the first letter of each subsequent word
+in the method name is uppercase. Examples are phpIsAwesome , iLoveBacon , and
+tennantIsMyFavoriteDoctor .
+
+PSR-2
+
+Files and lines
+Your PHP files must use Unix linefeed (LF) endings, must end with a single blank line,
+and must not include a trailing ?> PHP tag. Each line of code should not exceed 80
+characters. Ultimately, each line of code must not exceed 120 characters. Each line must
+not have trailing white space. This sounds like a lot of work, but it’s really not. Most
+code editors can automatically wrap code to a specific width, strip trailing whitespace,
+and use Unix line endings. All of these should happen automatically with little to no
+thought on your part.
+
+if ($gorilla->isAwake() === true) {
+    do {
+        $gorilla->beatChest();
+    } while ($ibis->isAsleep() === true);
+    $ibis->flyAway();
+}
+
+PHP Code Sniffer e PHP-CS-Fixer
+
+Components
+Modern PHP is less about monolithic frameworks and more about composing solutions
+from specialized and interoperable components. When I build a new PHP application,
+rarely do I reach straight for Laravel or Symfony. Instead, I think about which existing
+PHP components I can combine to solve my problem.
+
+Modern PHP components are a new concept to many PHP programmers.
+
+What Are Components?
+A component is a bundle of code that helps solve a specific problem in your PHP
+application. For example, if your PHP application sends and receives HTTP requests,
+there’s a component to do that. If your PHP application parses comma-delimited data,
+there’s a PHP component to do that. If your PHP application needs a way to log messages,
+there’s a component for that. Instead of rebuilding already-solved functionality, we use
+PHP components and spend more time solving our project’s larger objectives.
+
+Technically speaking, a PHP component is a collection of related classes, interfaces, and
+traits that solve a single problem. A component’s classes, interfaces, and traits usually live
+beneath a common namespace.
+
+A PHP component is no larger than it needs to be. It contains the least amount of PHP
+code necessary to solve one problem. The amount of code varies. A PHP component
+can have one PHP class. It can also have several PHP classes organized into
+subnamespaces. There is no correct number of classes in a PHP component. It uses
+however many are necessary to solve its one problem.
+
+Cooperative
+A PHP component plays well with others. After all, this is the point of PHP components
+— their existence depends on their cooperation with other components to build larger
+solutions. A PHP component does not pollute the global namespace with its own code.
+Instead, a PHP component lives beneath its own namespace to avoid name collisions
+with other components.
+
+Well-tested
+A PHP component is well-tested. This is easy to accomplish thanks to its small size. If a
+PHP component is small and laser-focused, it is very likely easily tested. Its concerns
+are few, and its dependencies can be easily identified and mocked. The best PHP
+components provide their own tests and have sufficient test coverage.
+
+É bem documentado. Deve ter um bom README e suas classes, methods, and properties should have inline docblocks that
+describe the code, its parameters, its return values, and its potential exceptions.
+
+If you are working on a smaller project that can be solved with a precise collection of PHP
+components, then use components.
+If you are working on a large project with multiple team members and can benefit from
+the conventions, discipline, and structure provided by a framework, then use a framework.
+
+The best PHP components are listed on Packagist.
+
+Do not waste your time solving problems that are already solved.
+
+Packagist keeps statistics about each PHP component. Packagist
+tells you how many times each PHP component has been downloaded and starred.
+
+Leave Feedback
+If you find a PHP component that you like, star the PHP component on Packagist and
+share it with your fellow PHP developers on Twitter, Facebook, IRC, Slack, and your
+other communication channels. This helps the best PHP components bubble up so they are
+discovered by other developers.
+
+You tell Composer which PHP components you need, and Composer
+downloads and autoloads the components into your project. It’s as simple as that. Because
+Composer is a dependency manager, it also resolves and downloads your components’
+dependencies (and their dependencies, ad infinitum).
+
+Ibelieve Composer is the most important addition to the PHP community, period. It
+changed the way I create PHP applications.
+
+composer.lock file
+After you install project dependencies with Composer, you’ll notice that Composer creates
+a composer.lock file. This file lists all of the PHP components used by our project and the
+components’ exact version numbers (including major, minor, and patch numbers). This
+effectively locks our project to these specific PHP component versions.
+
+If a composer.lock file is present, Composer downloads the specific
+PHP component versions listed in the composer.lock file regardless of the component’s
+latest available version on Packagist.
+
+The one downside with the composer.lock file is that composer install will not install
+versions newer than those listed in the composer.lock file.
+
+When Composer downloads each PHP component, Composer inspects each
+component’s own composer.json file to determine how the component prefers to be
+autoloaded and, with this information, creates a local PSR-compatible autoloader for it.
+Ultimately, we can instantiate any of our project’s PHP components and they are
+autoloaded on-demand!
+
+Command-Line Scripts with PHP
+This is a great way to
+automate maintenance tasks for your web application. Learn more about writing PHP command line scripts here:
+http://php.net/manual/wrappers.php.php
+https://php.net/manual/reserved.variables.argv.php
+https://php.net/manual/reserved.variables.argc.php
+
+Estrutura de arquivos de componentes:
+
+src/
+tests/
+composer.json
+README.md
+CONTRIBUTING.md
+LICENSE
+CHANGELOG.md
+
+Exemplo de composer.json
+
+{
+    "name": "modernphp/scanner",
+    "description": "Scan URLs from a CSV file and report inaccessible URLs",
+    "keywords": ["url", "scanner", "csv"],
+    "homepage": "https://ribafs.org",
+    "license": "MIT",
+    "authors": [
+        {
+        "name": "Josh Lockhart",
+        "homepage": "https://github.com/codeguy",
+        "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "help@example.com",
+        "homepage": "https://ribafs.org",
+    },
+    "require": {
+        "php" : ">=5.4.0",
+        "guzzlehttp/guzzle": "~5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.3"
+    },
+    "suggest": {
+        "league/csv": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Oreilly\\ModernPHP\\": "src/"
+        }
+    }
+}
+
+The README file
+The README file is often the component’s first introduction to its users. This is
+especially true for components hosted on GitHub and Bitbucket. Therefore, it’s important
+that the component’s README file provides, at a minimum, this information:
+
+Component name and description
+Install instructions
+Usage instructions
+Testing instructions
+Contributing instructions
+Support resources
+Author credits
+Software license
+
+Instalando um componente:
+
+composer require ribafs/admin-br
+
+Boas Práticas
+
+Unfortunately, the PHP language still contains outdated tools from its past, and it’s
+possible to build slow and insecure applications with these outmoded tools if you’re not
+careful. The trick is knowing which tools to use and which to ignore. That’s what this
+chapter is all about.
+
+Sanitize, Validate, and Escape
+Fox Mulder is correct — trust no one. Never trust any data that originates from a source
+not under your direct control. A few external sources are:
+$_GET
+$_POST
+$_REQUEST
+$_COOKIE
+$argv
+php://stdin
+php://input
+file_get_contents()
+Remote databases
+Remote APIs
+Data from your clients
+
+All of these external data sources are potential attack vectors that can inject malicious data
+into your PHP scripts (intentionally or accidentally). The
+simplest advice I can give you is this: sanitize input, validate data, and escape output.
+
+$input = '<p><script>alert("You won the Nigerian lottery!");</script></p>';
+echo htmlentities($input, ENT_QUOTES, 'UTF-8');
+
+$string = "\nIñtërnâtiônàlizætiøn\t";
+$safeString = filter_var(
+    $string,
+    FILTER_SANITIZE_STRING,
+    FILTER_FLAG_STRIP_LOW|FILTER_FLAG_ENCODE_HIGH
+);
+
+$input = 'john@example.com';
+$isEmail = filter_var($input, FILTER_VALIDATE_EMAIL);
+if ($isEmail !== false) {
+    echo "Success";
+} else {
+    echo "Fail";
+}
+
+]bons componentes:
+https://packagist.org/packages/aura/filter
+https://packagist.org/packages/respect/validation
+https://packagist.org/packages/symfony/validator
+
+$output = '<p><script>alert("NSA backdoor installed");</script>';
+echo htmlentities($output, ENT_QUOTES, 'UTF-8');
+
+Set a Default Time Zone
+
+The first thing you should do is declare a default time zone for PHP’s date and time
+functions. If you don’t set a default time zone, PHP shows an E_WARNING message. There
+are two ways to set the default time zone. You can declare the default time zone in the
+php.ini file like this:
+
+date.timezone = 'America/New_York';
+
+You can also declare the default time zone during runtime with the
+date_default_timezone_set() function (Example 5-9).
+
+Example 5-9. Set default timezone
+<?php
+date_default_timezone_set('America/New_York');
+
+Componente para data/time
+https://github.com/briannesbitt/Carbon
+
+The PDO Extension
+This is exactly why PHP provides the native PDO extension. PDO (or PHP data objects)
+is a collection of PHP classes that communicate with many different SQL databases via a
+single user interface.
+
+Never hard-code
+database credentials into PHP files, especially PHP files served to the public.
+
+There are several PDO constants you can use to specify various data
+types:
+PDO::PARAM_BOOL
+PDO::PARAM_NULL
+PDO::PARAM_INT
+PDO::PARAM_STR (default)
+
+https://www.php.net/manual/en/pdo.constants.php
+
+In this example, I use the PDO::FETCH_ASSOC constant as the first argument in the
+statement instance’s fetch() method. This argument determines how the fetch() and
+fetchAll() methods return query results. You can use any of these constants:
+PDO::FETCH_ASSOC
+Prompts the fetch() or fetchAll() method to return an associative array. The array
+keys are database column names.
+PDO::FETCH_NUM
+Prompts the fetch() or fetchAll() method to return a numeric array. The array keys
+are the numeric index of database columns in your query result.
+PDO::FETCH_BOTH
+Prompts the fetch() or fetchAll() method to return an array that contains both
+associative and numeric array keys. This is a combination of PDO::FETCH_ASSOC and
+PDO::FETCH_NUM .
+PDO::FETCH_OBJ
+Prompts the fetch() or fetchAll() method to return an object whose properties are
+database column names.
+
+Manipulação de Erros
+
+Exceptions
+
+Em desenvolvimento deve mostrar os erros: display_error = On e E_ALL
+error_reporting ( E_ALL ) ;
+ini_set ( 'display_errors' , 1 ) ;
+
+Em produção ocultar
+Configure o timezone no php.ini
+
+
+Hospedagem
+
+Evitar servidores compartilhados
+Dificuldade de customizar
+
+VPS
+Servidor dedicado
+PaaS
+
+Tuning
+A tuned PHP installation is a custom tailored suit prepared with your exact
+measurements.
+
+PHP tuning is not a universal cure for application performance. Bad
+code is still bad code. For example, PHP tuning cannot solve poorly written SQL queries
+or unresponsive API calls. However, PHP tuning is a low-hanging fruit that can improve
+PHP efficiency and application performance.
+
+PHP on the command line uses its own php.ini file often located
+at /etc/php/7.2/cli/php.ini.
+
+Melhores práticas de segurança
+https://github.com/psecio/iniscan
+
+memory_limit php.ini determines the maximum amount of system memory that can be used by a single PHP process.
+The default value is 128M , and this is probably fine for most small to medium-sized PHP
+applications. However, if you are running a tiny PHP application, you can save system
+resouces by lowering this value to something like 64M . If you are running a memory-
+intensive PHP application (e.g., a Drupal website), you may see improved performance
+with a higher value like 512M .
+
+File Uploads
+Does your PHP application accept file uploads? If not, turn off file uploads to improve
+application security. If your application does accept file uploads, it’s best to set a
+maximum upload filesize that your application accepts. It’s also best to set a maximum
+number of uploads that your application accepts at one time. These are the php.ini settings
+I use for my own applications:
+file_uploads = 1
+upload_max_filesize = 10M
+max_file_uploads = 3
+
+Max Execution Time
+The max_execution_time setting in your php.ini file determines the maximum length of
+time that a single PHP process can run before terminating. By default, this is set to 30
+seconds. You don’t want PHP processes running for 30 seconds. We want our applications
+to be super-fast (measured in milliseconds). I recommend you change this to 5 seconds:
+max_execution_time = 5
+
+If you use the exec()
+PHP function, it is your responsibility to escape shell arguments with the escapeshellarg
+PHP function.
+
+Here are my recommended php.ini settings:
+output_buffering = 4096
+implicit_flush = false
+If you change the output buffer size, make sure its value is a multiple of 4 (for 32-bit
+systems) or 8 (for 64-bit systems).
+
+Realpath Cache
+PHP maintains a cache of file paths that are used by your PHP application so it does not
+have to continually search the include path each time it includes or requires a file. This
+cache is called the realpath cache. If you are running a large PHP application that uses a
+lot of separate files (Drupal, Composer components, etc.), you can realize better
+performance by increasing the size of PHP’s realpath cache.
+The default realpath cache size is 16k . It’s not obvious how to figure out the exact size you
+need, but here’s a trick you can use. First, bump the realpath cache size to something
+obnoxiously large, like 256k . Then output the actual realpath cache size at the tail end of a
+PHP script with print_r(realpath_cache_size()); . Change your realpath cache size to
+this actual value. You can set the realpath cache size in your php.ini file:
+realpath_cache_size = 64k
+
+Make it Simple
+Make ir Predictable/Previsível
+Make it Reversible
+
+Testes
+
+Installing a testing infrastructure and writing tests
+takes time, but this is a wise investment that pays dividends into the future.
+
+Tests help us
+write code that works well the first time. Tests let us continuously iterate without breaking
+old code.
+
+In the long term, tests save money, prevent downtime, and inspire
+confidence.
+
+Tests should be a foreground concern before development,
+during development, and after development.
+
+Install and configure your testing tools before you develop your application. It doesn’t
+matter which testing tools you choose. Install them as if they are a vital application
+dependency. This makes it physically and mentally easier to test your application during
+development. This is also a good time to meet with your project manager to define higher-
+level application behavior.
+
+Write and run tests as you build each piece of your application. Did you just add a new
+PHP class? Test it now, because you probably won’t test it later. Testing while you develop
+helps you build confident and stable code, and it also helps you quickly find and refactor
+new code that breaks existing functionality.
+
+You probably won’t anticipate and test all of your application’s behaviors during
+development. If you find a bug after your launch your application, write a new test to
+ensure that your bug fix works correctly. Tests are not a once-and-done thing. Tests are
+continuously modified and improved, just like the application itself. If you update your
+application’s code, be sure you also update the affected tests.
+
+We test the smallest pieces of our application. A PHP application, on a microcosmic scale,
+has PHP classes, methods, and functions. We should test each public class, method, and
+function to ensure it behaves as we expect in isolation. If we know each piece works well
+on its own, we can be confident it also works well when integrated into the whole
+application. These tests are called unit tests.
+
+
+
+

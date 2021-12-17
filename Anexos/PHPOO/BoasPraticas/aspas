@@ -1,0 +1,67 @@
+Aspas Simples
+
+As aspas simples são utilizadas para indicar uma ‘string literal’. Strings literais não tentam analisar ou processar caracteres especiais ou variáveis.
+
+Se estiver usando aspas simples, você pode digitar um nome de variável em uma string assim: 'some $thing' e você verá a saída exata some $thing. Se você estiver usando aspas duplas, o motor da linguagem tentará avaliar a variável “$thing” e então exibirá erros se nenhuma variável for encontrada.
+
+<?php
+echo 'This is my string, look at how pretty it is.';    // sem necessidade de interpretar uma string simples
+
+/**
+ * Saída:
+ *
+ * This is my string, look at how pretty it is.
+ */
+
+    Aspas Simples
+
+Aspas Duplas
+
+Aspas duplas são o canivete suíço das strings, mas são mais lentas devido a interpretação das strings. Ele não só irá analisar as variáveis como mencionado acima mas também todos os tipos de caracteres especiais, como \n para nova linha, \t para identação, etc.
+
+<?php
+echo 'phptherightway é ' . $adjective . '.'      // Um exemplo com aspas simples que usa concatenação múltipla para
+    . "\n"                                       // variáveis e escapar strings
+    . 'I love learning' . $code . '!';
+
+// vs
+
+echo "phptherightway is $adjective.\n I love learning $code!"  // Em vez de concatenação múltipla, aspas duplas
+                                                               // nos permitem utilizar strings interpretáveis
+
+Aspas duplas que contém variáveis; Isto é chamado “interpolação”.
+
+<?php
+$juice = 'plum';
+echo "I like $juice juice";    // Output: I like plum juice
+
+Quando usando interpolação, são comuns os casos onde a variável pode estar colada com outro caracter. Isso fará com que o PHP não consiga interpretar essa variável pelo fato dela estar sendo camuflada.
+
+Para corrigir esse problema envolva a variável em um par de chaves.
+
+<?php
+$juice = 'plum';
+echo "I drank some juice made of $juices";    // $juice cannot be parsed
+
+// vs
+
+$juice = 'plum';
+echo "I drank some juice made of {$juice}s";    // $juice will be parsed
+
+/**
+ * Variáveis complexas também serão interpretadas com o uso de chaves
+ */
+
+$juice = array('apple', 'orange', 'plum');
+echo "I drank some juice made of {$juice[1]}s";   // $juice[1] will be parsed
+
+
+O que é mais rápido?
+
+Há um mito por aí que usar aspas simples em strings são interpretadas mais rápida do que usar aspas duplas. Isso não é fundamentalmente falso.
+
+Se você estiver definindo uma string única e não concatenar valores ou qualquer coisa complicada, então aspas simples ou duplas serão idênticas. Não será mais rápido.
+
+Se você está concatenando várias strings de qualquer tipo, ou interpolar valores em uma string entre aspas duplas, então os resultados podem variar. Se você estiver trabalhando com um pequeno número de valores, a concatenação é minuciosamente mais rápida. Com um monte de valores, interpolação é minuciosamente mais rápida.
+
+Independentemente do que você está fazendo com strings, nenhum dos tipos vai ter qualquer impacto perceptível sobre a sua aplicação. Tentar reescrever código para usar um ou o outro é sempre um exercício de futilidade, de modo a evitar este micro-otimização, a menos que você realmente compreenda o significado e o impacto das diferenças.

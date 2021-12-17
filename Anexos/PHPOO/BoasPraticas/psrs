@@ -1,0 +1,469 @@
+• Os arquivos DEVEM usar apenas tags <?php e ?> e <?= e ?>.
+• Os arquivos DEVEM usar apenas UTF-8 sem BOM para código PHP.
+• Os arquivos DEVEM declarar símbolos (classes, funções, constantes, etc.) ou causar efeitos colaterais (por exemplo, gerar saída, alterar configurações de ini, etc.), mas NÃO DEVEM fazer as duas coisas.
+• Namespaces e classes DEVEM seguir um PSR de "carregamento automático": [PSR-0, PSR-4].
+• Os nomes das classes DEVEM ser declarados no StudlyCaps: CAdastroClientes
+• As constantes de classe DEVEM ser declaradas em maiúsculas com separadores de sublinhado.
+• Os nomes dos métodos DEVEM ser declarados no camelCase.
+
+<?php
+// side effect: change ini settings
+ini_set('error_reporting', E_ALL);
+
+// side effect: loads a file
+include "file.php";
+
+// side effect: generates output
+echo "<html>\n";
+
+// declaration
+function foo()
+{
+    // function body
+}
+
+
+<?php
+// declaration
+function foo()
+{
+    // function body
+}
+
+// conditional declaration is *not* a side effect
+if (! function_exists('bar')) {
+    function bar()
+    {
+        // function body
+    }
+}
+
+
+<?php
+// PHP 5.3 and later:
+namespace Vendor\Model;
+
+class Foo
+{
+}
+
+
+<?php
+namespace Vendor\Model;
+
+class Foo
+{
+    const VERSION = '1.0';
+    const DATE_APPROVED = '2012-06-01';
+}
+
+
+<?php
+
+declare(strict_types=1);
+
+namespace Vendor\Package;
+
+use Vendor\Package\{ClassA as A, ClassB, ClassC as C};
+use Vendor\Package\SomeNamespace\ClassD as D;
+
+use function Vendor\Package\{functionA, functionB, functionC};
+
+use const Vendor\Package\{ConstantA, ConstantB, ConstantC};
+
+class Foo extends Bar implements FooInterface
+{
+    public function sampleFunction(int $a, int $b = null): array
+    {
+        if ($a === $b) {
+            bar();
+        } elseif ($a > $b) {
+            $foo->bar($arg1);
+        } else {
+            BazClass::bar($arg2, $arg3);
+        }
+    }
+
+    final public static function bar()
+    {
+        // method body
+    }
+}
+
+
+Todos os arquivos PHP DEVEM usar a linha Unix LF (linefeed) que termina apenas.
+Todos os arquivos PHP DEVEM terminar com uma linha não em branco, terminada com um único LF.
+A tag de fechamento ?> DEVE ser omitida dos arquivos que contêm apenas PHP.
+
+
+NÃO DEVE haver um limite rígido no comprimento da linha dos scripts.
+O limite flexível do comprimento da linha DEVE ser de 120 caracteres.
+Linhas não devem ter mais de 80 caracteres; linhas mais longas que isso DEVEM ser divididas em várias linhas subseqüentes de não mais que 80 caracteres cada.
+NÃO DEVE haver espaços em branco no final das linhas.
+Linhas em branco podem ser adicionadas para melhorar a legibilidade e indicar os blocos de código relacionados, exceto onde explicitamente proibido.
+NÃO DEVE haver mais de uma instrução por linha.
+
+
+Indentação
+Código DEVE usar um recuo de 4 espaços para cada nível de recuo e NÃO DEVE usar guias para recuar.
+
+
+Todas as palavras-chave e tipos reservados do PHP DEVEM estar em letras minúsculas.
+Quaisquer novos tipos e palavras-chave adicionados a futuras versões do PHP DEVEM estar em minúsculas.
+É necessário usar uma forma abreviada de palavras-chave do tipo, ou seja, bool em vez de booleano, int em vez de inteiro etc.
+
+
+Namespaces e nomes de classes
+
+Namespaces e classes DEVEM seguir um PSR de "carregamento automático": [PSR-0, PSR-4].
+Isso significa que cada classe deve estar em um arquivo por si só e em um namespace de pelo menos um nível: um nome de fornecedor de nível superior.
+Os nomes das classes DEVEM ser declarados no StudlyCaps.
+O código escrito para o PHP 5.3 e posterior DEVE usar namespaces formais.
+
+Por exemplo:
+<?php
+// PHP 5.3 e posterior:
+namespace Fornecedor \ Modelo;
+
+classe Foo
+{
+}
+O código escrito para 5.2.xe antes DEVE usar a convenção pseudo-namespacing dos prefixos Vendor_ nos nomes das classes.
+
+<?php
+// PHP 5.2.x and earlier:
+class Vendor_Model_Foo
+{
+}
+
+
+Class Constants, Properties e Methods
+
+Constantes de classes precisam ser declaradas com todas as letras em maiúsculas
+
+<?php
+namespace Vendor\Model;
+
+class Foo
+{
+    const VERSION = '1.0';
+    const DATE_APPROVED = '2012-06-01';
+}
+
+
+Quanto às propriedades não existe recomendação das PSRs. Eu prefiro usar camelCase.
+
+
+Nomes de métodos devem ser camelCase.
+
+
+<?php
+
+declare(strict_types=1);
+
+namespace Vendor\Package;
+
+use Vendor\Package\{ClassA as A, ClassB, ClassC as C};
+use Vendor\Package\SomeNamespace\ClassD as D;
+
+use function Vendor\Package\{functionA, functionB, functionC};
+
+use const Vendor\Package\{ConstantA, ConstantB, ConstantC};
+
+class Foo extends Bar implements FooInterface
+{
+    public function sampleFunction(int $a, int $b = null): array
+    {
+        if ($a === $b) {
+            bar();
+        } elseif ($a > $b) {
+            $foo->bar($arg1);
+        } else {
+            BazClass::bar($arg2, $arg3);
+        }
+    }
+
+    final public static function bar()
+    {
+        // method body
+    }
+}
+
+
+Usando traits
+
+<?php
+
+namespace Vendor\Package;
+
+use Vendor\Package\FirstTrait;
+
+class ClassName
+{
+    use FirstTrait;
+}
+
+<?php
+
+namespace Vendor\Package;
+
+use Vendor\Package\FirstTrait;
+use Vendor\Package\SecondTrait;
+use Vendor\Package\ThirdTrait;
+
+class ClassName
+{
+    use FirstTrait;
+    use SecondTrait;
+    use ThirdTrait;
+}
+
+
+Todas as propriedades precisam ter uma visibilidade declarada.
+
+Para versão do PHP 7.1 ou superior as constantes também precisam ter visibilidade
+
+<?php
+
+namespace Vendor\Package;
+
+class ClassName
+{
+    public $foo = null;
+    public static int $bar = 0;
+}
+
+
+Todos os métodos devem ter visibilidade declarada.
+
+Os nomes dos métodos NÃO DEVEM ser prefixados com um único sublinhado para indicar visibilidade protegida ou privada. Ou seja, um prefixo de sublinhado explicitamente não tem significado.
+
+Na lista de argumentos, NÃO DEVE haver um espaço antes de cada vírgula e DEVE haver um espaço após cada vírgula.
+Argumentos de Método e função com valores padrão devem ir no final da lista de argumentos.
+
+<?php
+
+namespace Vendor\Package;
+
+class ClassName
+{
+    public function foo(int $arg1, &$arg2, $arg3 = [])
+    {
+        // method body
+    }
+}
+
+
+Listas de argumentos podem ser divididas em várias linhas, onde cada linha subseqüente é recuada uma vez. Ao fazer isso, o primeiro item da lista DEVE estar na próxima linha e DEVE haver apenas um argumento por linha.
+Quando a lista de argumentos é dividida em várias linhas, o parêntese de fechamento e a chave de abertura DEVEM ser colocados juntos em sua própria linha, com um espaço entre eles.
+
+<?php
+
+namespace Vendor\Package;
+
+class ClassName
+{
+    public function aVeryLongMethodName(
+        ClassTypeHint $arg1,
+        &$arg2,
+        array $arg3 = []
+    ) {
+        // method body
+    }
+}
+
+Quando você tem uma declaração de tipo de retorno presente, DEVE haver um espaço após os dois pontos seguido pela declaração de tipo. Os dois pontos e a declaração DEVEM estar na mesma linha que a lista de argumentos entre parênteses, sem espaços entre os dois caracteres.
+
+<?php
+
+declare(strict_types=1);
+
+namespace Vendor\Package;
+
+class ReturnTypeVariations
+{
+    public function functionName(int $arg1, $arg2): string
+    {
+        return 'foo';
+    }
+
+    public function anotherFunction(
+        string $foo,
+        string $bar,
+        int $baz
+    ): string {
+        return 'foo';
+    }
+}
+
+
+abstract, final e static
+
+Quando presentes, as declarações abstract e final DEVEM preceder a declaração de visibilidade.
+Quando presente, a declaração estática DEVE vir após a declaração de visibilidade.
+
+<?php
+
+namespace Vendor\Package;
+
+abstract class ClassName
+{
+    protected static $foo;
+
+    abstract protected function zim();
+
+    final public static function bar()
+    {
+        // method body
+    }
+}
+
+
+Estruturas de controle
+
+As regras gerais de estilo para estruturas de controle são as seguintes:
+     • DEVE haver um espaço após a palavra-chave da estrutura de controle
+     • NÃO DEVE haver um espaço após o parêntese de abertura
+     • NÃO DEVE haver um espaço antes do parêntese de fechamento
+     • DEVE existir um espaço entre o parêntese de fechamento e a cinta de abertura
+     • O corpo da estrutura DEVE ser recuado uma vez
+     • O corpo DEVE estar na próxima linha após a chave de abertura
+     • A cinta de fechamento DEVE estar na próxima linha após o corpo
+O corpo de cada estrutura DEVE ser delimitado por chaves. Isso padroniza a aparência das estruturas e reduz a probabilidade de introdução de erros à medida que novas linhas são adicionadas ao corpo.
+
+if, elseif e else
+
+<?php
+
+if ($expr1) {
+    // if body
+} elseif ($expr2) {
+    // elseif body
+} else {
+    // else body;
+}
+
+<?php
+
+if (
+    $expr1
+    && $expr2
+) {
+    // if body
+} elseif (
+    $expr3
+    && $expr4
+) {
+    // elseif body
+}
+
+
+<?php
+
+switch ($expr) {
+    case 0:
+        echo 'First case, with a break';
+        break;
+    case 1:
+        echo 'Second case, which falls through';
+        // no break
+    case 2:
+    case 3:
+    case 4:
+        echo 'Third case, return instead of break';
+        return;
+    default:
+        echo 'Default case';
+        break;
+}
+
+<?php
+
+switch (
+    $expr1
+    && $expr2
+) {
+    // structure body
+}
+
+<?php
+
+while ($expr) {
+    // structure body
+}
+
+<?php
+
+while (
+    $expr1
+    && $expr2
+) {
+    // structure body
+}
+
+<?php
+
+do {
+    // structure body;
+} while ($expr);
+
+<?php
+
+do {
+    // structure body;
+} while (
+    $expr1
+    && $expr2
+);
+
+<?php
+
+for ($i = 0; $i < 10; $i++) {
+    // for body
+}
+
+<?php
+
+for (
+    $i = 0;
+    $i < 10;
+    $i++
+) {
+    // for body
+}
+
+
+<?php
+
+foreach ($iterable as $key => $value) {
+    // foreach body
+}
+
+
+<?php
+
+try {
+    // try body
+} catch (FirstThrowableType $e) {
+    // catch body
+} catch (OtherThrowableType | AnotherThrowableType $e) {
+    // catch body
+} finally {
+    // finally body
+}
+
+
+Operadores
+
+$i++;
+++$j;
+
+if ($a === $b) {
+    $foo = $bar ?? $a ?? $b;
+} elseif ($a > $b) {
+    $foo = $a + $b * $c;
+}
+
+Na dúvida consulte
+https://www.php-fig.org/psr/
+

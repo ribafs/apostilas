@@ -1,0 +1,12 @@
+<?php
+$a  = 'Multi-line example';    // operador de concatenação e atribuição (.=)
+$a .= "\n";
+$a .= 'of what not to do';
+
+vs.
+
+$a = 'Multi-line example'      // operador de concatenação (.)
+    . "\n"                     // indentando novas linhas
+    . 'of what to do';
+
+

@@ -1,0 +1,482 @@
+Boas práticas ao programar
+
+Convenções/Boas práticas
+
+Nomes de tabelas:
+- Tudo em minúsculas
+- No plural
+- Palavras compostas, separadas por sublinhado
+Exs: customers, pedido_itens
+
+Nomes de classes, métodos e propriedades:
+
+- Classes: CamelCase.
+- Métodos, funções, propriedades e variáveis: camelCase
+Ex: MinhaClasse
+
+- Nomes de controllers: nome da tabela no plural, com sufixo Controller. 
+Ex: CustomersController
+- Nomes de models: no plural e com sufixo Model. 
+Ex: CustomersModel
+
+Nomes de arquivos:
+
+- Arquivos de classes: CamelCase. 
+Ex: CustomersController.php, CustomersModel.php
+- Arquivos comuns, sem classes: tudo em minúsculas e palavras compostas separadas por sublinhado. 
+Exs.: config.php, meu_arquivo.php
+
+Trocar todas as aspas (") por apóstrofos ('), sempre que possível
+
+declare(strict_types=0); //default, checagem fraca
+declare(strict_types=1); // estrita checagem de tipos
+
+Declarando tipos em funções/métodos: string, int, float, bool (true/false)
+
+function teste(string $nome, int $idade){
+
+}
+
+Função que retorna int
+
+function divide(int $x, int $y) : int
+{
+	if($y !== 0){
+		return $x / $y;
+	}else{
+		echo '$y precisa ser diferente de zero';
+	}
+}
+
+Tudo isso são apenas boas práticas e convenções, nada é obrigado, mas em seguindo teremos um software mais legível, manutenível, com maior performance, segurança e com compatibilidade com os grandes frameworks.
+
+
+ 
+
+1. Introdução
+
+ 
+
+Muitas das dicas abaixo valem para qualquer linguagem de programação, mas a abordagem principal é voltada para programação em PHP. Para quem quer ser um bom profissional não basta conhecer dezenas de linguagens diferentes e decorar as milhares de funções disponíveis para cada uma delas. Algo que muitos deixam de lado são os cuidados ao formatar o código, organizando-o e documentando-o adequadamente. Isso contribui, em muito, à alteração e à leitura do mesmo por outros profissionais, poupando tempo e permitindo fácil seqüência ao projeto.
+
+Vamos a algumas dicas recomendadas por vários profissionais da área. Todas elas devem ser consideradas também como referências para os próximos artigos que serão publicados aqui no fórum.
+
+ 
+
+ 
+
+2. Utilize sempre as tags completas
+
+ 
+
+O PHP aceita quatro tipos de tags:
+
+ 
+
+1. <?php ?>2. <? ?>3. <script language="php"></script>4. <% %>
+
+A primeira opção é a padrão e preferencial, mas muitos programadores utilizam a segunda opção, por ser mais curta. Com ela, há também a possibilidade de usar esta sintaxe para exibir uma informação:
+
+ 
+
+<?= "Hello World!" ?> // equivale a <? echo "Hello World!"; ?>
+
+Apesar disso, a utilização desse tipo de tag também não é recomendada, porque pode estar desabilitada no servidor, ou seja, quando a diretiva short_open_tag estiver em off, fazendo com que o script não seja interpretado.
+
+A terceira opção não é muito comum, mas não é afetada pela diretiva short_open_tag, sendo tão segura quanto a primeira. As tags ASP <% %>, que também devem ser evitadas, só serão interpretadas se a diretiva asp_tags estiver em on, o que é pouco comum, visto que o seu valor padrão é off.
+
+ 
+
+Mais detalhes:
+
+http://www.php.net/manual/pt_BR/language.basic-syntax.php
+
+ 
+
+3. Indentação
+
+ 
+
+Uma boa indentação facilita a organização e a leitura do código. Veja os seguintes exemplos:
+
+ 
+
+Exemplo 3.1 Código em linha única e sem indentação
+
+if($a < 4) { echo "Hello World!"; }
+
+Exemplo 3.2 Código sem indentação
+
+if($a < 4) {echo "Hello World!";}
+
+Exemplo 3.3 Código com indentação adequada
+
+if($a < 4) {	echo "Hello World!";}
+
+Com os exemplos acima, podemos notar que a ausência de identação em um pequeno trecho de código pode não fazer diferença, mas tente imaginar 300 ou 400 linhas sem identação. Melhor ainda (ou pior), imagine fazer uma alteração em um script escrito nesse formato...
+
+Alguns podem, inclusive, pensar que reduzindo o número de linhas de código, facilita-se a navegação e a leitura do mesmo.
+
+Uma boa identação é a que você adotar como padrão. O recomendado, e também adotado por muitos, é uma indentação de quatro espaços. Dê atenção especial às estruturas de controle, onde o "aninhamento" delas podem causar confusão de leitura.
+
+ 
+
+Exemplo 3.4 Código sem indentação
+
+if($a) {if($b == $a) {//código} else {//código}}
+
+Exemplo 3.5 Código com indentação adequada
+
+if($a) {	if($b == $a) {		//código	} else {		//código	}}
+
+Nos exemplos 3.4 e 3.5 é possível perceber mais claramente o problema da falta de indentação.
+
+ 
+
+ 
+
+4. Funções para verificar a existência de variáveis e os seus tipos
+
+ 
+
+É importante verificar se uma variável, constante ou mesmo chave de array associativo foi inicializado, antes de resgatar o seu valor e utilizá-lo em algum processamento. Isso evita resultados inesperados. Veja o exemplo abaixo:
+
+ 
+
+Exemplo 4.1
+
+<?php$a = $_POST['a'];$b = " World!";echo $a.$b;?>
+
+Considerando-se que o valor de $a tenha sido enviado por um formulário, pelo método POST, e esse valor seja "Hello", a saída será "Hello World!". Porém, se nenhum valor for preenchido, teremos um resultado inesperado, podendo ser gerada uma notificação de inexistência de variável. Para testar se a variável foi iniciada, utilizamos isset().
+
+ 
+
+Exemplo 4.2
+
+<?phpif(isset($_POST['a'])) {	$a = $_POST['a'];} else {	$a = "Hi";}$b = " World!";echo $a.$b;?>
+
+Outra forma, mais curta, é utilizar o operador condicional ternário (ou somente operador ternário).
+
+ 
+
+Exemplo 4.3 - Utilizando o operador ternário
+
+$a = isset($_POST['a']) ? $_POST['a'] : "Hi";$b = " World!";echo $a.$b;
+
+Se a primeira expressão retornar verdadeiro (TRUE), o segundo bloco é executado. Caso contrário, executa-se o terceiro. Dessa forma, caso a variável não tenha sido enviada pelo formulário, atribuímos a ela o valor "Hi", produzindo a saída "Hi World!". Para fazer esse
+
+tipo de verificação com constantes, utilizamos a função defined().
+
+ 
+
+Exemplo 4.4
+
+<?phpdefine("CAMINHO", "www/meudiretorio/");if(defined("CAMINHO")) {	echo "A constante já foi definida.";} else {	echo "A constante não foi definida.";}?>
+
+Confira no Apêndice uma lista de funções úteis para verificação de tipos de variáveis, existência de diretórios, funções e outros.
+
+ 
+
+Mais detalhes:
+
+http://www.php.net/manual/pt_BR/ref.variables.php
+
+ 
+
+5. Tipos de dados (casting)
+
+ 
+
+Ao desenvolvermos um sistema ou site, deparamo-nos com o uso de diversos tipos de variáveis, como strings, arrays, booleans, dentre outros. Como o PHP não suporta a definição de tipos de variáveis nas declarações das mesmas, em determinados momentos, uma variável que deveria conter como valor um número inteiro, pode receber uma string. Isso pode gerar erros sileciosos, comprometendo o funcionamento do código. Veja o exemplo:
+
+ 
+
+Exemplo 5.1
+
+<?php//Retorna 'integer'$var = 2;print gettype($var)."<br>";//Retorna 'string'$var = "6";print gettype($var)."<br>";?>
+
+Usamos a função gettype() para retornar o tipo de variável declarada. No segundo trecho temos a declaração da mesma variável $var, que passa a receber o tipo de variável string. Este dado é convertido automaticamente ao fazer uma soma, por exemplo, voltando novamente a ser um valor do tipo inteiro. Para contornar esse tipo de situação e evitar surpresas, recomenda-se moldar o tipo de variável, também chamado de casting, assegurando assim que a variável será do tipo esperado. Para isso, pode-se utilizar a função settype().
+
+ 
+
+Exemplo 5.2
+
+<?php//Retorna 'integer', mesmo com o valor declarado como 'string'$var = "6";settype($var, 'integer');print gettype($var)."<br>";?>
+
+A moldagem de tipos também pode ser feita no momento da declaração da variável, antecedendo o seu valor com o tipo desejado, entre parênteses:
+
+ 
+
+Exemplo 5.3
+
+<?php//Define o tipo 'integer'$var = (integer) "6";print gettype($var)."<br>";?>
+
+Mais detalhes:
+
+http://www.php.net/manual/pt_BR/language.types.php
+
+ 
+
+ 
+
+6. Adotar padrões para nomes de funções, classes, constantes e variáveis
+
+ 
+
+Mesmo que as maiores diferenças sejam notadas em grandes projetos, adotar padrões ao declarar funções, variáveis etc. auxilia o desenvolvimento, pois se evita a dúvida ou mesmo erros, por exemplo, ao chamar funções que não existam, simplesmente por se ter um nome confuso ou uma falta de padrão.
+
+Você deve estar ciente da padronização que irá fazer, e respeitá-la rigorosamente em todo o site ou sistema. Um exemplo:
+
+ 
+
+Exemplo 6.1
+
+function primeira_funcao() {	//...}function segundaFuncao() {	//...}
+
+Programar sem um padrão, como no exemplo acima, compromete o desenvolvimento, pois será muito fácil acabar chamando por funções inexistentes (nomes diferentes do esperado). É muito importante analisar os padrões já utilizados por outros programadores ou desenvolver seu próprio padrão e seguí-lo à risca, garantindo assim um projeto fluente.
+
+Essa mesma situação pode ser enfrentada para nomes de constantes, variáveis ou classes. Por isso, é importante seguir um padrão, tal como o exemplo abaixo:
+
+ 
+
+Exemplo 6.2
+
+<?php$var = 7;$minhaVar = "PHP";define("CONSTANTE", "Valor da constante");define("SEGUNDA_CONSTANTE", 100);function minhaFuncao($argumento) {	print "<b>$argumento</b><br>";}classe MinhaClasse {	//...}?>
+
+Para o nome de variáveis, prefira utilizar nomes sempre em minúsculas. Para variáveis com palavras compostas, separe-as alterando as palavras seguintes com letra inicial maiúscula. Nomes de constantes preferencialmente devem ser declarados em maiúsculas, utilizando underline ("_") como separador de palavras.
+
+As funções e seus argumentos, assim como as classes, devem ser declaradas utilizando-se o mesmo padrão para as variáveis. Como forma de diferenciar as classes de funções, estas devem ter seus nomes com a inicial também em maiúscula.
+
+ 
+
+ 
+
+ 
+
+7. Codificar usando exibição de erros E_ALL
+
+ 
+
+Durante a estruturação de seu código, é muito importante manter as diretivas error_reporting em E_ALL e display_errors em on. Isso faz com que todos os possíveis erros sejam exibidos, para que você possa corrigi-los.
+
+Não é necessário acessar o arquivo php.ini para alterar esses valores, basta usar a função ini_set(), como no exemplo abaixo:
+
+ 
+
+Exemplo 7.1
+
+<?phpini_set('error_reporting', E_ALL);ini_set('display_errors', 1);// restante do código?>
+
+Deve-se inserir essas mudanças sempre antes do restante do código, para que elas afetem o script inteiro.
+
+ 
+
+Mais detalhes
+
+http://www.php.net/manual/pt_BR/ref.errorfunc.php
+
+ 
+
+ 
+
+8. Não ocultar erros utilizando ([arroba])
+
+ 
+
+É desaconselhável o uso excessivo do operador de controle de erros ([arroba], "arroba"). Esse operador somente deve ser usado nos casos em que a ocorrência de erro seja uma excessão, como na função mail(), funções de conexão com banco de dados e outras.
+
+ 
+
+Exemplo 8.1
+
+if (![arroba]mysql_connect ("servidor", "usuario", "senha"))  die ("Erro ao conectar com o banco de dados MySQL").
+
+Considerando-se que os argumentos da função mysql_connect() acima estejam corretos, erros de conexão tornam-se uma exceção, como em caso de servidor fora do ar.
+
+A partir do PHP 5, é possível manusear erros por meio de Exceções, mas esse tema não será abordado neste artigo.
+
+ 
+
+Nota importante:
+
+      Citar
+
+    Atualmente, o operador de controle de erro "[arroba]" sempre desativa mensagens de erro, mesmo para erros críticos, que terminam a execução de scripts. Além de outras coisas, isto significa que se você usar "[arroba]" para suprimir erros de certas funções e elas não estiverem disponíveis ou com tipos incorretos, o script vai parar exatamente aí sem nenhuma indicação da razão.
+
+Mais detalhes:
+
+http://www.php.net/manual/pt_BR/language.o...rrorcontrol.php
+
+ 
+
+ 
+
+9. Não codificar dependendo de register_globals
+
+ 
+
+A register_globals é uma diretiva que passou a estar desabilitada (Off), por padrão, a partir do PHP 4.2.0. Essa diretiva, quando habilitada no PHP.INI, faz com que as variáveis globais sejam registradas (inicializadas) diretamente no script em execução.
+
+ 
+
+Exemplo 9.1 valor inicializado por GET
+
+//Script acessado com valor via GET//meu_script.php?var=Testeif(isset($var)) {	print "A variável foi inicializada pela register_globals;} else {	print "A variável $var não foi inicializada";}
+
+O exemplo acima, apesar de inofensivo, pode sugerir a vulnerabilidade que o uso incorreto da diretiva register_globals pode acarretar. Imagine uma função que verifica a autenticação do usuário e define uma variável como verdadeira:
+
+ 
+
+Exemplo 9.2
+
+if (usuario_logado()) {	$usuario_autenticado = true;}if ($usuario_autenticado) {	include "menu.php";} else {	print "Você não tem permissão.";}
+
+Neste exemplo fica claro a brecha de segurança, pois basta inicializar a variável $usuario_autenticado como verdadeira (TRUE) ao acessar o script para que o menu esteja disponível, burlando a função de verificação de autenticação do usuário. Para corrigir este problema, basta simplesmente inicializar a variável como false. Além de uma boa prática, previne que o valor seja "forçado" a ser verdadeiro.
+
+ 
+
+Exemplo 9.3
+
+//Inicializando a variável $usuario_autenticado//como false, evitando que a register_globals//interfira no código$usuario_autenticado = false;if (usuario_logado()) {	$usuario_autenticado = true;}if ($usuario_autenticado) {	include "menu.php";} else {	print "Você não tem permissão.";}
+
+10. Criar arquivo de inicialização
+
+ 
+
+Um arquivo de inicialização é útil para verificar a versão do PHP em que o script está sendo executado, suas configurações padrão e definir valores que serão usados em todo o sistema. Isso torna a execução mais segura e não suscetível a erros.
+
+Os pontos mais importantes em um arquivo de inicialização de sistemas são:
+
+[*]Versão do PHP em que o script está sendo executado;
+
+ 
+
+[*]Verificar se determinadas extensões foram carregadas, como mysql, mysqli, gd, etc;
+
+ 
+
+[*]Definir valores para diretivas do php.ini, como error_reporting e display_errors;
+
+ 
+
+[*]Definir constantes, como informações para conexão com bancos de dados, diretório-raiz do sistema e outras.
+
+Mais detalhes:
+
+http://forum.imasters.com.br/index.php?showtopic=202215
+
+ 
+
+ 
+
+11. Mantenha-se sempre atualizado
+
+ 
+
+A linguagem PHP está em constante atualização, sendo freqüentemente disponíveis novas atualizações de versões para download. Por isso, acesse periodicamente o site oficial do PHP (http://www.php.net) e verifique se não há uma versão mais recente do que a qual você está utilizando no momento. Se houver, baixe-a e instale-a imediatamente. Para facilitar esta verificação, segue abaixo um script desenvolvido pelo Fabyo. Além de verificar, ele exibe também os links para download.
+
+ 
+
+<?php$url  = "http://www.php.net/downloads.php";$file = @file_get_contents($url);preg_match_all("#<h2>Windows Binaries<\/h2>(.+?)<\/ul>#si", $file, $matches);preg_match_all("#<a href=(.+?)>(.+?)<\/a>#si", $matches[0][0], $matches2);$php = str_replace("PHP", "", $matches2[2][0]);$php = str_replace("zip package", "", $php);$php = trim($php);if(version_compare(phpversion(), $php, "<") == "-1") {	echo "Sua versao do php esta desatualizada baixe a nova versao:<br />";	echo $matches2[0][0]."<br />";	echo $matches2[0][2];} else {		echo "<img src=\"". $_SERVER["PHP_SELF"] ."?=" . php_logo_guid() . "\" alt=\"Logo\" />";	echo "<br />Sua versão esta atualizada";}?>
+
+Também é importante prestar atenção às alterações feitas em cada versão, para que um script não gere incompatibilidade entre duas ou mais vesões do PHP. As duas mais importantes mudanças que podem afetar a execução de um código PHP são estas:
+
+[*] A extinção das variáveis $HTTP_*_VARS (como $HTTP_GET_VARS e $HTTP_POST_VARS) e a criação das autoglobais (ou super globais) $_GET, $_POST, $_COOKIE, $_SERVER, $_ENV, $_REQUEST, e $_SESSION.
+
+[*] A mudança do valor padrão da diretiva register_globals de on para off.
+
+Mais detalhes:
+
+http://br.php.net/manual/pt_BR/tutorial.oldcode.php
+
+http://br.php.net/manual/pt_BR/language.va....predefined.php
+
+http://br.php.net/manual/pt_BR/security.globals.php
+
+ 
+
+ 
+
+Apêndices
+
+ 
+
+1. Sobre o php.ini
+
+http://br.php.net/manual/pt_BR/ini.php
+
+Entenda o PHP.INI (artigo publicado pelo Fabyo): http://forum.imasters.com.br/index.php?showtopic=144987
+
+ 
+
+2. Palavras reservadas
+
+http://br.php.net/manual/pt_BR/reserved.php
+
+ 
+
+3. Funções úteis para verificação de variáveis, diretórios e outros
+
+[*]is_array()
+
+ 
+
+[*]is_bool()
+
+ 
+
+[*]is_float()
+
+ 
+
+[*]is_int()
+
+ 
+
+[*]is_numeric()
+
+ 
+
+[*]is_null()
+
+ 
+
+[*]is_object()
+
+ 
+
+[*]is_resource()
+
+ 
+
+[*]is_string()
+
+ 
+
+[*]is_dir()
+
+ 
+
+[*]is_file()
+
+ 
+
+[*]file_exists()
+
+ 
+
+[*]function_exists()
+
+ 
+
+[*]array_key_exists()
+
+Colaboraram neste artigo:
+
+Anderson Mello
+
+Beraldo
+
+Fabyo
+
+tmferreira

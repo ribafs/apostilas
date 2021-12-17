@@ -1,0 +1,466 @@
+Type hinting
+
+Sugestão de tipo é um recurso que o PHP fornece para declarar tipos de variáveis de classe, parâmetros de função e valores de retorno, para que você possa detectar e corrigir erros de programação o mais cedo possível em seu desenvolvimentos.
+
+Que significa type hinting/Sugestão de tipo? Declaração de tipo ou atribuição de tipo.
+
+Sugestão de tipo significa que um certo tipo de valor pode ser atribuído a um argumento de função, para uma variável de classe ou ao valor de retorno de uma função ou método de classe.
+
+O PHP ainda não fornece um suporte de sugestão de tipo para variáveis globais e locais, nem mesmo na versão 8.
+
+A sugestão de tipo serve a dois propósitos básicos no código:
+
+• Melhoria da integridade dos dados e do código: com sugestão de tipo, é mais difícil de abusar das funções, passando valores de retorno de tipos errados. Além disso, a necessidade de usar verificações de tipo explícitas no código (is_numeric(), is_bool(), is_array(), ...) pode ser reduzido ao mínimo.
+
+• Aumentar a legibilidade do código: Torna-se mais claro os tipos de valores que uma função aceita e o que ela retorna. Então isso te tornará mais produtivo quando você está trabalhando em equipe, assim como pode fazer o seu próprio código antigo mais transparente.
+
+Por que usar dicas de tipo?
+
+O próprio PHP é uma linguagem de programação sem tipo, ou seja, o PHP determina apenas em runtime qual tipo (texto, número, etc.) tem uma variável, uma propriedade de classe, um argumento ou o retorno valor de uma função e o define de acordo.
+
+A partir do PHP versão 5.0, (opcional) o suporte de sugestão de tipo era gradualmente introduzido.
+
+A partir da linguagem de programação 'sem tipo' da versão 4, o PHP evoluiu de versão para versão, de como uma linguagem "fracamente tipada" até quase linguagem de programação completamente tipada introduzida na versão 8.
+
+Que tipo de sugestão de tipo foi introduzido com qual versão do PHP é resumido na seção Tipos de dicas de tipo classificados pela versão do PHP.
+
+Nota: as dicas de tipo ainda são uma parte opcional do PHP, portanto, não são absolutamente necessárias para que qualquer código específico seja executado.
+
+Por exemplo, pense em uma função que espera um número inteiro como argumento: Sem a sugestão de tipo, o PHP tenta converter qualquer valor que é passado para um
+inteiro antes de o valor ser usado na função, independentemente de ser um string, um valor booleano ou outra coisa. Em seguida, ele executa o código da função
+sem uma mensagem de erro.
+
+Dependendo do nível de relatório de erros definido na configuração do PHP, no máximo você obterá mensagens de Aviso ou Aviso na saída, mas a execução do código não parou.
+
+Em muitos casos, a passagem de valores não inteiros leva a uma conversão para o inteiro valor 0, a menos que tenha sido passada uma string que comece com caracteres numéricos. Mas mesmo assim, o resultado provavelmente não é o esperado.
+
+Uma vez que as opções de logs de erros do PHP são frequentemente desabilitadas em sistemas em produção, esses erros muitas vezes passam despercebidos. Muitas vezes, isso leva a um comportamento imprevisível do aplicativo PHP em outras partes do código.
+
+Se a sugestão de tipo for usada e apontar que esta função espera um número inteiro, uma mensagem de erro é gerada quando a função é chamada com um valor errado, e
+a fonte do erro é imediatamente exposta. A mensagem de erro se refere à linha real de código em que o argumento errado é passado.
+
+Sem a sugestão de tipo, um aviso ou mensagem de aviso possivelmente seria gerado em outras partes do código. E embora a origem do erro seja o errado argumento, isso geralmente torna difícil identificar a parte original do código que causou a mensagem de erro e / ou a linha de código que a mensagem é mostrado para.
+
+Além disso, esses erros podem ser detectados pelo ambiente de desenvolvimento moderno com suas ferramentas, como por exemplo IDEs (por exemplo, PHPStorm, Eclipse IDE, Zend Studio, VSCode, etc ...) e são exibidos durante o processo de codificação.
+
+Isso pode levar a uma qualidade e confiabilidade de código significativamente maior, assim como pode reduzir os esforços de teste. Além disso, isso pode resultar em menos 'codificação - teste - ciclos de solução de problemas, o que na maioria dos casos significa tempos de projeto mais rápidos.
+
+O aumento no esforço de codificação com sugestão de tipo é recompensado por um código de superior qualidade e especialmente na última fase de um projeto pode levar a um teste mais curto e tempos de correção de bugs.
+
+Testes ainda mais extensos podem ser realizados com ferramentas de análise estática (por exemplo PHP CodeSniffer, PHPLint, PHPStan, Scrutinizer, etc.) para evitar erros, como o mais cedo possível, durante a fase de codificação.
+
+É claro que essas ferramentas dependem da presença de dicas de tipo, então elas já relatam a falta de dicas de tipo ao usá-los.
+
+Outra vantagem da sugestão de tipo é maior transparência ao trabalhar em uma equipe. Torna-se mais claro para cada programador da equipe, que tipo de valores que uma propriedade de classe deve conter, que tipo de argumentos uma função espera, ou que tipo de valor uma função retorna. Isso também se aplica, é claro, ao seu próprio código que você pode ter escrito no passado.
+
+Quais tipos de dados são suportados pelo PHP
+
+Para usar a sugestão de tipo corretamente, primeiro temos que olhar para os tipos de valor que o PHP apoia.
+
+• Tipos escalares
+
+Uma variável escalar é uma variável que armazena um único valor. Freqüentemente, estes são também chamados de tipos primitivos.
+
+O PHP distingue entre os seguintes tipos:
+
+• int: inteiros, ou seja, números sem vírgula.
+• string: (consulte: https://www.php.net/language.types.string)
+• float: número de ponto flutuante.
+• bool: os valores verdadeiro e falso.
+
+• Tipos compostos
+
+Em contraste com os tipos escalares, uma variável de um tipo de valor composto que pode conter vários valores de tipos de dados escalares ou compostos. PHP distingue entre os seguintes tipos:
+
+• array: (consulte: https://www.php.net/manual/en/
+language.types.array.php)
+
+• object: (ver: https://www.php.net/manual/en/
+language.types.object.php)
+
+• callable: (consulte: https://www.php.net/manual/en/
+language.types.callable.php)
+
+• iterable: (consulte: https://www.php.net/manual/en/
+language.types.iterable.php)
+
+• Tipos especiais
+
+•resources:
+Este não é um tipo de dados no sentido real, mas uma variante especial de tipo de dados int.
+
+Atenção: Por razões técnicas, este tipo não é suportado para sugestão de tipo !!!
+
+•null:
+Novamente, este não é um tipo de valor em sentido estrito, mas um tipo especial de valor que pode ser atribuído a cada variável, o que é equivalente para 'nenhum valor atribuído'.
+
+•self:
+A palavra-chave self também não é um tipo de valor distinto. No entanto, este sempre denota o nome da classe no escopo da qual é usava. self é permitido para atribuição de tipo dentro das classes.
+
+Os diferentes tipos de sugestão de tipo/tyoes hinting
+
+Para atribuir um tipo de valor, os quatro escalares, os quatro tipos de dados compostos e os nomes de todas as classes conhecidas no script atual estão disponíveis.
+
+Se você deseja especificar uma variável que pode ser de um certo tipo de valor ou conter o valor null, o respectivo tipo de dados deve ser usado com o prefixo '?' Atribuir um valor padrão null na referência de tipo dos argumentos da função tem o mesmo efeito.
+
+ion(string $strName)          // string as argument is expected
+function myFunction(int $iCount)              // int value as argument is expected
+function myFunction(float $fltPrice)          // float value as argument is expected
+function myFunction(bool $bValidate)          // bool value as argument is expected
+function myFunction(array $aOptions)          // array as argument is expected
+function myFunction(MyClass $oMyClass)        // instance of MyClass as argument is expected
+
+// nullable type hint with preceeding '?'...
+function myFunction(?string $strName)         // string or null as argument is expected
+// ... or assigning default value of null
+function myFunction(string $strName = null)   // no value, string or null as argument is expected
+
+Se o tipo de valor não for único, como, por exemplo, se uma string e um int são permitidos, isso não pode ser indicado por uma dica de tipo no PHP anterior à versão 8.0.
+
+Para receber suporte da IDE ou das ferramentas de análise para esses casos, uma especificação pode ser feita no comentário (consulte também a seção Melhorando a sugestão de tipo usando anotações phpDoc).
+
+Conforme já mencionado na seção sobre os tipos de valor acima, o recurso de tipo de valor tem um significado especial em relação às dicas de tipo. Nenhuma dica de tipo pode ser especificada para parâmetros ou valores de retorno desse tipo de valor. Para garantir a segurança do tipo, is_resource() deve ser usado no código.
+
+Variáveis ​​locais e globais
+
+Até e incluindo a versão PHP 8, nenhuma dica de tipo é fornecida para variáveis ​​locais e globais. Tanto o PHP quanto os vários IDE e ferramentas de análise determinam o tipo de uma variável de acordo com o valor atribuído por último no código a essas variáveis.
+
+Argumentos de função / argumentos de métodos de classe
+
+Provavelmente, o tipo mais importante de sugestão de tipo consiste em especificar os tipos de valor dos argumentos de uma função ou método de classe.
+
+Isso ajuda a garantir que os valores corretos sejam transmitidos. Quando tipos incorretos são passados ​​como valores de argumento, um erro é disparado na linha de código onde o valor do tipo errado é usado, além da linha de código onde o valor é passado para a função.
+
+Valores de retorno
+
+O tipo de dados é especificado após a definição da função, separados por dois pontos. Uma função que não tem valor de retorno é identificada com a palavra-chave void.
+
+function getAge(string $strName) : int    // function returns value of type int
+function initData() : void                // function doesn't return any value
+function getParams() : ?array             // function returns array or null
+
+Propriedades de classe
+
+Para determinar o tipo de valor das propriedades de classes, a sugestão de tipo é especificada na declaração antes do nome e após a visibilidade de uma propriedade.
+
+Em contraste com a declaração de argumentos de função, uma propriedade só pode ser atribuída a um valor inicial nulo se o tipo de dados for marcado como 'nullable' por um '?' Anterior. O tipo de dados que pode ser chamado não é permitido para propriedades de classe!
+
+class MyClass
+{
+    public string $strString;
+    protected int $iValue;
+    private array $aArray1;
+    private array $aArray2 = null;      // null assignment not allowed !!!
+    private ?array $aArray3 = null;     // valid assignment for 'nullable' array
+}
+
+A palavra-chave self também pode ser usada em classes para propriedades, argumentos de método e valores de retorno.
+
+class MyClass
+{
+    protected self $oNextSibling;
+    public function setNextSibibling(self $oSibbling) : void
+    {
+        ....
+    }
+}
+
+Tipos de dicas de tipos classificados pela versão do PHP quando foram introduzidos
+
+Versão 5.0
+
+A partir da versão 5.0, as funções que esperam um objeto de uma determinada classe como um argumento podem ser precedidas do nome da classe correspondente. Se a função espera um objeto de sua própria classe, a palavra-chave self também é permitida. Os tipos de valor escalar ainda não são suportados!
+
+Versão 5.1
+
+    Tornou-se possível atribuir o valor padrão null.
+    A matriz de tipo de valor tornou-se compatível.
+
+Versão 5.4
+
+    O tipo de valor chamável tornou-se compatível com argumentos de função.
+
+Versão 7.0
+
+    Os tipos de valor escalar (string, int, float, bool) são suportados agora.
+    O tipo de valor do valor de retorno de funções e métodos de classe pode ser especificado.
+
+Versão 7.1
+
+    Prefixando o tipo de dados com um '?' pode ser especificado que um parâmetro ou valor de retorno também pode ter o valor nulo além do tipo de valor especificado.
+    Funções que não retornam nenhum valor podem ser marcadas com o tipo de retorno void.
+    Introdução do tipo de valor iterável.
+
+Versão 7.2
+
+    Introdução do tipo de valor do objeto.
+
+Versão 7.4
+
+    Suporte de declarações de tipo para propriedades de classe.
+
+Versão 8.0
+
+    Tipos de união.
+    Promoção da propriedade do construtor.
+
+Sugestão de tipo na prática
+
+Importante
+
+Uma verificação de tipo consistente só é realizada se for ativada no código PHP diretamente no início do arquivo pela seguinte instrução:
+
+declare(strict_types=1);
+
+A verificação estrita de tipo deve ser ativada explicitamente para cada arquivo PHP. Infelizmente, não há uma opção de configuração global para definir verificações estritas no diretório ou no nível do espaço da web.
+
+Segue um exemplo muito simples para mostrar como um snippet de código se comporta em tempo de execução sob as várias condições:
+
+     Se as mensagens de 'aviso' ou 'aviso' são emitidas depende da definição do nível de relatório de erro definido na configuração do PHP!
+
+Sem tipo de sugestão
+
+// function without type hints
+function myFunc($a, $b)
+{
+    return $a * $b;
+}
+
+echo myFunc(2, 3);
+echo myFunc(2, 3.1);
+echo myFunc(2, '3');
+echo myFunc(2, '3text');    // causes 'Notice' in line 4
+echo myFunc(2, 'text3');    // causes 'Warning' in line 4
+
+Todas as chamadas da função myFunc() são executadas. Todas as três primeiras chamadas produzem uma saída de 6.
+
+A quarta chamada também produz 6, uma vez que o PHP converte strings que começam com caracteres numéricos até a primeira ocorrência de um caractere não numérico em seu valor numérico. No entanto, o seguinte 'aviso' é gerado:
+
+     Aviso: um valor numérico não bem formado encontrado em Example.php na linha 4
+
+Com a quinta chamada, o resultado é 0 e causa um 'aviso':
+
+     Aviso: um valor não numérico encontrado em Example.php na linha 4
+
+Observe que a linha 4, na qual ocorre a operação aritmética, é exibida como a linha de código de acionamento.
+
+Para localizar o 'culpado' real (ou seja, as chamadas para a função com um argumento inválido na linha 9 ou 10), a pilha de chamadas da mensagem PHP precisa ser examinada mais de perto!
+Usando dicas de tipo sem a configuração 'strict_types'
+
+// function with type hints
+function myFunc(int $a, int $b)
+{
+    return $a * $b;
+}
+
+echo myFunc(2, 3);
+echo myFunc(2, 3.1);
+echo myFunc(2, '3');
+echo myFunc(2, '3text');    // causes 'Notice' in line 4
+echo myFunc(2, 'text3');    // causes 'Fatal error' in line 11 (this line)
+
+O resultado das primeiras quatro chamadas são idênticos ao exemplo anterior, sem dicas de tipo.
+
+Com a quinta chamada, no entanto, a execução do script PHP é interrompida, disparando um 'erro fatal'.
+
+     Erro fatal: TypeError não capturado: O argumento 2 passado para myFunc () deve ser do tipo int, string fornecida, chamada em Example.php na linha 11 e definida em Example.php na linha 2
+
+Mas observe a mensagem mais de perto: A linha de código que está causando o erro não é mais a linha 4, mas a linha 11. É onde ocorre a chamada de função inválida. Linha 2, de onde a função chamada function também é mostrada para fornecer mais informações para ajudar a encontrar o problema melhor.
+
+Digite hinting com verificação de 'strict_types'
+
+declare(strict_types=1);
+
+// function without type hints
+function myFunc(int $a, int $b)
+{
+    return $a * $b;
+}
+
+echo myFunc(2, 3);
+echo myFunc(2, 3.1);               // causes 'Fatal error' in line 10 (this line)
+echo myFunc(2, '3');               // ... 
+echo myFunc(2, '3text');           // ...    
+echo myFunc(2, 'text3');           // ...
+
+Ativando a verificação de strict_types, todas as chamadas inválidas da função myFunc () farão com que o PHP acione um 'erro fatal'!
+
+Em quais casos a sugestão de tipo não é possível usar?
+
+Não é possível usar dicas de tipo se:
+
+    Um parâmetro ou valor de retorno pode ter diferentes tipos de valor. Isso pode ser o caso quando:
+        O tipo de retorno geralmente é int, mas em caso de erro, a função retorna o valor bool falso (por exemplo, strpos (...)).
+        Um argumento é declarado intencionalmente para oferecer suporte a vários tipos de valor, por exemplo, uma função getEvent ($ date) aceita como parâmetro $ date um carimbo de data / hora unix (ou seja, um int), um objeto DateTime ou uma string contendo uma data válida.
+    Para funções que esperam ou retornam um recurso.
+
+O primeiro caso foi resolvido com a introdução do Unions no PHP 8.0, o segundo caso ainda deve ser tratado usando a verificação de tipo com código específico usando o functionis_resource.
+
+O que deve ser considerado ao usar valores 'anuláveis'
+
+Em geral, cada atribuição de tipo pode ser marcada como anulável, o que significa que o respectivo valor pode ser do tipo de dados especificado ou conter nulo. No entanto, essa opção deve ser usada com cuidado, porque pode significar que uma vantagem importante que você ganharia usando a sugestão de tipo foi perdida.
+
+Devido à sugestão de tipo, especialmente com matrizes e objetos, não há mais necessidade de verificação de tipo demorada no código, que é necessária ao usar valores anuláveis.
+
+Verifique o seguinte cenário:
+
+function getOptions() : ?array 
+{
+    ...
+    if (...) {
+        return null;
+    }
+    ...
+}
+
+$aOptions = getOptions();
+foreach ($aOptions as $option) {
+    ...
+}
+
+Este exemplo de código resultaria em um aviso ao executar a instrução foreach se getOptions () retornasse nulo:
+
+     Aviso: argumento inválido fornecido para foreach () em Example.php
+
+Para segurança de tipo, devemos verificar a validade de $ aOptions antes de usá-la.
+
+Na implementação a seguir, sem um valor de retorno 'anulável', no entanto, a verificação de validade de $ aOptions pode ser omitida:
+
+function getOptions() : array 
+{
+    ...
+    if (...) {
+        return [];
+    }
+    ...
+}
+
+$aOptions = getOptions();
+foreach ($aOptions as $option) {
+    ...
+}
+
+Portanto, é importante considerar para cada caso se o valor nulo deve ser esperado e processado de acordo.
+
+No trecho de código acima, por exemplo, o valor null pode indicar que as opções não foram inicializadas corretamente, enquanto uma matriz vazia significa simplesmente que não há opções disponíveis no momento ... mas mesmo assim, uma inicialização incorreta deve levar a um erro ou tratamento apropriado dentro da função getOptions () e não fora ao processar o valor de retorno.
+Resumo
+
+Como pode ser visto no exemplo mostrado acima, o comportamento muda mesmo com um código de programa muito simples, usando a sugestão de tipo e ativando a verificação estrita de tipo.
+
+Para assegurar um comportamento previsível do código, a verificação estrita de tipo geralmente deve ser ativada e, sempre que possível, uma declaração de tipo clara deve ser feita.
+
+    Embora este outro post tenha sido escrito originalmente considerando a versão 7.1 do PHP, acho que ainda vale a pena lê-lo e lidar com as afirmações feitas.
+
+Novos recursos no PHP versão 8.0 com relação à sugestão de tipo
+
+Tipos de União 2.0
+
+A evolução mais importante do PHP 8.0 em relação à sugestão de tipo é a introdução do tipo de dados Union.
+
+Antes do PHP 8, os tipos de união só podiam ser especificados em comentários de anotação phpdoc. Agora, isso pode ser feito diretamente como dica de tipo, especificando os tipos de valor permitidos em uma lista separada pelo símbolo de barra vertical '|'.
+
+Os tipos de união suportam todos os tipos de valor disponíveis, pelo que as seguintes limitações devem ser consideradas:
+
+    A palavra-chave void não deve fazer parte de uma união - uma função fornece um resultado ou não!
+    O valor nulo só é suportado como parte de uma união, não é permitido usá-lo como um tipo autônomo.
+    A notação de tipo anulável ('? Tipo de dados') ainda é permitida (corresponde a 'tipo de dados | nulo'). No entanto, essa notação não pode ser usada dentro de um sindicato. '? string | int', portanto, não é permitido - declare combinações como 'string | int | null'.
+    Como muitas funções retornam um determinado tipo de dados e retornam o valor booleano false no caso de um erro ou outra condição especial, esse pseudo-tipo também é suportado. (por exemplo, strpos (), strstr (), substr (), ...).
+
+Você pode encontrar mais informações na documentação do PHP.
+
+Promoção de propriedade de construtor
+
+Embora essa mudança não diga respeito diretamente ao tópico de sugestão de tipo, ela não deve ser deixada sem menção aqui, porque pode ser usada para simplificar a declaração das propriedades e do construtor de uma classe.
+
+Esta inovação afeta as propriedades da classe cujo valor deve ser definido quando o construtor é chamado:
+
+// Before PHP 8.0 
+class MyClass 
+{
+    protected int $a;
+    protected int $b;
+
+    public function __construct(int $a, int $b = 0.0)
+    {
+        $this->a = $a;
+        $this->b = $b;
+    }
+}
+
+Em vez de ter que escrever cada propriedade quatro vezes em locais diferentes, isso agora pode ser reduzido no PHP 8.0 da seguinte maneira:
+
+// Using PHP 8.0 and property promotion
+class MyClass 
+{
+    public function __construct(protected int $a, protected int $b = 0.0)
+    {
+    }
+}
+
+As seguintes restrições devem ser consideradas:
+
+     A redeclaração de uma propriedade é proibida
+
+class MyClass
+{
+  protected int $a;
+  public function __construct(protected int $a) {}
+}
+
+O tipo de valor que pode ser chamado não deve ser usado, pois não é um tipo válido para uma propriedade.
+O valor padrão nulo não deve ser atribuído a uma propriedade não anulável.
+
+class MyClass
+{
+  public function __construct(protected int $a = null) {}
+}
+
+Você pode encontrar uma descrição mais detalhada na documentação do PHP.
+
+Erros de tipo consistente para funções internas
+
+Às vezes, uma verificação de tipo diferente para funções internas e definidas pelo usuário pode ser especificada de forma mais consistente usando o PHP 8.0. Veja a documentação do PHP para mais informações.
+
+Aprimorando a sugestão de tipo usando anotações phpDoc
+
+Não apenas a maioria dos guias de estilo recomendam o uso de comentários compatíveis com phpDoc no código-fonte, a maioria dos IDEs também suporta phpDoc e exibe os comentários armazenados desta forma ao usar uma função, o que geralmente é muito útil durante a codificação.
+
+A maioria das ferramentas de análise estática também usa anotações phpDoc para fazer uma verificação de tipo mais detalhada.
+
+Nota: as anotações phpDoc NÃO afetam a verificação de tipo de PHP em tempo de execução !!
+
+Neste ponto, você não encontrará uma descrição detalhada das anotações phpDoc, mas apenas os recursos especiais que devem ser considerados em conexão com a sugestão de tipo são mencionados aqui.
+Tipos de valor não suportados por PHP
+
+Os tipos de valor Integer, Numeric, Double e Boolean aceitos pelo phpDoc não devem ser usados, pois não são tipos de valor PHP válidos.
+Declaração se houver vários tipos de valor permitidos
+
+Se um argumento ou valor de retorno aceita diferentes tipos de valor, antes do PHP 8.0 só era possível definir tipos mais precisos usando anotações phpDoc.
+
+O tipo de valor por trás das anotações @param, @return e @ var pode ser declarado como misto.
+
+Isso indica apenas que vários tipos de dados diferentes podem ocorrer, mas nenhuma verificação de tipo adicional é realizada. Se vários tipos de dados forem especificados separados pelo símbolo de barra vertical '|', apenas esses tipos serão permitidos. Também existe a opção de definir nulo ou falso como valores permitidos.
+
+/**
+ * Function taking string param and date of following formats:
+ * - unix timestamp (int)
+ * - DateTime
+ * - well formed date string
+ * @param string $strParam
+ * @param int|DateTime|string $date
+ * @return int|false any valid int or false in case of an error
+ */
+public function myFunction(string $strParam, $date)
+{
+    ....
+}
+
+Valores do tipo resource
+
+No próprio phpDoc, o recurso de tipo de dados é conhecido, mas infelizmente o tratamento de valores deste tipo não é uniforme nos vários IDEs e ferramentas de análise.
+
+O recurso de tipo de valor às vezes é reconhecido e são feitas tentativas para realizar as verificações apropriadas.
+
+Em qualquer caso, o principal aspecto a ser visto aqui é que os valores dos recursos estão corretamente documentados para garantir a transparência do código.
+
+https://www.phpclasses.org/blog/post/1047-php-8-type-hinting.html

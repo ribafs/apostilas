@@ -1,0 +1,61 @@
+Operadores Ternários
+
+O uso de operadores ternários é uma ótima forma de condensar seu código, mas eles são geralmente usados em excesso. Apesar de operações ternárias poderem ser agrupadas é aconselhado usar uma por linha para aumentar a legibilidade.
+
+<?php
+$a = 5;
+echo ($a == 5) ? 'sim' : 'não';
+
+// vs
+
+$b = 10;
+echo ($a) ? ($a == 5) ? 'sim' : 'não' : ($b == 10) ? 'excessive' : ':(';    // excesso de agrupamento sacrifica a legibilidade
+
+Para usar ‘return’ em um operador ternário utilize a sintaxe correta.
+
+<?php
+$a = 5;
+echo ($a == 5) ? return true : return false;    // esse exemplo irá disparar um erro
+
+// vs
+
+$a = 5;
+return ($a == 5) ? 'yay' : 'nope';    // esse exemplo irá retornar 'yay'
+
+Note que você não precisa usar um operador ternário para retornar um valor booleano. Um exemplo disto seria.
+
+<?php
+$a = 3;
+return ($a == 3) ? true : false; // esse exemplo irá retornar true ou false se $a == 3
+
+// vs
+
+$a = 3;
+return $a == 3; // esse exemplo irá retornar true ou false se $a == 3
+
+Isso também pode ser dito para as operações (===, !==, !=, == etc).
+Utilizando parênteses com operadores ternários para formato e função
+
+Quando se utiliza um operador ternário, os parênteses podem melhorar a legibilidade do código e também incluir as uniões dentro de blocos de instruções. Um exemplo de quando não há nenhuma exigência para usar de parênteses é:
+
+<?php
+$a = 3;
+return ($a == 3) ? "yay" : "nope"; // vai retornar yay ou nope se $a == 3
+
+// vs
+
+$a = 3;
+return $a == 3 ? "yay" : "nope"; // vai retornar yay ou nope se $a == 3
+
+O uso de parênteses também nos dá a capacidade de criar união dentro de um bloco de declaração onde o bloco será verificado como um todo. Tal como este exemplo abaixo que retornará verdadeiro se ambos ($a == 3 e $b == 4) são verdadeiras e $c == 5 também é verdadeiro.
+
+<?php
+return ($a == 3 && $b == 4) && $c == 5;
+
+Outro exemplo é o trecho de código abaixo que vai returnar true se ($a != 3 e $b != 4) ou $c == 5.
+
+<?php
+return ($a != 3 && $b != 4) || $c == 5;
+
+    Operadores Ternários
+

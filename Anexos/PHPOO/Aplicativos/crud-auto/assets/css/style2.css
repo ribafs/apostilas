@@ -1,0 +1,41 @@
+/*you can change you table style here*/ 
+.cabecalho{
+    background-color: #3f0505;
+    color: #fff;
+}
+
+.rodape {
+    border-top: 1px solid lightblue;
+    height: 60px;
+    padding-top: 20px;
+    position: relative;
+    background-color: #b79d9d;
+    color: #fff;
+    width: 100%;
+    float: left;
+}
+
+.page-nav{
+    margin: 5px 0 0 0;
+    padding: 5px;
+}
+ 
+.page-nav a{
+    border: none;
+    padding: 5px;
+    text-decoration: none;
+    border: 3px solid #DFF0D8;
+    background-color: #D9EDF7;
+    color: #000;
+}
+ 
+.page-nav a:hover{
+    border: thin solid #FC0;
+    background-color: #379305;
+    color: #fff;
+}
+ 
+/*this is the style for selected page number*/
+.page_link{
+    padding: 5px;
+}

@@ -1,0 +1,84 @@
+Implementando autoload e namespace com Composer
+
+Seguindo a PSR-4
+
+Primeiro criarei a minha estrutura de diretórios do projeto dentro do diretório web:
+
+projeto
+projeto
+    ribafs
+        Classes
+            Files.php
+
+Tenho um diretório projeto, com um subdiretório vendor/ribafs, dentro de ribafs o diretório Classes e dentro de classes terei minhas classes
+
+Agora vamos criar o composer jason no raiz de projeto, criarei o mais simples possível, apenas para suporte à psr-4:
+
+{
+    "autoload": {
+        "psr-4": {
+            "RibaFS\\": "ribafs"
+        }
+    }
+}
+
+Veja que mapeei PHPLib para o diretório ribafs. Então o meu namespace ficará assim:
+
+namespace RibaFS\Classes\Files();
+
+Agora vamos criar um index.php no raiz de projeto:
+
+<?php
+require_once 'vendor/autoload.php';
+
+$file = new RibaFS\Classes\Files();
+
+echo $file->fileCountLines('index.php');
+
+Vamos editar a classe ribafs/Classes/Files.php para adicionar o namespace logo na primaira linha abaixo de <?php, para que fique assim:
+
+<?php
+
+namespace RibaFS\Classes;
+
+class Files{
+...
+
+Agora vamos executar o composer para gerar o autoload:
+
+cd projeto
+composer dump-autoload
+
+Se acessar a pasta projeto/vendor/composer, encontrará o mapeamento do tipo psr-4 no arquivo autoload_psr4.php.
+Veja seu conteúdo.
+
+Agora chame projeto pelo navegador:
+
+http://localhost/projeto
+
+E veja que ele encontrou a classe Files e executou o que pedimos.
+
+O index.php pode ficar de outras formas, com o namespace escrito de forma alternativa, veja:
+
+<?php
+namespace RibaFS\Classes;
+
+require_once 'vendor/autoload.php';
+
+$file = new Files();
+
+echo $file->fileCountLines('index.php');
+
+Ou assim:
+
+<?php
+namespace RibaFS;
+
+require_once 'vendor/autoload.php';
+
+$file = new Classes\Files();
+
+echo $file->fileCountLines('index.php');
+
+Importante: o namespace sempre deve ser a primeira linha do arquivo, logo abaixo de <?php.
+

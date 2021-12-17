@@ -1,0 +1,18 @@
+Namespace Global
+
+Quando estiver usando namespaces você pode reparar que funções internas ficam escondidas por funções que você mesmo escreveu. Para corrigir isso refira a funções globais através do uso de uma contra-barra antes do nome da função.
+
+<?php
+namespace phptherightway;
+
+function fopen()
+{
+    $file = \fopen();    // O nome da nossa função é igual a de uma função interna.
+                         // Execute a função global através da inclusão de '\'.
+}
+
+function array()
+{
+    $iterator = new \ArrayIterator();    // ArrayIterator é uma classe interna. Usar seu nome sem uma contra-barra
+                                         // tentará localizar essa função dentro do namespace
+}

@@ -1,0 +1,64 @@
+Convenções diversas
+
+Nomes de arquivos em php
+
+   PHP Project        ║   Classes   ║  Methods   ║  Properties  ║ Functions  ║ Variables 
+Symfony Framework     ║ PascalCase  ║ camelCase  ║ camelCase    ║ camelCase  ║ camelCase  ║
+
+
+Cada classe com um arquivo exclusivo e nunca duas ou mais classes em um único arquivo
+
+Nomes de arquivos de classes de forma similar aos nomes das classes:
+
+ClientesController.php
+
+class ClientesController
+
+Nomes de arquivos que não são de classes
+
+nome.php
+nome_arquivo.php
+
+Nomes de classes - CamelCase. Isso é uma convenção, pois para o php os nomes de classes são case insensitives, portanto ele considera Cliente igual a clientE
+
+Nome de métodos, propriedades, funções e variáveis - camelCase
+
+Propriedades - sempre declaradas no início da classe
+Métodos - logo abaixo das propriedades
+
+Objeto == instância, que é criado a partir de uma classe
+
+Uso de chaves:
+
+class Nome
+{
+
+}
+
+Métodos
+
+public function nome()
+{
+
+}
+
+Laços
+
+foreach()
+{
+
+}
+
+if
+
+if($x == 0) {
+
+}
+
+Instância/Objeto
+
+
+Usar parêntesis ao final do nome da classe, ao instanciar
+$obj = new NomeClasse();
+
+

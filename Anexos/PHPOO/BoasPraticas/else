@@ -1,0 +1,22 @@
+<?php
+// Sempre que possível evitar o uso do else
+function test($a)
+{
+    if ($a) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// vs
+
+function test($a)
+{
+    if ($a) {
+        return true;
+    }
+    return false;    // else não é necessário
+}
+
+
