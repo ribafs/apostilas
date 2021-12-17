@@ -22,7 +22,7 @@ A apostila sobre PDO está disponível em formato PDF, com 32 páginas e também
 
 [Download](PDOApostila.pdf)
 
-## Introdução ao PHP orientado a objetos
+## Introdução ao PHP orientado a objetos disponível
 
 A apostila sobre PHPOO está disponível em formato PDF, com 103 páginas e também material disponível na pasta Anexos.
 
