@@ -1,0 +1,22 @@
+{
+    "name": "ribafs/php-mvc",
+    "description": "Aplicativo Simples em PHP usando MVC",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ribamar FS",
+            "email": "ribafs@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload":
+    {
+        "psr-4":
+        {
+            "App\\" : "App/",
+            "Core\\" : "Core/"
+        }
+    }
+}
