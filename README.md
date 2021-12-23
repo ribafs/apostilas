@@ -28,9 +28,23 @@ A apostila sobre PHPOO está disponível em formato PDF, com 103 páginas e tamb
 
 [Download](PHPOOApostila.pdf)
 
-## Proximas 
+## Introdução ao PHP com MVC disponível
 
-- MVC
+A apostila sobre MVC está disponível em formato PDF, com 33 páginas e também material disponível na pasta Anexos.
+
+[Download](MVCApostila.pdf)
+
+## Laravel 8 Básico disponível
+
+A apostila sobre o Laravel 8 está disponível em formato PDF, com 31 páginas e também material disponível na pasta Anexos.
+
+[Download](Laravel8Apostila.pdf)
+
+## Próximas
+
+- Joomla
+- Introdução ao PHPUnit
+
 
 ## Licença
 
