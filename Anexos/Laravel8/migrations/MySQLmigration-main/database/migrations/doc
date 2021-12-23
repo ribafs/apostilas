@@ -1,0 +1,5 @@
+1) criar a migration 
+        php artisan make:model Models\\admin -m
+
+
+2) 
