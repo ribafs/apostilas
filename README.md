@@ -45,6 +45,10 @@ A apostila sobre o Laravel 8 está disponível em formato PDF, com 31 páginas e
 - Joomla
 - Introdução ao PHPUnit
 
+## Bons Livros Free do StackOverflow
+
+[LivrosStackoverflow](LivrosStackoverflow.md)
+
 
 ## Licença
 
