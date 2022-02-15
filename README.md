@@ -1,8 +1,6 @@
 # Apostilas de Programação
 
-![Github stats](https://github-readme-stats.vercel.app/api?username=ribafs&theme=highcontrast&show_icons=true&count_private=true)
-
-Aqui são distribídas apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHPOO, MVC, etc
+Apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHPOO, MVC, etc
 
 ## URL deste repositório
 
