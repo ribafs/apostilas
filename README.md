@@ -1,8 +1,6 @@
 # Apostilas de Programação
 
-![GitHub repo size](https://img.shields.io/github/repo-size/iuricode/README-template?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/iuricode/README-template?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/iuricode/README-template?style=for-the-badge)
+![Github stats](https://github-readme-stats.vercel.app/api?username=ribafs&theme=highcontrast&show_icons=true&count_private=true)
 
 Aqui são distribídas apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHPOO, MVC, etc
 
