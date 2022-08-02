@@ -2,7 +2,7 @@
 
 Apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHPOO, MVC, etc
 
-![](https://img.shields.io/badge/github-blue?style=for-the-badge)
+![](https://img.shields.io/static/v1?label=Novo&message=MSG&color=red)
 
 ## URL deste repositório
 
