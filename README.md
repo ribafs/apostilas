@@ -6,6 +6,11 @@ Apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHPOO, MVC, etc
 
 https://github.com/ribafs/apostilas
 
+## Criação de CRUDs em PHP ![](https://via.placeholder.com/15/f03c15/f03c15.png) - Novo 
+Com bons recursos
+
+[CriacaoCRUDs.odt](CriacaoCRUDs.odt)
+
 ## PHP disponível
 
 PHP Estruturado ( [PHP.md](PHP.md) ) já está disponível com 126 páginas, juntamente com seus arquivos com práticas e aplicativos em Anexos.
@@ -39,11 +44,6 @@ A apostila sobre MVC está disponível em formato PDF, com 33 páginas e também
 A apostila sobre o Laravel 8 está disponível em formato PDF, com 31 páginas e também material disponível na pasta Anexos.
 
 [Download](Laravel8Apostila.pdf)
-
-## Criação de CRUDs em PHP ![](https://via.placeholder.com/15/f03c15/f03c15.png) - Novo 
-Com bons recursos
-
-[CriacaoCRUDs.odt](CriacaoCRUDs.odt)
 
 ## Próximas
 
