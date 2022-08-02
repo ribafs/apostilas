@@ -2,7 +2,9 @@
 
 Apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHPOO, MVC, etc
 
-`#FF0000`
+```html
+<div style="background-color="#FF0000">Novo</div>
+```                                      
 
 
 ## URL deste repositório
