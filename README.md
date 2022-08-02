@@ -1,7 +1,8 @@
 # Apostilas de Programação
 
 Apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHPOO, MVC, etc
-![](https://img.shields.io/static/v1?label=&message=Novo&color=red)
+
+![](https://img.shields.io/badge/github-blue?style=for-the-badge)
 
 ## URL deste repositório
 
