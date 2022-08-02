@@ -1,8 +1,7 @@
 # Apostilas de Programação
-```html
-   <font color="red">Red</font>
-```
+
 Apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHPOO, MVC, etc
+![](https://img.shields.io/static/v1?label=&message=Novo&color=red)
 
 ## URL deste repositório
 
