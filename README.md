@@ -2,11 +2,6 @@
 
 Apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHPOO, MVC, etc
 
-```html
-<div style="background-color="#FF0000">Novo</div>
-```                                      
-
-
 ## URL deste repositório
 
 https://github.com/ribafs/apostilas
