@@ -40,7 +40,7 @@ A apostila sobre o Laravel 8 está disponível em formato PDF, com 31 páginas e
 
 [Download](Laravel8Apostila.pdf)
 
-## Criação de CRUDs em PHP - Novo ![](https://via.placeholder.com/30/FF0000/808080%20?Text=)
+## Criação de CRUDs em PHP - Novo ![https://via.placeholder.com/30/FF0000/808080%20?Text=]()
 Com bons recursos
 
 [CriacaoCRUDs.odt](CriacaoCRUDs.odt)
