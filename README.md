@@ -7,7 +7,7 @@ Apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHPOO, MVC, etc
 https://github.com/ribafs/apostilas
 
 ## Criação de CRUDs em PHP 🟥 ![](https://img.shields.io/static/v1?label=Apoistila&message=Nova&color=red) 🟥
-Com bons recursos
+Com bons recursos em 36 páginas
 
 [CriacaoCRUDs.pdf](CriacaoCRUDs.pdf)
 
@@ -45,15 +45,9 @@ A apostila sobre o Laravel 8 está disponível em formato PDF, com 31 páginas e
 
 [Download](Laravel8Apostila.pdf)
 
-## Próximas
-
-- Joomla
-- Introdução ao PHPUnit
-
 ## Bons Livros Free do StackOverflow
 
 [LivrosStackoverflow](LivrosStackoverflow.md)
-
 
 ## Licença
 
