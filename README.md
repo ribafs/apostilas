@@ -9,7 +9,7 @@ https://github.com/ribafs/apostilas
 ## Criação de CRUDs em PHP 🟥 ![](https://img.shields.io/static/v1?label=Apoistila&message=Nova&color=red) 🟥
 Com bons recursos
 
-[CriacaoCRUDs.odt](CriacaoCRUDs.odt)
+[CriacaoCRUDs.pdf](CriacaoCRUDs.pdf)
 
 ## PHP disponível
 
