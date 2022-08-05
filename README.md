@@ -6,7 +6,7 @@ Apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHPOO, MVC, etc
 
 https://github.com/ribafs/apostilas
 
-## Criação de CRUDs em PHP 🟥 ![](https://img.shields.io/static/v1?label=Apoistila&message=Nova&color=red) 🟥
+## Criação de CRUDs em PHP 🟥 NOVA 🟥
 Com bons recursos em 36 páginas
 
 [CriacaoCRUDs.pdf](CriacaoCRUDs.pdf)
