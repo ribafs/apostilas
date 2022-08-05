@@ -6,11 +6,11 @@ Apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHPOO, MVC, etc
 
 https://github.com/ribafs/apostilas
 
-## Pequeno Tutorial sobre Joins com MySQL ⏭⏭ Nova 🟥🟥
+## Pequeno Tutorial sobre Joins com MySQL 🌈🌈 Nova 🟥🟥
 
 https://github.com/ribafs/joins
 
-## Criação de CRUDs em PHP ⏭⏭ Nova 🟥🟥
+## Criação de CRUDs em PHP 🌈🌈 Nova 🟥🟥
 Com bons recursos em 36 páginas
 
 [CriacaoCRUDs.pdf](CriacaoCRUDs.pdf)
