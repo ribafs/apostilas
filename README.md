@@ -10,7 +10,7 @@ https://github.com/ribafs/apostilas
 
 https://github.com/ribafs/joins
 
-## Criação de CRUDs em PHP 🌈💖 Nova
+## Criação de CRUDs em PHP 😻😻 Nova
 Com bons recursos em 36 páginas
 
 [CriacaoCRUDs.pdf](CriacaoCRUDs.pdf)
