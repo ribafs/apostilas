@@ -6,6 +6,12 @@ Apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHPOO, MVC, etc
 
 https://github.com/ribafs/apostilas
 
+## Livro free
+
+PDF do Livro de introdução ao PHP orientado a objetos usando MVC com rotas (publicado em 08/2022)
+
+https://github.com/ribafs/phpoo-livro
+
 ## Pequeno Tutorial sobre Joins com MySQL 🌈💖 Nova
 
 https://github.com/ribafs/joins
