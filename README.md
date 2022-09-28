@@ -1,4 +1,4 @@
-# Apostilas de Programação
+# Apostilas de Programação em PDF gratuitas
 
 Apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHPOO, MVC, etc
 
