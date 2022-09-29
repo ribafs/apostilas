@@ -1,10 +1,30 @@
+
 # Apostilas de Programação & Cia
 
 Aqui são distribídas apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHPOO, MVC, Mobile, DevOps, Servidores, Segurançaetc
 
+# Apostilas de Programação em PDF gratuitas
+
+Apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHPOO, MVC, etc
+
 ## URL deste repositório
 
 https://github.com/ribafs/apostilas
+
+## Livro free
+
+PDF do Livro de introdução ao PHP orientado a objetos usando MVC com rotas (publicado em 08/2022)
+
+https://github.com/ribafs/phpoo-livro
+
+## Pequeno Tutorial sobre Joins com MySQL 🌈💖 Nova
+
+https://github.com/ribafs/joins
+
+## Criação de CRUDs em PHP 😻😻 Nova
+Com bons recursos em 36 páginas
+
+[CriacaoCRUDs.pdf](CriacaoCRUDs.pdf)
 
 ## PHP disponível
 
@@ -56,11 +76,15 @@ Muito conteúdo útil, Faça bom proveito.
 
 Contei, até agora, nas pastas acima 133 apostilas/tutoriais. Amaioria em PDF e alguns com markdown. Todos podem ser lidos no próprio Github ou baixados.
 
+## Laravel 8 Básico disponível
+
+A apostila sobre o Laravel 8 está disponível em formato PDF, com 31 páginas e também material disponível na pasta Anexos.
+
+[Download](Laravel8Apostila.pdf)
 
 ## Bons Livros Free do StackOverflow
 
 [LivrosStackoverflow](LivrosStackoverflow.md)
-
 
 ## Licença
 
