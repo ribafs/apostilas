@@ -37,9 +37,6 @@ https://github.com/ribafs/joins
     - [scratch](criador-visual-jogos/scratch)
 
 - [devops](devops)
-    - /[docker](devops/docker)
-    - /[git](devops/git)
-    - /[github](devops/github)
     - /[vps](devops/vps)
 
 - [frontend](frontend)
