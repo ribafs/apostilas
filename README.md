@@ -33,8 +33,8 @@ https://github.com/ribafs/joins
     - /[php](backend/php)
     - /[wordpress](backend/wordpress)
 
-- [criador-visual-jogos](criador-visual-jogos)
-    [scratch](criador-visual-jogos/scratch)
+- [criador visual de jogos](criador-visual-jogos)
+    - [scratch](criador-visual-jogos/scratch)
 
 - [devops](devops)
     - /[docker](devops/docker)
