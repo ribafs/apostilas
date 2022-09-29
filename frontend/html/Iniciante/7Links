@@ -1,0 +1,46 @@
+Links
+
+Até agora, você tem feito uma página da web autônoma, o que é muito bom e agradável, mas o que torna a Internet tão especial é que ela tem links.
+
+O “H” e o “T” em “HTML” significam “hipertexto”, que basicamente significa um sistema de texto vinculado.
+
+Uma marca âncora (a) é usada para definir um link, mas você também precisa adicionar algo à marca âncora - o destino do link.
+
+Adicione isto ao seu documento:
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>My first web page</title>
+</head>
+
+<body>
+
+    <h1>My first web page</h1>
+
+    <h2>What this is</h2>
+    <p>A simple page put together using HTML</p>
+
+    <h2>Why this is</h2>
+    <p>To learn HTML</p>
+
+    <h2>Where to find the tutorial</h2>
+    <p><a href="http://www.htmldog.com">HTML Dog</a></p>
+
+</body>
+
+</html>
+
+
+O destino do link é definido no atributo href da tag. O link pode ser absoluto, como “http://www.htmldog.com”, ou pode ser relativo à página atual.
+
+Então, se, por exemplo, você tivesse outro arquivo chamado “flyingmoss.html” no mesmo diretório, a linha de código seria simplesmente <a href="flyingmoss.html"> O milagre do musgo em vôo </a> ou algo assim como isso.
+
+Um link não precisa ser vinculado a outro arquivo HTML, ele pode ser vinculado a qualquer arquivo em qualquer lugar da web.
+
+Um link também pode direcionar um usuário para outra parte da mesma página em que está. Você pode adicionar um atributo id a praticamente qualquer tag, por exemplo <h2 id = "moss"> Moss </h2> e, em seguida, vincular a ele usando algo como isto: <a href="#moss"> Vá para musgo </a>. Selecionar este link irá rolar a página direto para o elemento com aquele ID.
+
+

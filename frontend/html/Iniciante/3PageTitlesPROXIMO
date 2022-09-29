@@ -1,0 +1,26 @@
+Page title
+
+Toda página HTML deve ter um title
+
+Para adicionar um título à sua página, altere seu código para que fique assim:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My first web page</title>
+</head>
+<body>
+    This is my first web page
+</body>
+</html>
+
+Adicionamos dois novos elementos aqui, que começam com a tag head e a tag title (e veja como ambas fecham).
+
+O elemento head (que começa com a tag de abertura <head> e termina com a tag de fechamento </head>) aparece antes do elemento body (começando com <body> e terminando com </body>) e contém informações sobre a página . As informações no elemento head não aparecem na janela do navegador.
+
+Veremos mais tarde que outros elementos podem aparecer dentro do elemento head, mas o mais importante deles é o elemento title.
+
+Se você olhar este documento no navegador (salvar e recarregar como antes), verá que “Minha primeira página da web” aparecerá em uma guia ou na barra de título da janela (não na área real da tela). O texto que você coloca entre as tags de título tornou-se o título do documento (surpresa!). Se você fosse adicionar esta página aos seus “favoritos” (ou “favoritos”, dependendo do seu navegador), você veria que o título também é usado lá.
+
+
+https://www.htmldog.com/guides/html/beginner/titles/

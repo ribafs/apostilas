@@ -1,0 +1,92 @@
+Tabelas: colunas, cabeçalhos e rodapés
+
+Então você acha que sabe fazer uma mesa. Claro, você conhece as tags table, tr, td e th, você ainda tem os atributos rowspan e colspan no seu bolso. Você pode fazer uma mesinha de centro de compensado realmente fofa, mas não quer saber como fazer uma daquelas mesas de jantar de madeira maciça polida com tampo de vidro que aguenta o peso de um elefante enorme?
+
+Você faz? Oh, alegria.
+As colunas contra-atacam
+
+As linhas da tabela tendem a fazer as colunas da tabela parecerem um tanto estúpidas. Eles fazem todo o trabalho, já que a tabela é construída linha por linha, deixando as colunas com uma sensação de rejeição.
+
+Felizmente para aquelas colunas ansiosas, as tags colgroup e col vieram em seu socorro.
+
+Essas tags permitem definir as colunas da tabela e estilizá-las conforme desejado, o que é particularmente útil se você quiser certas colunas alinhadas ou coloridas de forma diferente, pois, sem isso, você precisaria direcionar células individuais.
+
+
+<table>
+    <colgroup>
+        <col>
+        <col class="alternative">
+        <col>
+    </colgroup>
+    <tr>
+        <td>This</td>
+        <td>That</td>
+        <td>The other</td>
+    </tr>
+    <tr>
+        <td>Ladybird</td>
+        <td>Locust</td>
+        <td>Lunch</td>
+    </tr>
+</table>
+
+Neste exemplo, os estilos da classe CSS “alternativo” serão aplicados à segunda coluna ou à segunda célula de cada linha.
+
+Você também pode usar o atributo span de maneira semelhante a rowspan e colspan. Usá-lo com a tag colgroup definirá o número de linhas às quais o grupo de colunas pertencerá, por exemplo <colgroup span = "2"> </colgroup> agruparia as duas primeiras colunas. Usar span na tag col é geralmente mais útil e pode, por exemplo, ser aplicado ao exemplo acima desta forma:
+
+
+<table>
+    <colgroup>
+        <col>
+        <col span="2" class="alternative">
+    </colgroup>
+<!-- and so on -->
+
+Isso aplicaria "alternativa" às duas últimas colunas.
+
+Quando span é usado em colgroup, você não deve usar tags col.
+Interlúdio de legenda
+
+Uma consideração breve e fácil de acessibilidade é aplicar uma legenda à tabela. O elemento caption define a legenda e deve ser usado logo após a tag de abertura da tabela.
+
+
+<table>
+    <caption>Locust mating habits</caption>
+<!-- etc. -->
+
+Uma legenda aparecerá acima da tabela por padrão, embora usando o CSS caption-side: bottom irá, bem, fazer o que você espera.
+
+A legenda da figura mais poderosa seria preferível à legenda se você estiver marcando uma tabela como o único conteúdo de um elemento de figura. Veja a página de secções para mais.
+Cabeçalhos e rodapés
+
+thead, tfoot e tbody permitem separar a tabela em cabeçalho, rodapé e corpo, o que pode ser útil ao lidar com tabelas maiores.
+
+Enquanto o cabeçalho precisa vir primeiro, tfoot pode, de fato, vir antes de um tbody (e você pode ter mais de um tbody, se desejar), embora os navegadores renderizem o elemento tfoot na parte inferior da tabela.
+
+
+<table>
+    <thead>
+        <tr>
+            <td>Header 1</td>
+            <td>Header 2</td>
+            <td>Header 3</td>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td>Footer 1</td>
+            <td>Footer 2</td>
+            <td>Footer 3</td>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr>
+            <td>Cell 1</td>
+            <td>Cell 2</td>
+            <td>Cell 3</td>
+        </tr>
+        <!-- etc. -->
+    </tbody>
+</table>
+
+

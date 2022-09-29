@@ -1,0 +1,43 @@
+Tabelas: rowspan e colspan
+
+As tabelas podem ter parecido complicadas o suficiente no Tutorial de HTML para iniciantes. Pode ser muito difícil visualizar uma grade bidimensional a partir de linhas de código unidimensionais.
+
+Bem, fica mais complicado. Tudo graças aos atributos rowspan e colspan. Esses bastardos.
+
+O código a seguir é semelhante ao da página Tabelas do Tutorial de HTML para iniciantes:
+
+
+<table>
+    <tr>
+        <th>Column 1 heading</th>
+        <th>Column 2 heading</th>
+        <th>Column 3 heading</th>
+    </tr>
+    <tr>
+        <td>Row 2, cell 1</td>
+        <td colspan="2">Row 2, cell 2, also spanning Row 2, cell 3</td>
+    </tr>
+    <tr>
+        <td rowspan="2">Row 3, cell 1, also spanning Row 4, cell 1</td>
+        <td>Row 3, cell 2</td>
+        <td>Row 3, cell 3</td>
+    </tr>
+    <tr>
+        <td>Row 4, cell 2</td>
+        <td>Row 4, cell 3</td>
+    </tr>
+</table>
+
+
+Header cells/Células de cabeçalho
+
+A primeira diferença é que as tags td da primeira linha foram substituídas pelas tags th. Enquanto a td é uma célula de dados padrão, esta é uma célula de cabeçalho. Tal como acontece com os elementos td, eles devem ser colocados dentro de tr elementos.
+
+Spanning columns and rows
+
+Os atributos colspan e rowspan também foram usados ​​em algumas das tags td. Se você olhar para esse código em um navegador, verá que na segunda linha agora há duas células em vez de três, a segunda célula abrangendo a segunda e a terceira colunas. O atributo colspan, que significa “extensão da coluna”, irá abranger a célula sobre o número de células que é especificado. Isso significa, neste exemplo, que não há necessidade de um terceiro elemento td - duas células são mescladas em uma.
+
+O atributo rowspan é semelhante ao colspan, exceto, obviamente, ele se estenderá por linhas ao invés de colunas. Novamente, as células que abrange devem ser removidas. Neste exemplo, como se estende pela quarta linha, há apenas duas células nessa linha.
+
+Tal como acontece com a tabela 3x4 mais simples de 12 células, os números nessas tabelas com células mescladas também devem somar. Embora existam apenas 10 células neste exemplo, existem 2 vãos.
+

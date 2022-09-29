@@ -1,0 +1,33 @@
+Headings/Títulos
+
+A tag p é apenas o início da formatação do texto.
+
+Se você tiver documentos com cabeçalhos genuínos, então existem tags HTML projetadas especificamente para eles.
+
+Eles são h1, h2, h3, h4, h5 e h6, h1 sendo o imperador todo-poderoso dos títulos e h6 sendo a plebe mais baixa.
+
+Altere seu código para o seguinte:
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>My first web page</title>
+</head>
+
+<body>
+    <h1>My first web page</h1>
+
+    <h2>What this is</h2>
+    <p>A simple page put together using HTML</p>
+
+    <h2>Why this is</h2>
+    <p>To learn HTML</p>
+</body>
+
+</html>
+
+Observe que a tag h1 é usada apenas uma vez, como título principal da página. h2 a h6, no entanto, podem ser usados com a freqüência desejada, mas devem sempre ser usados na ordem, conforme foram planejados. Por exemplo, um h4 deve ser um subtítulo de um h3, que deve ser um subtítulo de um h2.
+

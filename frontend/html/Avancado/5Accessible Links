@@ -1,0 +1,59 @@
+Accessible Links
+
+There are a number of ways links — the absolutely fundamentally most important interactive element of web sites — can be made more accessible to those people with disabilities.
+Tabbing
+
+Users who do not or cannot use pointing devices can tab through links and, as such, links should be in a logical tabbing order. The tabindex attribute allows you to define this order although if the HTML is linear, as it should be, a logical tabbing order should automatically fall into place.
+
+
+<ul>
+    <li><a href="here.html" tabindex="1">Here</a></li>
+    <li><a href="there.html" tabindex="3">There</a></li>
+    <li><a href="limbo.html" tabindex="2">Limbo</a></li>
+</ul>
+
+Neste exemplo (que é usado puramente como uma demonstração - seria bem idiota, praticamente falando), a tabulação pularia de “Aqui” para “Limbo” para “Lá”.
+
+The good bit of link-accessibility advice is to write good link text. Have the words the a tags wrap around explain where the link will take the user. If someone is using a screen reader, having the links read out to them as they tab between them, the user will then know what they’re letting themselves in for if they select a link. “Click here” or random words aren’t especially helpful…
+
+Títulos de link
+
+Se você tiver um link que não seja autodescritivo, ou se o destino do link puder se beneficiar de uma explicação mais detalhada, você pode adicionar informações a um link usando o atributo title.
+
+
+<p>I'm really bad at writing link text. <a href="inept.html" title="Why I'm rubbish at writing link text: An explanation and an apology.">Click here</a> to find out more.</p>
+
+Outra dica: não faça com que os links abram algo em uma nova janela ou guia. É precioso pensar que sua página é importante o suficiente para permanecer viva enquanto um usuário visita outro lugar. Todos nós sabemos como usar o botão Voltar. Também sabemos como fechar janelas e guias, mas se você não consegue realmente ver que foi isso que aconteceu ...
+
+Se você insiste em fazer isso, pelo menos mencione no título de um link.
+
+Teclas de atalho
+
+As teclas de acesso permitem uma navegação mais fácil, atribuindo um atalho de teclado a um link (que geralmente ganha foco quando o usuário pressiona “Alt” ou “Ctrl” + a tecla de acesso).
+
+
+<a href="somepage.html" accesskey="s">Some page</a>
+
+Para usuários que não usam dispositivos apontadores, esta pode ser uma maneira rápida de navegar. O problema é que nesse caso o usuário pode não saber o que são, a menos que sejam explicitamente declarados, embora alguns softwares de assistência informem ao usuário o que são.
+
+Pulando HTML
+
+Para ajudar na tabulação, você pode fornecer links que permitem aos usuários pular partes de sua página da web. Você pode permitir que alguém salte uma infinidade de links de navegação, por exemplo, para que possa apenas ler o conteúdo principal de uma página em vez de percorrer todos os links:
+
+
+<header>
+    <h1>The Heading</h1>
+    <a href="#content">Skip to content</a>
+</header> 
+
+<nav>
+    <!--loads of navigation stuff -->
+</nav>
+
+<section id="content">
+    <!--lovely content -->
+</section>
+
+Você provavelmente não vai querer que este link seja exibido visualmente - é um link peculiar para usuários portadores de deficiência e usuários de leitores de tela não precisam vê-lo (ele será lido em voz alta). Portanto, você pode usar CSS para torná-lo invisível, mas também pode ser benéfico para aqueles com deficiências motoras, portanto, você também pode querer torná-lo visível quando o foco for tabulado para usar a pseudo classe CSS: focus.
+
+

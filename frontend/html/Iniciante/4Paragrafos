@@ -1,0 +1,60 @@
+Paragraphs
+
+Agora que você tem a estrutura básica de um documento HTML, pode mexer um pouco no conteúdo.
+
+Volte para o seu editor de texto e adicione outra linha à sua página:
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My first web page</title>
+</head>
+<body>
+    This is my first web page
+    How exciting
+</body>
+</html>
+
+Veja o documento em seu navegador.
+
+Você poderia esperar que seu documento aparecesse conforme você o digitou, em duas linhas, mas em vez disso, você deve ver algo assim:
+
+Esta é minha primeira página da web. Que emocionante.
+
+Isso ocorre porque os navegadores da web geralmente não prestam atenção em qual linha seu código está. Ele também não toma conhecimento de espaços (você obteria o mesmo resultado se digitasse "Esta é minha primeira página da web. Que emocionante").
+
+Se você deseja que o texto apareça em linhas diferentes ou, melhor, se pretende que haja dois blocos distintos de texto (porque, lembre-se, HTML é sobre significado, não apresentação), você precisa declarar isso explicitamente.
+
+Altere suas duas linhas de conteúdo para que fiquem assim:
+
+
+<p> Esta é minha primeira página da web </p>
+<p> Que emocionante </p>
+
+A tag p é usada para parágrafos.
+
+Veja os resultados disso. As duas linhas agora aparecerão em duas linhas porque o navegador as reconhece como parágrafos separados.
+
+Pense no conteúdo HTML como se fosse um livro - com parágrafos quando apropriado.
+Ênfase
+
+Você pode enfatizar o texto em um parágrafo usando em (ênfase) e forte (grande importância).
+
+
+<p> Sim, isso realmente <em> é </em> empolgante. <strong> Aviso: </strong> nível de excitação pode fazer a cabeça explodir. </p>
+
+Tradicionalmente, os navegadores exibem em itálico e forte em negrito por padrão, mas eles não são iguais às tags i e b que (embora tenham sido redefinidas tenuamente em HTML5) têm suas origens em itálico e negrito - lembre-se - HTML não é para apresentação. Se você deseja enfatizar algo visualmente (colocando algo em itálico, por exemplo), quase certamente deseja dar uma ênfase geral. Você não pode falar em itálico.
+Quebras de linha
+
+A tag de quebra de linha também pode ser usada para separar linhas como esta:
+
+
+Esta é minha primeira página da web <br>
+Que legal
+
+Não há conteúdo envolvido na quebra de linhas, portanto, não há tag de fechamento.
+
+Pode ser tentador usar excessivamente quebras de linha e br não deve ser usado se dois blocos de texto forem separados um do outro (porque se é isso que você deseja fazer, provavelmente deseja a tag p).
+
+

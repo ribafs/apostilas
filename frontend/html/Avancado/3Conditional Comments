@@ -1,0 +1,38 @@
+Comentários condicionais
+
+Então, você está procurando por um hack sujo que permite direcionar o HTML apenas para versões do navegador Internet Explorer da Microsoft, não é? Quão conveniente.
+
+As versões mais antigas do Internet Explorer são freqüentemente ineptas ou impertinentes. Ou ambos. Mas eles ainda são populares, então não queremos ignorá-los.
+
+Os comentários condicionais, que nada mais são do que simples comentários HTML que o IE (até a versão 9) dá uma espiada, são usados para lançar um pedaço de HTML nesses navegadores e apenas nesses navegadores. Outros navegadores bem comportados e top-of-the-class irão simplesmente vê-los como comentários comuns e seguir em frente.
+
+Este site atualmente usa comentários condicionais para fazer algumas emendas para o IE 8 e abaixo, incluindo uma pequena folha de estilo extra e o HTML5 Shiv necessário para esses navegadores perceberem alguns elementos HTML5. Vá em frente - veja a fonte.
+
+Eles se tornaram um método comumente usado para prender CSS extra em um documento para cobrir os orifícios nos recursos de exibição desses navegadores Então, por exemplo, você pode adicionar algo assim dentro do seu elemento head:
+
+
+<link href="everything.css" rel="stylesheet">
+<!--[if IE]><link href="stupidie.css" rel="stylesheet"><![endif]-->
+
+Tudo entre <! - [if IE]> e <! [Endif] -> será obtido pelo Internet Explorer. Portanto, isso irá anexar um arquivo CSS normalmente e, em seguida, apenas se o navegador for o Internet Explorer (na prática, será o Internet Explorer versão 9 e inferior), ele também aplicará um patch de arquivo CSS extra.
+
+Você também pode direcionar versões específicas do Internet Explorer:
+
+
+    <!--[if IE 6>…
+    <!--[if IE 7>…
+    <!--[if IE 8>…
+    <!--[if IE 9>…
+
+Você também pode segmentar todas as versões maiores ou menores que um determinado número:
+
+por exemplo. <! - [if IE gt 6]>… para versões do IE maiores que 6
+     por exemplo. <! - [if IE gte 8]>… para versões do IE maiores ou iguais a 8
+     por exemplo. <! - [if IE lt 7]> ... para versões do IE inferiores a 7
+     por exemplo. <! - [if IE lte 7]> ... para versões do IE menores ou iguais a 7
+
+Na verdade, existem mais opções do que isso que são totalmente desnecessárias. Dê uma olhada na própria opinião da Microsoft sobre isso se você realmente se sentir obrigado a descobrir mais.
+
+Comentários condicionais são realmente horríveis. Necessário, muitas vezes, no momento, mas horrível. Como todos os hacks, é melhor evitá-los sempre que possível. Eles não existem realmente para quebrar folhas de estilo completamente diferentes em navegadores diferentes, por exemplo. É mais para pequenos substitutos, para que você possa usar os gostosos do CSS 3 sem comprometer. E não presuma que você tem que acomodar todas as versões do IE da idade da pedra - tente descobrir o que é sensato para você apoiar. É provável que os visitantes do seu site usem o IE6? Provavelmente não.
+
+

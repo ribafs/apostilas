@@ -1,0 +1,27 @@
+
+Description Lists
+
+O HTML Beginner Tutorial olhou para listas não ordenadas e listas ordenadas, mas, assim como o Doctor Who de Peter Cushing, as listas de descrição são frequentemente esquecidas. Isso pode ser porque eles são muito mais específicos do que listas ordenadas e não ordenadas e, portanto, menos úteis, geralmente, mas onde há uma lista de termos e descrições (como um glossário), uma lista de descrições é o seu elemento principal.
+
+dl faz a bola rolar, semelhante aos elementos ul e ol, estabelecendo a lista. Em vez de conter elementos li, no entanto, as listas de descrição têm elementos dt, que são os termos, seguidos por elementos dd, que são as descrições associadas aos elementos dt.
+
+Não precisa haver um dt seguido por um dd, pode haver qualquer número de ambos. Por exemplo, se houver várias palavras com o mesmo significado, pode haver uma série de dt's seguidos por um dd. Se você tem uma palavra que significa várias coisas diferentes, pode haver um dt seguido por vários dds.
+
+
+<h1>Some random glossary thing</h1>
+<dl>
+    <dt>HTML</dt>
+    <dd>Abbreviation for HyperText Markup Language - a language used to make web pages.</dd>
+
+    <dt>Dog</dt>
+    <dd>Any carnivorous animal belonging to the family Canidae.</dd>
+    <dd>The domesticated sub-species of the family Canidae, Canis lupus familiaris.</dd>
+
+    <dt>Moo juice</dt>
+    <dt>Cat beer</dt>
+    <dt>Milk</dt>
+    <dd>A white liquid produced by cows and used for human consumption.</dd>
+</dl>
+
+
+

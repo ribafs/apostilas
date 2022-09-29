@@ -1,0 +1,60 @@
+Listas
+
+Existem três tipos de lista; listas não ordenadas, listas ordenadas e listas de definição. Veremos os dois primeiros aqui e as listas de descrição no Tutorial de HTML intermediário.
+
+Listas não ordenadas e listas ordenadas funcionam da mesma maneira, exceto que a primeira é usada para listas não sequenciais com itens de lista geralmente precedidos por marcadores e a última é para listas sequenciais, que são normalmente representadas por números incrementais.
+
+A tag ul é usada para definir listas não ordenadas e a tag ol é usada para definir listas ordenadas. Dentro das listas, a tag li é usada para definir cada item da lista.
+
+Mude seu código assim:
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>My first web page</title>
+</head>
+
+<body>
+    <h1>My first web page</h1>
+
+    <h2>What this is</h2>
+    <p>A simple page put together using HTML</p>
+
+    <h2>Why this is</h2>
+    <ul>
+        <li>To learn HTML</li>
+        <li>To show off</li>
+        <li>Because I've fallen in love with my computer and want to give her some HTML loving.</li>
+    </ul>
+
+</body>
+
+</html>
+
+Se você olhar isso em seu navegador, verá uma lista com marcadores. Simplesmente mude as tags ul para ol e você verá que a lista ficará numerada.
+
+Listas também podem ser incluídas em listas para formar uma hierarquia estruturada de itens.
+
+Substitua o código de lista acima pelo seguinte:
+
+
+<ul>
+    <li>To learn HTML</li>
+    <li>
+        To show off
+        <ol>
+            <li>To my boss</li>
+            <li>To my friends</li>
+            <li>To my cat</li>
+            <li>To the little talking duck in my brain</li>
+        </ol>
+    </li>
+    <li>Because I've fallen in love with my computer and want to give her some HTML loving.</li>
+</ul>
+
+E voilà. Uma lista dentro de uma lista. E você poderia colocar outra lista dentro disso. E outro dentro disso. E assim por diante.
+
+

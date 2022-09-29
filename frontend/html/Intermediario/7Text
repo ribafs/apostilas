@@ -1,0 +1,44 @@
+Texto: endereços, definições, bidirecional e editorial
+
+OK, então todos nós já devemos saber que existem muitas tags para texto. Fizemos parágrafos, fizemos títulos, até abreviações, citações e códigos. E existem várias outras tags mais obscuras que podem ser usadas. Obscuros porque você não os encontrará espalhados pela web, não porque sejam inúteis. Se você achar que tem um texto que se encaixa nas descrições desses elementos, você terá uma página HTML mais agradável, rica e significativa se usá-los.
+Endereços
+
+O endereço deve ser usado especificamente para os detalhes de contato relacionados a toda a página da web (e, portanto, usado apenas uma vez) ou a um elemento de artigo (consulte Seção). Não é, como pode parecer à primeira vista, marcar qualquer endereço antigo à toa.
+
+<h3>Author contact details</h3>
+<address>
+<ul>
+    <li>0123-456-7890</li>
+    <li>author_dude@noplaceinteresting.com</li>
+    <li>http://www.noplaceinteresting.com/contactme/</li>
+</ul>
+</address>
+
+Termos de definição
+
+dfn é um termo de definição e é usado para destacar o primeiro uso de um termo. Como abbr, o atributo title pode ser usado para descrever o termo.
+
+
+<p>Bob's <dfn title="Dog">canine</dfn> mother and <dfn title="Horse">equine</dfn> father sat him down and carefully explained that he was an <dfn title="A mutation that combines two or more sets of chromosomes from different species">allopolyploid</dfn> organism.</p>
+
+Texto bidirecional
+
+bdo pode ser usado para inverter a direção do texto e pode ser usado para exibir idiomas lidos da direita para a esquerda. O valor do atributo obrigatório dir pode ser ltr (da esquerda para a direita) ou rtl (da direita para a esquerda).
+
+
+<bdo dir = "rtl"> deus lmth </bdo>
+
+Editorial
+
+ins e del são usados ​​para exibir inserções e exclusões editoriais, respectivamente. A rigor, eles não se limitam a texto e podem ser usados ​​em áreas inteiras de conteúdo, mas, normalmente, são usados ​​com moderação, assim como o recurso "Rastrear alterações" em processadores de texto costuma ser.
+
+Eles podem ter os atributos datetime para indicar quando a edição foi feita e cite, para apontar para uma descrição do motivo da edição.
+
+
+<p> Decidi <del datetime = "2013-01-26"> diminuir </del> <ins cite = "http://www.icecreamforall.com/changeofpolicy/"> aumentar </ins> o valor de sorvete grátis que o Estado fornecerá aos seus cidadãos. </p>
+
+Tal como acontece com a edição tradicional baseada em processador de texto, o elemento ins é normalmente mostrado sublinhado e o elemento del é geralmente exibido com um tachado.
+
+E ainda há mais ... HTML 5 traz ainda mais elementos relacionados a texto. Veja o artigo final sobre texto no Guia Avançado de HTML, completo com uma olhada na reclassificação dos temidos elementos de “apresentação”.
+
+

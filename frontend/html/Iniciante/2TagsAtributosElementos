@@ -1,0 +1,45 @@
+Tags, Attributes, and Elements
+
+Embora o básico do HTML seja texto simples, precisamos de um pouco mais para torná-lo um documento HTML bonito e brilhante.
+
+Tags
+
+A estrutura básica de um documento HTML inclui tags, que envolvem o conteúdo e aplicam um significado a ele.
+
+Altere seu documento para que fique assim:
+
+
+<!DOCTYPE html>
+<html>
+<body>
+    This is my first web page
+</body>
+</html>
+
+Agora salve o documento novamente, volte para o navegador da web e recarregue a página.
+
+A aparência da página não terá mudado em nada, mas o propósito do HTML é aplicar significado, não apresentação, e este exemplo agora definiu alguns elementos fundamentais de uma página da web.
+
+A primeira linha na parte superior, <! DOCTYPE html>, é uma declaração de tipo de documento e permite ao navegador saber qual tipo de HTML você está usando (HTML5, neste caso). É muito importante insistir nisso - Se você não fizer isso, os navegadores irão presumir que você não sabe realmente o que está fazendo e agem de uma maneira muito peculiar.
+
+Para voltar ao ponto, <html> é a tag de abertura que dá o pontapé inicial e diz ao navegador que tudo entre isso e a tag de fechamento </html> é um documento HTML. O material entre <body> e </body> é o conteúdo principal do documento que aparecerá na janela do navegador.
+
+Tags de fechamento
+
+O </body> e </html> aproximam seus respectivos elementos (mais sobre os elementos em breve).
+
+Nem todas as tags têm tags de fechamento como esta (<html> </html>). Algumas tags, que não envolvem o conteúdo, se fecham sozinhas. A tag de quebra de linha, por exemplo, tem a seguinte aparência: <br> - uma quebra de linha não contém nenhum conteúdo, então a tag fica alegremente isolada. Encontraremos esses exemplos mais tarde. Tudo que você precisa lembrar é que todas as tags com conteúdo entre elas devem ser fechadas, no formato de tag de abertura → conteúdo → tag de fechamento. Não é, estritamente falando, sempre um requisito, mas é uma convenção que estamos usando nesses tutoriais porque é uma boa prática que resulta em um código mais limpo e fácil de entender.
+
+Você pode encontrar tags de “fechamento automático”, em que uma tag br, por exemplo, será semelhante a “<br />” em vez de simplesmente “<br>”. Este é um resquício de XHTML, uma forma de HTML baseada em outra linguagem de marcação chamada XML. O HTML5 é muito mais tranquilo do que o XHTML e ficará satisfeito com qualquer um dos formatos. Alguns desenvolvedores preferem uma forma, alguns preferem a outra. Jogamos uma moeda e decidimos ficar com a versão mais simples.
+Atributos
+
+As tags também podem ter atributos, que são bits extras de informação. Os atributos aparecem dentro da tag de abertura e seus valores ficam entre aspas. Eles se parecem com <tag attribute = "value"> Margarina </tag>. Encontraremos tags com atributos mais tarde.
+
+Mais uma vez, as aspas nem sempre são essenciais, mas é uma convenção de boas práticas que o HTML Dog usa para consistência e clareza. Sugerimos que você faça o mesmo.
+Elementos
+
+As tags tendem a não fazer muito mais do que marcar o início e o fim de um elemento. Os elementos são os bits que compõem as páginas da web. Você diria, por exemplo, que tudo o que está entre (e inclui) as tags <body> e </body> é o elemento do corpo. Como outro exemplo, enquanto “<title>” e “</title>” são marcas, “<title> Rumple Stiltskin </title>” é um elemento de título.
+
+
+
+

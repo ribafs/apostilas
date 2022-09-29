@@ -1,0 +1,97 @@
+Conteúdo incorporado: vídeo, áudio e tela
+
+O HTML5 apresenta uma série de novas tags para acomodar a natureza cada vez mais interativa e multimídia da web. Embora existam várias maneiras de incorporar vídeo, áudio e imagens dinâmicas no passado, o novo padrão da web tenta tornar isso mais fácil, consistente e confiável.
+
+    O conteúdo incorporado (externo) mais simples é uma imagem, aplicada a uma página da web com o elemento img. Antigamente, o objeto, junto com vários plug-ins e pó
+     do diabo proprietário, era usado para quebrar e quebrar vídeo e áudio em sua apresentação. Embora não sem seus problemas (de compatibilidade), agora existe um
+     método muito melhor para usar vários tipos de mídia em páginas da web.
+
+
+Vídeo
+
+
+    <video src="kitties.mp4" controls></video>
+
+Bam. Ai está. Bem desse jeito. Simples.
+
+Isso irá incorporar um vídeo, completo com controles, em navegadores que suportam a tag de vídeo HTML5 e o tipo de conteúdo de vídeo.
+
+
+    While HTML5 is pushing for a standard framework to play media, the media itself is not standardised across browsers. In practice, this means that it is unlikely
+     all visitors will be able to experience your video (or audio) file. Some support WebM video, for example, while others support MPEG. Don’t lose too much sleep
+     over this, though — see “Alternative content”, below.
+
+O atributo de controles é opcional, mas se você não quiser - se realmente quiser tirar o controle do usuário - você pode simplesmente inserir um atributo de reprodução automática:
+
+
+    <video src="kitties.mp4" autoplay></video>
+
+Isso reproduzirá o vídeo no carregamento da página, não exibirá nenhum controle e muito provavelmente irritará seus visitantes. Claro que você poderia, se fosse gentil, colocar os controles e os atributos de reprodução automática.
+
+Outros atributos básicos à sua disposição incluem largura, altura, loop e mudo.
+
+
+    <video src="kitties.mp4" width="300" height="200" loop muted autoplay controls></video>
+
+    Se você insiste em usar a reprodução automática, trazer silenciado (e controles) para a festa também é um gesto simpático e é uma convenção que muitos 
+    sites empregam.
+     Se você tiver um vídeo ao lado, por exemplo, ele pode começar a ser reproduzido, mas o usuário pode optar por segui-lo desativando o som do vídeo por meio dos
+     controles, se desejar, diminuindo a probabilidade de irritação.
+
+Poster
+
+Você pode especificar uma imagem de espaço reservado, que será exibida antes de o vídeo ser reproduzido, com o atributo poster.
+
+
+    <video src="kitties.mp4" poster="fluffy.jpg" controls></video>
+
+A imagem especificada será esticada ou reduzida para se ajustar às dimensões do vídeo, independentemente do tamanho original da imagem.
+Conteúdo substituto
+
+Então, sim, há uma tag de abertura e de fechamento. O que poderia acontecer entre eles? Por que, conteúdo substituto: conteúdo que é exibido se o navegador não entender o elemento de vídeo. Isso poderia ser algumas palavras, um pedaço de HTML ou uma imagem de Lolcats “muito engraçada” e “altamente original”.
+
+
+    <video src="kitties.mp4" controls>
+        <img src="hahahaha.jpg" alt="Hilarious cat and caption saying 'soz'.">
+    </video>
+
+
+Conteúdo alternativo
+
+Como já observado, não é apenas a compatibilidade com a tag que precisamos nos preocupar, mas também a compatibilidade com o próprio vídeo de origem. Felizmente, mais de um arquivo de origem de vídeo pode ser oferecido com o elemento de origem, juntamente com indicações dos requisitos do arquivo no valor do atributo type. O navegador então pegará o primeiro com o qual estiver satisfeito.
+
+
+    <video controls>
+        <source src="kitties.mp4" type="video/mp4; codecs='avc1, mp4a'">
+        <source src="kitties.webm" type="video/webm; codecs='vp8.0, vorbis'">
+        <p>Browser no likey HTML 5.</p>
+    </video>
+
+Aqui, um navegador deve descobrir se pode lidar com o tipo MIME “video / mp4” e se possui o codec indicado para decifrá-lo. Se isso não acontecer, ele deve passar para o próximo e tentar novamente com os detalhes definidos no segundo elemento de origem.
+
+Áudio
+
+Aplicar áudio é como aplicar vídeo. Usando a tag de áudio, a estrutura é a mesma de vídeo e os atributos src, controls, autoplay e loop podem ser usados da mesma maneira.
+
+
+    <audio src="meow_mix.mp3" controls>
+        Your stupid browser doesn't support HTML 5 audio.
+    </audio>
+
+O conteúdo alternativo também pode ser definido exatamente da mesma maneira que com as tags de vídeo e fonte.
+
+    Um controle muito maior pode ser exercido sobre vídeo e áudio usando JavaScript, com a capacidade de manipular aspectos de reprodução e controles de usuário com
+     mais detalhes.
+
+Canvas/Tela de pintura
+
+Uma grande adição ao HTML5 é o elemento canvas. Ele é projetado para fornecer uma tela na qual JavaScript pode ser usado para pintar todos os tipos de imagens dinâmicas, como gráficos, sprites animados ou imagens de gatos malucos.
+
+
+    <canvas id="wittykitty" width="800" height="450">
+        <!-- Fall-back content here, just like with video and audio -->
+    </canvas>
+
+É isso. Essa é a extensão do HTML real, pelo menos - o poder está no script.
+
+

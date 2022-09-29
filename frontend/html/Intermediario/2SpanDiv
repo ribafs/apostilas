@@ -1,0 +1,26 @@
+Span e Div
+
+HTML tem tudo a ver com a aplicação de significado ao conteúdo. Enquanto a maioria das tags HTML aplica significado (p cria um parágrafo, h1 cria um título, etc.), as tags span e div não aplicam nenhum significado. Isso pode parecer tão útil quanto um martelo de espuma, mas na verdade eles são usados extensivamente em conjunto com CSS.
+
+Eles são usados para agrupar um pedaço de HTML e conectar algumas informações a esse pedaço, mais comumente com os atributos class e id para associar o elemento a um seletor CSS de classe ou id.
+
+A diferença entre span e div é que um elemento span é in-line e geralmente usado para um pequeno pedaço de HTML dentro de uma linha (como dentro de um parágrafo) enquanto um elemento div (divisão) é uma linha de bloqueio (que é basicamente equivalente para ter uma quebra de linha antes e depois) e usado para agrupar trechos maiores de código.
+
+
+<div id="scissors">
+    <p>This is <span class="paper">crazy</span></p>
+</div>
+
+div, e especialmente span, não deve ser usado com tanta frequência. Sempre que houver uma alternativa sensata que deve ser usada em seu lugar. Por exemplo, se você deseja enfatizar a palavra “louco” e a classe “papel” está adicionando itálico para ênfase visual, então, para conteúdo mais rico e significativo, o código pode ser assim:
+
+
+<div id="scissors">
+    <p>This is <em class="paper">crazy</em></p>
+</div>
+
+Se você ainda não tem ideia sobre as classes e IDs, não se preocupe, eles são explicados no Tutorial intermediário de CSS. Tudo que você precisa lembrar é que span e div são tags “sem sentido”.
+
+Embora não substituam a tag div, o HTML 5 apresenta uma série de tags usadas para agrupar blocos de código e adicionar significado ao mesmo tempo. Para obter mais informações sobre artigo, cabeçalho, rodapé e muito mais, consulte o artigo sobre seccionamento.
+
+
+

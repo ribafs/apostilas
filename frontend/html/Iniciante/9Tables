@@ -1,0 +1,41 @@
+Tabelas
+
+As tabelas HTML ainda são mais conhecidas por serem usadas e abusadas para fazer o layout das páginas. Veremos como fazer o layout de uma página sem tabelas no Tutorial de CSS intermediário. O uso correto das tabelas é fazer exatamente o que você esperaria que uma tabela fizesse - estruturar dados tabulares.
+
+Existem várias tags usadas em tabelas, e entender completamente como elas funcionam é provavelmente a área mais difícil deste Tutorial de HTML para Iniciantes.
+
+Copie o seguinte código no corpo do seu documento e, em seguida, veremos o que cada tag está fazendo:
+
+
+<table>
+    <tr>
+        <td>Row 1, cell 1</td>
+        <td>Row 1, cell 2</td>
+        <td>Row 1, cell 3</td>
+    </tr>
+    <tr>
+        <td>Row 2, cell 1</td>
+        <td>Row 2, cell 2</td>
+        <td>Row 2, cell 3</td>
+    </tr>
+    <tr>
+        <td>Row 3, cell 1</td>
+        <td>Row 3, cell 2</td>
+        <td>Row 3, cell 3</td>
+    </tr>
+    <tr>
+        <td>Row 4, cell 1</td>
+        <td>Row 4, cell 2</td>
+        <td>Row 4, cell 3</td>
+    </tr>
+</table>
+
+O elemento table define a mesa.
+
+O elemento tr define uma linha da tabela.
+
+O elemento td define uma célula de dados. Eles devem ser colocados entre tags tr, conforme mostrado acima.
+
+Se você imaginar uma tabela 3x4, que tem 12 células, deve haver quatro tr elementos para definir as linhas e três elementos td dentro de cada uma das linhas, perfazendo um total de 12 elementos td.
+
+

@@ -1,0 +1,54 @@
+Começando
+
+Esses tutoriais usam HTML5. Você deve ter ouvido falar disso. É uma palavra da moda legal que as crianças usam no playground. Se você não sabe o que isso implica, não se preocupe - apenas saiba que é o melhor e mais moderno sabor de HTML para usar.
+
+
+HTML Beginner Tutorial
+
+A step-by-step guide to HTML basics. If you’re completely new to web design, start here.
+
+    Getting Started: What you need to do to get going and make your first HTML page.
+    Tags, Attributes and Elements: The stuff that makes up HTML.
+    Page Titles: Titles. For Pages. A difficult concept, we know…
+    Paragraphs: Structuring your content with paragraphs.
+    Headings: The six levels of headings.
+    Lists: How to define ordered and unordered lists.
+    Links: How to makes links to other pages, and elsewhere.
+    Images: Adding something a bit more than text…
+    Tables: How to use tabular data.
+    Forms: Text boxes and other user-input thingamajigs.
+    Putting It All Together: Taking all of the above stuff and shoving it together. Sort of in a recap groove.
+
+
+A maioria das coisas na web não é diferente das coisas no seu computador - é apenas um monte de arquivos classificados em um monte de diretórios.
+
+Os arquivos HTML nada mais são do que arquivos de texto simples, portanto, para começar a escrever em HTML, você não precisa de nada mais do que um editor de texto simples.
+
+O bloco de notas é um editor de texto comum em computadores baseados no Windows (geralmente encontrado no menu Programas> Acessórios) e os computadores Mac OSX vêm com o TextEdit, mas qualquer programa que permita mexer no texto serve.
+
+Digite no seu editor de texto:
+
+
+Esta é minha primeira página da web
+
+
+Agora crie uma pasta chamada “html” onde quiser para salvar os arquivos no seu computador e salve o arquivo como “myfirstpage.html”.
+
+Tome cuidado. É importante que a extensão “.html” seja especificada - caso contrário, alguns editores de texto, como o Bloco de notas, irão salvá-la automaticamente como “.txt”.
+
+Você também precisa se certificar de que seu arquivo está sendo salvo como texto simples. O TextEdit, por exemplo, iniciará novos arquivos como “Rich text”, contendo muitos extras de formatação, por padrão. Nesses casos, vá até as preferências e certifique-se de marcar a opção de formato “Texto simples” antes de criar um novo arquivo.
+
+
+Para ver os arquivos HTML, eles nem precisam estar na web. Abra um navegador da web como Chrome, Firefox, Safari ou Internet Explorer e na barra de endereço, onde você costuma digitar os endereços da web, digite a localização do arquivo que acabou de salvar (por exemplo, “c: \ html \ myfirstpage.html ”) E clique em voltar. Como alternativa, vá para o menu Arquivo do navegador, selecione Abrir e navegue até o arquivo.
+
+Pancada. Aí está. Sua primeira página da web. Que legal. E bastou algumas palavras digitadas.
+
+Dissemos aqui para usar um editor de texto básico, como o Bloco de notas, mas você pode ficar tentado a usar um programa de software dedicado, como o Adobe Dreamweaver.
+
+Você deve ter muito cuidado ao usar esses programas, especialmente se você for um iniciante, porque eles geralmente incluem códigos desnecessários ou fora do padrão para "ajudá-lo".
+
+Se você leva a sério o aprendizado de HTML, deve ler um tutorial como este primeiro, para que tenha pelo menos uma compreensão básica do que está acontecendo.
+
+Programas de software como esses nunca darão a você o mesmo controle sobre uma página da Web que a codificação manual.
+
+Se você decidir usar um software de edição de código especializado, recomendamos um em que você ainda esteja codificando manualmente. Eles podem, de fato, ser úteis, especialmente quanto mais avançado você se torna, em termos de realce de sintaxe de código e gerenciamento de arquivos.

@@ -1,0 +1,74 @@
+Formulários Acessíveis
+
+Formulários não são as coisas mais fáceis de usar para pessoas com deficiência. Navegar em uma página com conteúdo escrito é uma coisa, pular entre os campos do formulário e inserir informações é outra. Por isso, é uma boa ideia adicionar vários elementos ao formulário.
+Etiquetas
+
+Cada campo do formulário deve ter seu próprio rótulo explícito. A tag label classifica isso, com um atributo for que o associa a um elemento de formulário:
+
+
+    <form>
+        <label for="yourName">Your Name</label>
+        <input name="yourName" id="yourName">
+        <!-- etc. -->
+
+Os rótulos têm o bônus adicional de navegadores visuais que tornam os próprios rótulos clicáveis, colocando o foco no campo de formulário associado.
+
+    Os atributos de nome e id são normalmente necessários; o nome do formulário para lidar com esse campo e o id do rótulo ao qual associá-lo.
+
+Conjuntos de campos e legendas
+
+Você pode agrupar campos, por exemplo, nome (nome, sobrenome, meio, título, etc.) ou endereço (linha 1, linha 2, condado, país, código postal, país etc.) usando a tag fieldset.
+
+Dentro do conjunto de campos, você pode definir uma legenda com a tag de legenda.
+
+
+    <form action="somescript.php" >
+        <fieldset>
+            <legend>Name</legend>
+            <p>First name <input name="firstName"></p>
+            <p>Last name <input name="lastName"></p>
+        </fieldset>
+        <fieldset>
+            <legend>Address</legend>
+            <p>Address <textarea name="address"></textarea></p>
+            <p>Postal code <input name="postcode"></p>
+        </fieldset>
+        <!-- etc. -->
+
+    A maioria dos navegadores tende a representar conjuntos de campos com uma borda em torno deles e a legenda quebrando a esquerda da borda superior por padrão. Você
+     pode, é claro, mudar isso com CSS, se desejar.
+
+Grupos de opções
+
+O elemento optgroup agrupa opções em uma caixa de seleção. Ele requer um atributo de rótulo, o valor do qual é exibido como um pseudo-cabeçalho não selecionável precedendo esse grupo na lista suspensa de navegadores visuais.
+
+
+    <select name="country">
+        <optgroup label="Africa">
+            <option value="gam">Gambia</option>
+            <option value="mad">Madagascar</option>
+            <option value="nam">Namibia</option>
+        </optgroup>
+        <optgroup label="Europe">
+            <option value="fra">France</option>
+            <option value="rus">Russia</option>
+            <option value="uk">UK</option>
+        </optgroup>
+        <optgroup label="North America">
+            <option value="can">Canada</option>
+            <option value="mex">Mexico</option>
+            <option value="usa">USA</option>
+        </optgroup>
+    </select>
+
+Campos de navegação
+
+Como os links, os campos de formulário (e conjuntos de campos) precisam ser navegados sem o uso de um dispositivo apontador, como um mouse. Os mesmos métodos usados em links para tornar esta tarefa mais fácil podem ser usados em elementos de formulário - paradas de tabulação e teclas de acesso.
+
+Os atributos accesskey e tabindex podem ser adicionados às tags de formulário individuais, como entrada e também às tags de legenda.
+
+    
+    <input name="firstName" accesskey="f" tabindex="1">
+
+Para mais informações, consulte a página Links acessíveis.
+

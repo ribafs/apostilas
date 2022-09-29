@@ -1,0 +1,79 @@
+HTML5 Forms Pt. 1: Tipos de entrada
+
+O HTML5 avança muito os controles de formulário, com vários tipos de entrada adicionais, vários novos atributos e um punhado de elementos extras.
+
+Recebendo este aviso com antecedência, caso você compreensivelmente decida que seria uma perda de tempo lendo o restante desta página, a grande maioria desses novos gubbins ainda não funcionará totalmente em todos os navegadores principais. Sem surpresa, o Internet Explorer é o principal burro, com quase nada disso funcionando em nada inferior ao IE 10 e mesmo essa versão não suporta alguns tipos de entrada. Porém, nem tudo é infrutífero - consulte a nota sobre sugestões de uso no final de HTML5 Forms Pt. 2
+
+Tipos de entrada adicionais
+
+Os campos básicos do formulário criados com o elemento input incluem texto, senha, caixa de seleção, rádio e envio, que já foram abordados na seção HTML para iniciantes. Esses tipos foram estendidos em HTML5 para acomodar campos mais específicos:
+Procurar
+
+Usado para uma caixa de texto de consulta de pesquisa, funciona exatamente como uma entrada de texto padrão deveria.
+
+    <input type="search" name="search">
+
+A principal intenção da inclusão deste tipo de entrada na especificação HTML5 é de estilo. Além de tornar seu HTML mais claro, você também pode direcionar esse elemento com um seletor de atributo CSS:
+
+
+    input[type=search] { background: url(magnifyingglass.png) right no-repeat) }
+
+Endereço de telefone, URL e e-mail
+
+Outros tipos de entrada de texto “especiais” incluem tel, para números de telefone, url, para endereços da web e e-mail, para endereços de e-mail.
+
+
+    <input type="tel" name="telephone_number">
+    <input type="url" name="web_address">
+    <input type="email" name="email_address">
+
+Você pode usar as pseudo classes: valid e: invalid CSS3 para definir o estilo desses campos, dependendo se seu conteúdo é considerado válido.
+
+
+    input[type=email]:valid { background: green }
+    input[type=email]:invalid { background: red }
+
+Este exemplo pintará o fundo de um campo de e-mail de verde se o texto inserido for reconhecido como um endereço de e-mail (como “sausage@htmldog.com”) ou vermelho se não for (se o usuário digitar “sausages?”, Para exemplo).
+Números e intervalos
+
+Uma caixa de texto simples que também permite ao usuário digitar diretamente um número ou percorrer os números (normalmente usando uma seta para cima e para baixo ao lado do campo) pode ser obtida com type = "número". Um atributo de etapa adicional pode ser adicionado para especificar quanto é adicionado ou subtraído do número com cada incremento.
+
+Se você também quiser que o número tenha um valor mínimo ou máximo, poderá usar ainda os atributos mínimo e máximo.
+
+
+    <input type="number" name="quantity" step="2" min="20" max="30">
+
+Mais uma vez, se houver suporte, o usuário poderá digitar diretamente no campo ou, se usar as setas, alternar entre 20 e 30, duas unidades por vez.
+
+    You can use the :valid and :invalid pseudo classes in relation to this, too. If the user were to type “12”, for example, that would be invalid, because it isn’t
+     between 20 and 30. If they typed “23” that would also be invalid because it isn’t a multiple of 2.
+
+Uma alternativa à abordagem de dígitos em uma caixa de texto pode ser obtida usando type = "range". Por padrão, isso deve ser exibido como uma barra horizontal com um controle deslizante no meio dela. O usuário pode então ajustar o controle deslizante para a esquerda e para a direita, a extrema esquerda resultando em um valor de “0” e a extrema direita em um valor de “100”. Este intervalo pode ser ajustado usando os atributos mínimo e máximo.
+
+
+    <input type="range" name="temperature" min="15" max="25" step="0.5" value="18.5">
+
+Datas e horas
+
+Existem vários tipos de entrada para datas e horas:
+
+
+    type="datetime"
+    type="date"
+    type="month"
+    type="week"
+    type="time"
+    type="datetime-local"
+
+
+Se houver suporte (eles não são amplamente e também são inconsistentes entre os navegadores), eles solicitarão que o usuário insira uma data ou hora em um formato específico, seja digitando diretamente, percorrendo uma semana / dia / hora / minuto / etc. por vez ou selecionando em um calendário suspenso.
+
+    step, min, and max attributes can be used with dates and times, too, as can the CSS pseudo classes to style according to validity.
+
+Cor
+
+Finalmente, type = "color" é projetado para permitir que um usuário selecione uma cor, enviando um código hexadecimal de seis dígitos como seu valor.
+
+
+    <input name="color" type="color" value="#ff8800">
+

@@ -1,0 +1,49 @@
+HTML5 Forms Pt. 2: Atributos e listas de dados
+
+Continuando do HTML5 Forms Pt. 1, além da infinidade de novos tipos de entrada, há também atributos específicos de formulário adicionais à sua disposição, bem como listas de dados, uma espécie de híbrido texto / seleção.
+
+Mais atributos
+
+Além dos atributos mencionados, tanto aqui quanto nos guias anteriores, há vários atributos adicionais:
+
+Placeholder text
+
+O atributo placeholder pode ser usado com campos de entrada de texto (e seus primos semelhantes a texto, como type = "email" e type = "number"), bem como elementos textarea. Tem a intenção de ser uma dica, ao invés de um rótulo, para o qual um elemento de rótulo ainda deve ser usado.
+
+
+    <label for="email_address">Email address</label>
+    <input type="email" placeholder="you@somewhere.com" name="email_address" id="email_address">
+
+Auto-foco
+
+Você pode querer se concentrar em um campo de formulário quando uma página é carregada. Se você pensar em um mecanismo de pesquisa, por exemplo, quando você acessa sua página inicial, normalmente não precisa clicar na caixa de pesquisa para começar a digitar - você pode fazer isso imediatamente porque já está em foco. O atributo autofocus é uma maneira rápida de obter esse efeito.
+
+
+<input name="query" autofocus>
+
+
+Listas de dados
+
+Uma lista de dados assume a forma de uma lista de sugestões que acompanha um campo de texto:
+
+
+    <input name="country" list="country_name">
+    <datalist id="country_name">
+        <option value="Afghanistan">
+        <option value="Albania">
+        <option value="Algeria">
+        <option value="Andorra">
+        <option value="Armenia">
+        <option value="Australia">
+        <option value="Austria">
+        <option value="Azerbaijan">
+        <!-- etc. -->
+    </datalist>
+
+O valor do atributo list no elemento de entrada (que pode ser qualquer um dos tipos de entrada semelhantes a texto) o vincula a um elemento datalist com o ID correspondente (“country_name”, neste exemplo). Conforme um usuário digita no campo de texto, se o que ele digitar corresponder ao início de qualquer coisa na lista de dados, essas correspondências serão mostradas abaixo do campo de texto como sugestões. Portanto, aqui, se “A” for digitado, os 8 países que começam com “a” são exibidos. Se “L” for digitado após “A”, a lista de sugestões se reduzirá a apenas “Albânia” e “Argélia” e assim por diante. Os dados enviados quando o formulário for enviado serão os que estiverem no campo de texto - pode ser algo selecionado na lista ou pode ser algo completamente diferente, inserido pelo usuário.
+
+    A boa notícia é que muitos dos recursos descritos nessas duas páginas do Formulários HTML 5 degradam normalmente. Esses navegadores que não oferecem suporte a
+     listas de dados ainda mantêm a caixa de texto; tipos de entrada não reconhecidos revertem para entradas de texto, portanto, você pode usar os tipos de pesquisa,
+     tel e url, desde que não dependa de seus recursos especiais; o texto do marcador simplesmente não aparecerá, contanto que não seja essencial, vá em frente.
+
+

@@ -1,0 +1,36 @@
+Imagens
+
+As coisas podem parecer um pouco insossas e chatas com toda essa formatação de texto. Claro, a web não é apenas sobre texto, é uma extravagância multimídia e a forma mais comum de brilho é a imagem.
+
+A tag img é usada para colocar uma imagem em um documento HTML e tem a seguinte aparência:
+
+
+<img src = "http://www.htmldog.com/badge1.gif" width = "120" height = "90" alt = "HTML Dog">
+
+O atributo src informa ao navegador onde encontrar a imagem. Como a tag a, isso pode ser absoluto, como demonstra o exemplo acima, mas geralmente é relativo. Por exemplo, se você criar sua própria imagem e salvá-la como “alienpie.jpg” em um diretório chamado “imagens”, o código será <img src = "images / alienpie.jpg" ...
+
+Os atributos de largura e altura são necessários porque se forem excluídos, o navegador tenderá a calcular o tamanho à medida que a imagem carrega, em vez de quando a página carrega, o que significa que o layout do documento pode saltar enquanto a página está carregando.
+
+O atributo alt é a descrição alternativa. Esta é uma consideração de acessibilidade, fornecendo informações significativas para usuários que não conseguem ver a imagem (se forem deficientes visuais, por exemplo).
+
+Observe que, como a tag br, como o elemento img não inclui nenhum conteúdo, nenhuma tag de fechamento é necessária.
+
+A construção de imagens para a web está um pouco fora da alçada deste site, mas vale a pena destacar algumas coisas…
+
+Os formatos de arquivo mais comumente usados ​​para imagens são JPEGs, GIFs e PNGs. Eles são formatos compactados e têm usos muito diferentes.
+
+Um JPEG (pronuncia-se “jay-peg”) usa um algoritmo matemático para comprimir a imagem e distorce ligeiramente o original. Quanto menor a compactação, maior será o tamanho do arquivo, mas mais nítida será a imagem.
+
+JPEGs são normalmente usados ​​para imagens como fotografias.
+
+Um GIF (pronuncia-se “jif”) não pode ter mais de 256 cores, mas mantém as cores da imagem original. Quanto menor for o número de cores da imagem, menor será o tamanho do arquivo. Os GIFs também permitem que qualquer pixel da imagem seja transparente.
+
+GIFs são normalmente usados ​​para imagens com cores sólidas, como ícones ou logotipos.
+
+Um PNG (pronuncia-se “ping”) replica cores, bem como um GIF, mas permite 16 milhões de cores, bem como transparência alfa (ou seja, uma área pode ser 50% transparente).
+
+PNGs são normalmente usados ​​para imagens versáteis em designs mais complexos, MAS eles não são totalmente suportados por alguns navegadores mais antigos.
+
+A web está ficando cada vez mais rápida e mais rápida, mas obviamente você deseja que suas páginas sejam baixadas o mais rápido possível. Usar imagens de altíssima resolução não está prejudicando sua largura de banda (ou paciência) nem a do seu usuário. A compressão de imagem é uma ótima ferramenta e você precisa encontrar um equilíbrio entre a qualidade e o tamanho da imagem. A maioria dos programas modernos de manipulação de imagens permite compactar imagens e a melhor maneira de descobrir o que é mais adequado para você é por tentativa e erro.
+
+

@@ -1,0 +1,101 @@
+Seccionando
+
+Embora os títulos façam um trabalho excelente e perfeitamente válido na definição do início de uma nova seção ou subseção em um documento, há uma série de elementos que podem ser explorados para estabelecer uma estrutura semântica mais limpa e clara.
+
+Considerando que os elementos div podem ser usados para conter seções, usadas principalmente como uma estrutura para pendurar o CSS, eles não têm muito significado. O seccionamento envolve um punhado de tags que podem ser usadas para definir partes específicas de uma página, como artigos, cabeçalhos, rodapés e navegação.
+Artigos e Seções
+
+Um elemento de artigo pode ser usado para marcar uma seção independente de conteúdo. Isso pode ser usado apenas uma vez, se você pensar em uma postagem de blog como um artigo, por exemplo, ou várias vezes, se você imaginar replicar uma página de jornal tradicional com vários artigos.
+
+Um elemento de seção representa uma seção mais geral e pode ser usado para dividir um artigo ou para representar capítulos, por exemplo.
+
+<article>
+    <section id="intro">
+        <p>[An introduction]</p>
+    </section>
+    <section id="main_content">
+        <p>[Content]</p>
+    </section>
+    <section id="related">
+        <ul>
+            <li><a href="that.html">That related article</a></li>
+            <li><a href="this.html">This related article</a></li>
+        </ul>
+    </section>
+</article>
+
+Embora divs possam ser usados para fazer essas separações (ou mesmo se você não precisar dessas separações para definir o estilo), isso fornece um documento muito mais rico e significativo.
+
+As especificações do HTML5 sugerem que você pode usar elementos h1 no início de cada seção, que se tornaria um subtítulo de qualquer coisa que preceda essa seção (portanto, no exemplo acima, se você tivesse um h1 imediatamente após a tag de abertura do artigo, um h1 imediatamente após uma tag de seção de abertura seria um subtítulo daquele h1 inicial). No entanto, isso prejudica a compatibilidade com versões anteriores, e quaisquer agentes de usuário (incluindo leitores de tela) que não entendam isso não aplicarão níveis de título estruturados adequadamente. Sugerimos manter os níveis de cabeçalhos que você usaria se não usasse seções (então h1, seguido por h2, etc, independentemente do seccionamento). Isso não quebra nada nem diminui o significado ou a semântica.
+
+Cabeçalhos e rodapés
+
+o cabeçalho e o rodapé fornecem outras seções especializadas e autodescritivas:
+
+
+<body>
+<article>
+    <header>
+        <h1>Alternatively&hellip;</h1>
+        <p>[An introduction]</p>
+    </header>
+    <section id="main_content">
+        <p>[Content]</p>
+    </section>
+    <footer>
+        <p>[End notes]</p>
+    </footer>
+</article>
+<footer>
+    <p>[Copyright bumf]</p>
+</footer>
+</body>
+
+O rodapé é o rodapé da seção em que está contido. Portanto, no exemplo acima, o primeiro rodapé é o rodapé do artigo e o segundo rodapé é o rodapé da página.
+
+Asides/Apartes
+
+Um aparte pode ser usado para representar o conteúdo que está relacionado ao conteúdo que o cerca. Pense em citações ou trechos de informações relacionadas em um artigo:
+
+
+<section id="main_content">
+    <h1>Tixall</h1>
+    <p>[All about Tixall]</p>
+    <aside>
+        <h2>Tixall Obelisk</h2>
+        <p>[A short note about Tixall Obelisk]</p>
+    </aside>
+    <p>[Maybe a bit more about Tixall]</p>
+</section>
+
+Embora estejamos nessa estrutura, amor, se você quiser incluir figuras, há duas tags para fazer exatamente isso:
+
+<figure>
+    <img src="obelisk.jpg">
+    <figcaption>Tixall Obelisk</figcaption>
+</figure>
+
+Observe que o elemento img não precisa de um atributo alt SE a legenda da figura (que é "legenda da figura", caso você precise soletrar) faz esse trabalho.
+
+Navegação
+
+Finalmente, há o nav, usado para marcar um grupo de links de navegação:
+
+<nav id="main_nav">
+    <ul>
+        <li><a href="/tutorials/">Tutorials</a></li>
+        <li><a href="/techniques/">Techniques</a></li>
+        <li><a href="/examples/">Examples</a></li>
+        <li><a href="/references/">References</a></li>
+    </ul>
+</nav>
+
+Isso também pode ser usado para navegação na página (<a href="#overthere"> ... etc.), mas não é necessário para todos os grupos de links - é projetado para agrupamentos principais. Um copyright, autor e link de contato podem ficar sozinhos em um elemento de rodapé, por exemplo.
+
+Se você quiser estilizar esses novos elementos HTML 5 (e provavelmente quer, certo? É muito mais agradável do que usar <div id = "content"> ..., etc), você terá problemas em navegadores mais antigos, principalmente no Internet Explorer versões 8 e anteriores, que não entendem essas tags.
+
+HTML5Shiv pode vir em seu socorro, no entanto; um pequeno pedaço de JavaScript, encaixado em seu elemento principal, que ensina os navegadores corretivos e segura suas mãos para que você possa usar novas tags HTML 5 e estilizá-las de acordo com o conteúdo de seu coração com CSS.
+
+A decisão é sua se você quiser usar um fudge de JavaScript ou ficar com o antigo seguro (e, novamente, perfeitamente válido), mas cabeçalhos semanticamente mais pobres e abordagem de divs. Este site, junto com muitos outros, escolhe o primeiro. Porque a beleza do HTML 5 quase supera a feiura de um hack.
+
+

@@ -1,0 +1,60 @@
+Text: Time, Mark, and "Presentational"
+
+HTML5 adiciona e corrige um punhado de tags relacionadas ao texto. Muitas das pequenas alterações, como atributos diferentes em marcas existentes, já foram abordadas, mas esta página examina duas novas marcas - hora e marca - bem como a redefinição de marcas de apresentação.
+
+Tempo
+
+o tempo é, de longe, o sorvete de chocolate mais sexy e doce, o açúcar adorável dessas marcas e é usado para tornar datas e horários super-semanticamente ricos e mmm.
+
+O texto imprensado no meio da tag de abertura e fechamento pode ser qualquer formato de data e hora - todo o lote preciso ou apenas uma parte, como um dia. Torna-se mais útil, no entanto, pelo atributo datetime, cujo valor deve ser uma data e / ou hora legível por máquina.
+
+
+<p>Written by Doctor Who on <time datetime="2052-11-21">Thursday 21st November 2052</time>.</p>
+
+
+Os valores de data e hora válidos podem assumir o formato de uma data ano-mês-dia (como acima), ou como uma data "difusa", como "2052-11", de uma hora, como "09:30" (sempre usando um relógio de 24 horas) ou uma combinação, como “2052-11-21 09:30”. Isso também pode acomodar fusos horários e durações.
+
+Se o conteúdo textual do elemento de tempo já for legível por máquina, você não precisa do atributo datetime, mas é necessário se não for.
+
+Marca
+
+O texto pode ser destacado, como se fosse um marcador, usando a marca:
+
+
+<blockquote>
+    <p>He wants to play with his <mark>Legos</mark></p>
+</blockquote>
+
+<p>The person being quoted is clearly American because, for some odd reason, they pluralise "Lego".</p>
+
+Sim, esta é uma forma de ênfase, literalmente falando, mas nem sempre será considerada ênfase no significado original (por exemplo, a pessoa citada acima não está enfatizando “Legos”, o comentador está), daí a sua inclusão .
+
+Redefinindo as tags de “apresentação”
+
+Um dos mais O "avanço" mais revoltante no HTML 5 é sua tentativa de redefinir as tags de apresentação arcaicas. Uma vez populares, muitas luas atrás, eles simplesmente não vão embora, não importa o quão malvados estejam. Essas marcas também são conhecidas como “marcas de Cliff Richard”.
+
+Alguns dos blighters recém-definidos são úteis, alguns são questionáveis ​​e alguns têm novas definições que são, para dizer o mínimo, tênues.
+
+    hr, não mais “regra horizontal”, é uma quebra temática, entre parágrafos, por exemplo, como aqueles encontrados em muitos capítulos de muitos livros.
+    pequeno, usado para letras pequenas. Indiscutivelmente um ponto justo, “letras pequenas” assumiu um significado além de “letras pequenas”.
+    s, não mais “tachado”, é para texto que não está mais correto (por exemplo, isso é <s> apresentacional, não </s> significativo). Hmm. OK. Pode ser. del ainda parece bem para a maioria dos normais, no entanto.
+    u, não mais “sublinhado”, é para texto não articulado. Também é "inútil", mas um bônus para a abreviação permanecer intacta.
+    i, não mais “itálico”, é para texto em voz alternativa ou representando uma qualidade diferente de texto. Então, tipo, enfatizado de forma diferente, então (veja a nota abaixo).
+    b, não mais "negrito", significa "texto para o qual a atenção está sendo atraída sem transmitir importância ou sugerir uma voz alternativa" (e mesmo isso é uma paráfrase). b também significa "besteira".
+    sub e sup ainda são subscrito e sobrescrito e, ao mesmo tempo, de alguma forma, não são mais de apresentação.
+
+As especificações às vezes se contradizem: “O elemento sup representa um sobrescrito”, ele diz. Sobrescrito é, por definição, para não mencionar seu significado semântico inerente real, apresentacional. E, ainda assim, a especificação prossegue dizendo que “deve ser usado apenas para marcar convenções tipográficas com significados específicos, não para apresentação tipográfica”.
+
+O problema fundamental com muitas dessas novas definições, na verdade, é que elas dizem, em essência "isso é ênfase, mas não é ênfase".
+
+Como exemplo, talvez o melhor argumento para um elemento i seja usá-lo para representar nomes taxonômicos de gêneros e espécies que, tradicionalmente, são representados em itálico. Mas se algo estiver em itálico quando o texto ao redor não estiver em itálico, então é enfatizado visualmente. Se for (literalmente) em uma voz alternativa do conteúdo anterior e posterior, é enfatizado auditivamente.
+
+E, em um nível prático, dado que levou tanto tempo para um software que interpreta HTML, como leitores de tela, perceber os padrões básicos da web, quais são as chances de eles perceberem as tags por vagas noções de “alternativa vozes ”e“ chamar a atenção sem transmitir importância? ” (E há uma etiqueta para perguntas retóricas?)
+
+Adicionar um significado mais específico é bem-vindo, mas mesmo quando úteis, essas tags ainda não são ideais - elas são feias. Bagunçado. Embora amemos a semântica, devemos ficar felizes com tipos como hr quando "H.R." é um nome impróprio? Felicidade moderada, talvez.
+
+Caso você não tenha aprendido as sutilezas, recomendamos que evite essas tags sempre que possível. Eles servem para poluir e confundir mais do que esclarecer e fazem o trabalho perfeitamente na maioria das vezes.
+
+Alguns profissionais respeitados (também respeitados pelo HTML Dog) ficam felizes em usar essas tags. Você também pode, se realmente quiser. Vá em frente - engula a loucura dos bêbados do W3C - muitas fadas não morrerão por causa disso. Mas aqui nos canis, pensamos que manter uma mentalidade puritana de separar o conteúdo significativo da apresentação traz benefícios por si só e que essas marcas deveriam ter sido colocadas de lado há muito tempo.
+
+

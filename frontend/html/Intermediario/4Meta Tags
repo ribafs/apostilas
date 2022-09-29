@@ -1,0 +1,34 @@
+Meta Tags
+
+Era uma vez, muitos éons atrás, quando a Internet era apenas um pequeno número de caixas de papelão presas umas às outras com barbante, as metatags eram os pregoeiros da Internet ... erm ... cidade.
+
+As metatags não fazem nada com o conteúdo apresentado na janela do navegador, mas são usadas por mecanismos de pesquisa como os para catalogar informações sobre a página da web.
+
+Existe uma meta tag que pode ser usada quantas vezes você desejar dentro de um elemento head e pode conter os atributos charset, name, http-equiv e content.
+
+Quando o atributo name ou http-equiv é usado, o atributo content é então usado em conjunto com eles para aplicar os próprios metadados.
+
+Names
+
+O atributo name pode ser o que você quiser. Os nomes mais comumente usados ​​são autor, descrição e palavras-chave. autor é usado para indicar explicitamente um dos autores da página HTML e a descrição é frequentemente usada por mecanismos de pesquisa (como o Google) para exibir uma descrição de uma página da web em seus resultados de pesquisa.
+
+A razão pela qual as metatags costumavam ser tão importantes era porque eram utilizadas pelos mecanismos de pesquisa para construir um perfil de uma página da web. As palavras-chave meta data foram usadas (e abusadas) extensivamente, por exemplo. Hoje em dia, no entanto, a maioria dos mecanismos de pesquisa usa o conteúdo real da própria página.
+Equivalentes HTTP
+
+O atributo http-equiv pode ser usado no lugar do atributo name e fará um cabeçalho HTTP, que é a informação enviada ao servidor onde a página da web é mantida. O atributo raramente deve ser usado (embora veja a nota do conjunto de caracteres, abaixo), mas o valor pode ser:
+
+    content-type, uma declaração de codificação, definindo qual conjunto de caracteres está sendo usado,
+    estilo padrão, a folha de estilo preferida de uma seleção de links ou elementos de estilo,
+    ou atualização, que define com que frequência (em segundos) uma página é atualizada automaticamente ou se deve redirecionar automaticamente para outra página. Não é ótimo para acessibilidade.
+
+O atributo charset pode ser usado como um método abreviado para definir o conjunto de caracteres de um documento HTML, o que é sempre uma boa coisa a se fazer. <meta charset = "utf-8"> é o mesmo que <meta http-equiv = "content-type" content = "text / html; charset = utf-8">.
+
+
+<head>
+    <title> Ar condicionado? Sim, condicionadores! </title>
+    <meta charset = "utf-8">
+    <meta http-equiv = "refresh" content = "3"> <! - não recomendado para pessoas sãs ->
+    <meta name = "description" content = "Esta é minha página da web realmente, muito, MUITO emocionante sobre condicionadores de ar">
+    ...
+
+

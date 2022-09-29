@@ -1,0 +1,86 @@
+Formulários
+
+Os formulários são usados ​​para coletar dados inseridos por um usuário. Eles podem ser usados ​​como uma interface para um aplicativo da web, por exemplo, ou para enviar dados pela web.
+
+Por si só, os formulários geralmente não são especialmente úteis. Eles tendem a ser usados ​​em conjunto com uma linguagem de programação para processar as informações inseridas pelo usuário. Esses scripts assumem todos os tipos de disfarces que estão em grande parte fora do escopo deste site, pois exigem linguagens diferentes de HTML e CSS.
+
+As marcas básicas usadas no HTML real dos formulários são formulário, entrada, área de texto, seleção e opção.
+Formato
+
+form define o formulário e dentro desta tag, se você estiver usando um formulário para um usuário enviar informações (o que estamos assumindo neste nível), um atributo de ação é necessário para informar ao formulário para onde seu conteúdo será enviado.
+
+O atributo method diz ao formulário como os dados serão enviados e ele pode ter o valor get, que é o padrão, e prende as informações do formulário em um endereço da web, ou post, que (essencialmente) envia invisivelmente as informações do formulário .
+
+get é usado para blocos menores de informações não confidenciais - você pode ver as informações que enviou na pesquisa de um site da web para aparecer no endereço da web de sua página de resultados de pesquisa, por exemplo. post é usado para envios mais longos e seguros, como em formulários de contato.
+
+Portanto, um elemento de formulário será semelhante a este:
+
+
+<form action="processingscript.php" method="post">
+
+</form>
+
+
+entrada
+
+A tag de entrada é o pai do mundo do formulário. Pode assumir várias formas, as mais comuns das quais são descritas abaixo (consulte a página de referência de entrada para toda a família maluca):
+
+    <input type = "text"> ou simplesmente <input> é uma caixa de texto padrão. Isso também pode ter um atributo de valor, que define o texto inicial na caixa de texto.
+    <input type = "password"> é semelhante à caixa de texto, mas os caracteres digitados pelo usuário ficarão ocultos.
+    <input type = "checkbox"> é uma caixa de seleção que pode ser ativada e desativada pelo usuário. Isso também pode ter um atributo marcado (<input type = "checkbox" selected> - o atributo não requer um valor) e faz com que o estado inicial da caixa de seleção seja ativado, por assim dizer.
+    <input type = "radio"> é semelhante a uma caixa de seleção, mas o usuário só pode selecionar um botão de opção em um grupo. Isso também pode ter um atributo marcado.
+    <input type = "submit"> é um botão que, quando selecionado, enviará o formulário. Você pode controlar o texto que aparece no botão de envio com o atributo de valor, por exemplo <input type = "submit" value = "Ooo. Olhe. Texto em um botão. Uau">.
+
+Observe que, como as tags img e br, a tag de entrada, que não envolve nenhum conteúdo, não exige uma tag de fechamento.
+textarea
+
+textarea é, basicamente, uma grande caixa de texto com várias linhas. O número previsto de linhas e colunas pode ser definido com atributos de linhas e colunas, embora você possa manipular o tamanho de acordo com o seu conteúdo usando CSS.
+
+
+<textarea rows = "5" cols = "20"> Uma grande quantidade de texto </textarea>
+
+Qualquer texto que você escolher colocar entre as tags de abertura e fechamento (neste caso “uma grande carga de texto”) formará o valor inicial da área de texto.
+selecionar
+
+A marca de seleção funciona com a marca de opção para fazer caixas de seleção suspensas.
+
+
+<select>
+    <option> Opção 1 </option>
+    <option> Opção 2 </option>
+    <option value = "third option"> Opção 3 </option>
+</select>
+
+Quando o formulário for enviado, o valor da opção selecionada será enviado. Este valor será o texto entre a tag de opção de abertura e fechamento selecionada, a menos que um valor explícito seja especificado com o atributo value, caso em que será enviado em seu lugar. Assim, no exemplo acima, se o primeiro item for selecionado, a “Opção 1” será enviada, se o terceiro item for selecionado, a “terceira opção” será enviada.
+
+Semelhante ao atributo marcado de caixas de seleção e botões de rádio, uma tag de opção também pode ter um atributo selecionado, para começar com um dos itens já selecionados, por exemplo. <opção selecionada> Roedor </option> pré-selecionaria “Roedor” dos itens.
+Nomes
+
+Todas as tags mencionadas acima ficarão muito bem apresentadas na página, mas se você conectar seu formulário a um script de manipulação de formulários, todas serão ignoradas. Isso ocorre porque os campos do formulário precisam de nomes. Portanto, para todos os campos, o nome do atributo precisa ser adicionado, por exemplo <input type = "text" name = "talkingsponge">.
+
+Um formulário de contato para a Arca de Noé, por exemplo, pode ser parecido com o abaixo. (Observação: este formulário não funcionará a menos que haja um arquivo “contactus.php”, que é indicado no atributo action da tag do formulário, para lidar com os dados enviados).
+
+
+<form action = "contactus.php" method = "post">
+
+    <p> Nome: </p>
+    <p> <input type = "text" name = "name" value = "Your name"> </p>
+
+    <p> Espécies: </p>
+    <p> <input name = "species"> </p>
+    <! - lembre-se: 'type = "text"' não é realmente necessário ->
+
+    <p> Comentários: </p>
+    <p> <textarea name = "comments" rows = "5" cols = "20"> Seus comentários </textarea> </p>
+
+    <p> Você é: </p>
+    <p> <input type = "radio" name = "areyou" value = "male"> Masculino </p>
+    <p> <input type = "radio" name = "areyou" value = "female"> Feminino </p>
+    <p> <input type = "radio" name = "areyou" value = "hermaphrodite"> Um hermafrodita </p>
+    <p> <input type = "radio" name = "areyou" value = "asexual"> Assexuado </p>
+
+    <p> <input type = "submit"> </p>
+
+</form>
+
+

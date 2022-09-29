@@ -1,0 +1,62 @@
+Text: Abbreviations, Quotations, and Code
+
+As noções básicas de definição de texto usando parágrafos (bem como ênfase e quebras de linha) e títulos foram abordadas no Tutorial de HTML para iniciantes. E pela mesma razão que usamos p e h1, h2, etc, há uma série de outras tags que também devemos usar para representar especificamente outros tipos de texto, como abreviações, citações e código de computador.
+Abreviações
+
+abbr é usado para marcar uma abreviatura, uma forma abreviada de uma palavra ou frase.
+
+A frase expandida que a abreviação representa pode ser definida no valor do atributo title. Isso é opcional, mas recomendado.
+
+
+<p>This web site is about <abbr title="HyperText Markup Language">HTML</abbr> and <abbr title="Cascading Style Sheets">CSS</abbr>.</p>
+
+Citações
+
+blockquote eq são usados ​​para citações. blockquote é geralmente usado para citações autônomas frequentemente multilinhas, enquanto q é usado para citações mais curtas e in-line.
+
+Se a fonte da cotação puder ser encontrada na Web, o atributo cite pode ser usado para apontar sua origem.
+
+
+<p> Então, perguntei a Bob sobre citações na web e ele disse <q> Sei tanto sobre citações quanto sobre fantasia de pombo </q>. Felizmente, encontrei HTML Dog e dizia: </p>
+
+<blockquote cite = "http://www.htmldog.com/guides/html/intermediate/text/">
+    <p> blockquote eq são usados ​​para citações. blockquote é geralmente usado para citações autônomas, frequentemente multilinhas, enquanto q é usado para citações mais curtas e in-line. </p>
+</blockquote>
+
+Blockquotes funcionam muito bem com os elementos figura e figcaption do HTML5, permitindo uma maneira agradável e semântica de agrupar uma citação com uma citação:
+
+
+<figura>
+    <blockquote> [Grande e velha citação sobre evolução] </blockquote>
+    <figcaption> Charles Darwin </figcaption>
+</figure>
+
+Mas não vamos nos empolgar com isso aqui - consulte o artigo sobre Seccionamento para mais informações.
+Citações
+
+Só para deixar as coisas mais legais e confusas, além de um atributo cite, há também uma tag cite. Isso pode ser usado para definir o título de uma obra, como um livro.
+
+
+<p> De acordo com a <cite> Bíblia </cite>, depois de seis dias, Deus disse <q> dane-se isso por diversão, estou tirando uma soneca </q>. </p>
+
+Código
+
+o código é usado para representar qualquer forma de código de computador. Além disso, var pode ser usado para variáveis ​​(que poderia ser uma variável em qualquer coisa, não apenas no código - poderia ser uma variável em uma equação, por exemplo), samp para saída de amostra e kbd (teclado) para entrada do usuário.
+
+
+<p> Se você adicionar a linha <code> <var> givevaderachuckle </var> = true; </code> à sub-rotina <code> destroy_planet </code> e, em seguida, digitar <kbd> ilovejabba </kbd> no console, o grande e ruim laser verde da Estrela da Morte gravará <samp> Slug Lover! </samp> na superfície do planeta. </p>
+
+Texto pré-formatado
+
+pre é um texto pré-formatado e é incomum em tags HTML que ele percebe todos os caracteres nele, incluindo o espaço em branco (enquanto outros elementos irão ignorar um espaço consecutivo ou uma quebra de linha, por exemplo). É mais comumente usado para blocos de código, onde espaçamento, como indentações, pode ser relevante.
+
+
+<pre> <code>
+& lt; div id = "introdução" & gt;
+    & lt; h1 & gt; Alguns títulos & lt; / h1 & gt;
+    & lt; p & gt; Alguma coisa de parágrafo de parágrafo. & lt; / p & gt;
+& lt; / div & gt;
+</code> </pre>
+
+Como exemplo, pré e código são usados ​​extensivamente em todo este site. Os blocos de código, como o acima, são elementos de código dentro de pré-elementos. Referências in-line a tags e propriedades são simplesmente elementos de código, geralmente dentro de elementos para vincular à seção de referência.
+
