@@ -1,11 +1,11 @@
 
 # Apostilas de Programação & Cia
 
-Aqui são distribídas apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHPOO, MVC, Mobile, DevOps, Servidores, Segurançaetc
+## A maioria no formato PDF e algumas em markdown. Todos podem ser lidos no próprio Github ou baixados.
 
-# Apostilas de Programação em PDF gratuitas
+## Grande atualização deste repositório: 
 
-Apostilas sobre alguns assuntos como PHP, PDO, MySQL, PHPOO, MVC, etc
+Até hoje 133 apostilas/tutoriais.
 
 ## URL deste repositório
 
@@ -17,20 +17,11 @@ PDF do Livro de introdução ao PHP orientado a objetos usando MVC com rotas (pu
 
 https://github.com/ribafs/phpoo-livro
 
-## Pequeno Tutorial sobre Joins com MySQL 🌈💖 Nova
+## Pequeno Tutorial sobre Joins com MySQL
 
 https://github.com/ribafs/joins
 
-## Criação de CRUDs em PHP 😻😻 Nova
-Com bons recursos em 36 páginas
-
-[CriacaoCRUDs.pdf](CriacaoCRUDs.pdf)
-
-## PHP disponível
-
-# Grande mudança neste repositório
-
-Agora temos uma bem grande quantidade de apostilas. Saí varrendo todos os meus repositórios e trouxe para cá todos os tutoriais/apostilas que escrevi, inclusive também de terceiros quando julguei que são úteis:
+## Conteúdo
 
 - [Anexos](Anexos) - Código fonte de algumas apostilas
 
@@ -72,15 +63,7 @@ Agora temos uma bem grande quantidade de apostilas. Saí varrendo todos os meus 
 
 - [servidores linux](servidores)
 
-Muito conteúdo útil, Faça bom proveito.
-
-Contei, até agora, nas pastas acima 133 apostilas/tutoriais. Amaioria em PDF e alguns com markdown. Todos podem ser lidos no próprio Github ou baixados.
-
-## Laravel 8 Básico disponível
-
-A apostila sobre o Laravel 8 está disponível em formato PDF, com 31 páginas e também material disponível na pasta Anexos.
-
-[Download](Laravel8Apostila.pdf)
+Espero sinceramente que seja útil.
 
 ## Bons Livros Free do StackOverflow
 
