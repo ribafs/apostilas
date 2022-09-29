@@ -5,7 +5,7 @@ A maioria no formato PDF e algumas em markdown. Todos podem ser lidos no própri
 
 ## Grande atualização deste repositório: 
 
-Até hoje 133 apostilas/tutoriais.
+Total de 133 apostilas/tutoriais.
 
 ## URL deste repositório
 
