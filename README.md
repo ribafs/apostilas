@@ -1,7 +1,7 @@
 
 # Apostilas de Programação & Cia
 
-## A maioria no formato PDF e algumas em markdown. Todos podem ser lidos no próprio Github ou baixados.
+A maioria no formato PDF e algumas em markdown. Todos podem ser lidos no próprio Github ou baixados.
 
 ## Grande atualização deste repositório: 
 
