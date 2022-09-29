@@ -69,6 +69,12 @@ Espero sinceramente que seja útil.
 
 [LivrosStackoverflow](LivrosStackoverflow.md)
 
+## Sugestões
+
+Use nosso forum de discussões que é ainda mais prático que os Issues 
+
+https://github.com/ribafs/apostilas/discussions
+
 ## Licença
 
 MIT
